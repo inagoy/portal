@@ -9,9 +9,9 @@ import type {
 } from "./types/config";
 
 export const identity: Identity = {
-  name: "Tim Witzdam",
-  logo: "/logo.webp",
-  email: "tim@witzdam.com",
+  name: "Iñaki Goyeneche",
+  logo: "/logo.png",
+  email: "igoyeneche.98@gmail.com",
 };
 
 export const navBarLinks: NavBarLink[] = [
@@ -36,13 +36,13 @@ export const navBarLinks: NavBarLink[] = [
 export const socialLinks: SocialLink[] = [
   {
     title: "GitHub",
-    url: "https://github.com/TimWitzdam",
+    url: "https://github.com/inagoy",
     icon: "mdi:github",
     external: true,
   },
   {
     title: "Mail",
-    url: "mailto:tim@witzdam.com",
+    url: "mailto:igoyeneche.98@gmail.com",
     icon: "mdi:email",
   },
 ];
@@ -50,9 +50,9 @@ export const socialLinks: SocialLink[] = [
 // Home (/)
 export const homePageContent: HomePageContent = {
   seo: {
-    title: "Tim Witzdam",
+    title: "Iñaki Goyeneche",
     description:
-      "Full time student from Germany who loves building cool things using code.",
+      "Productor musical y programador",
     image: identity.logo,
   },
   role: "Student & Software Developer",
@@ -102,7 +102,7 @@ Facere quibusdam reiciendis, distinctio sunt praesentium error accusantium conse
         title: "Software Developer",
         company: {
           name: "Freelance",
-          image: "/logo.webp",
+          image: "/logo.png",
           url: "https://github.com/TimWitzdam",
         },
         date: "2021 - Present",
@@ -111,7 +111,7 @@ Facere quibusdam reiciendis, distinctio sunt praesentium error accusantium conse
         title: "Software Developer",
         company: {
           name: "Freelance",
-          image: "/logo.webp",
+          image: "/logo.png",
           url: "https://github.com/TimWitzdam",
         },
         date: "2019 - 2021",

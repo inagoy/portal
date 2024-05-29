@@ -71,7 +71,7 @@ import type {
 
 export const identity: Identity = {
   name: "Tim Witzdam",
-  logo: "/logo.webp",
+  logo: "/logo.png",
   email: "tim@witzdam.com",
 };
 
@@ -133,7 +133,7 @@ export const homePageContent: HomePageContent = {
 };
 
 // About (/about)
-export const aboutPageContent: AboutPageContent = {
+export const aboutPageContent:  = {
   seo: {
     title: "About | Tim Witzdam",
     description:
@@ -163,7 +163,7 @@ Facere quibusdam reiciendis, distinctio sunt praesentium error accusantium conse
         title: "Software Developer",
         company: {
           name: "Freelance",
-          image: "/logo.webp",
+          image: "/logo.png",
           url: "https://github.com/TimWitzdam",
         },
         date: "2021 - Present",
@@ -172,7 +172,7 @@ Facere quibusdam reiciendis, distinctio sunt praesentium error accusantium conse
         title: "Software Developer",
         company: {
           name: "Freelance",
-          image: "/logo.webp",
+          image: "/logo.png",
           url: "https://github.com/TimWitzdam",
         },
         date: "2019 - 2021",
