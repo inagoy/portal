@@ -3,7 +3,8 @@ import type {
   SocialLink,
   Identity,
   AboutPageContent,
-  ProjectPageContent,
+  MusicalProjectPageContent,
+  ProgrammingProjectPageContent,
   BlogPageContent,
   HomePageContent,
 } from "./types/config";
@@ -20,12 +21,16 @@ export const navBarLinks: NavBarLink[] = [
     url: "/",
   },
   {
-    title: "About",
-    url: "/about",
+    title: "Música",
+    url: "/musical-projects",
   },
   {
-    title: "Projects",
-    url: "/projects",
+    title: "Programación",
+    url: "/programming-projects",
+  },
+  {
+    title: "Sobre Mí",
+    url: "/about",
   },
   {
     title: "Blog",
@@ -55,17 +60,21 @@ export const homePageContent: HomePageContent = {
       "Productor musical y programador",
     image: identity.logo,
   },
-  role: "Student & Software Developer",
+  role: "Productor Musical | Programador",
   description:
-    "I'm Tim Witzdam, a full time student from Germany who also loves building cool things using code.",
+    "Obrero del audio. Desarrollador de herramientas de audio",
   socialLinks: socialLinks,
   links: [
     {
-      title: "My Projects",
-      url: "/projects",
+      title: "Proyectos de programación",
+      url: "/musical-projects",
     },
     {
-      title: "About Me",
+      title: "Proyectos musicales",
+      url: "/programming-projects",
+    },
+    {
+      title: "Sobre Mí",
       url: "/about",
     },
   ],
@@ -124,21 +133,53 @@ Facere quibusdam reiciendis, distinctio sunt praesentium error accusantium conse
   },
 };
 
-// Projects (/projects)
-export const projectsPageContent: ProjectPageContent = {
+// Projects (/musical-projects)
+export const musicalProjectsPageContent: MusicalProjectPageContent = {
   seo: {
     title: "Projects | Tim Witzdam",
-    description: "Check out what I've been working on.",
+    description: "Check out what I've been working.",
     image: identity.logo,
   },
-  subtitle: "Check out what I've been working on.",
+  subtitle: "Check out what I've been working on  on MUSIC.",
   projects: [
     {
       title: "Project 1",
       description: "Project 1 Description",
       image: "/demo-2.jpg",
       year: "2024",
+      url: "https://open.spotify.com/embed/album/3QNumfCFJRBvHEuKA3A4HU?utm_source=generator&theme=0" ,
+    },
+    {
+      title: "Project 1",
+      description: "Project 1 Description",
+      image: "/demo-2.jpg",
+      year: "2024",
       url: "https://github.com/TimWitzdam",
+    },
+    {
+      title: "Project 1",
+      description: "Project 1 Description",
+      image: "/demo-2.jpg",
+      year: "2024",
+      url: "https://github.com/TimWitzdam",
+    },
+  ],
+};
+// Projects (/programming-projects)
+export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
+  seo: {
+    title: "Projects | Tim Witzdam",
+    description: "Check out what I've been working on.",
+    image: identity.logo,
+  },
+  subtitle: "Check out what I've been working on PROGRAMMING.",
+  projects: [
+    {
+      title: "SimpleEQ VST Plugin",
+      description: "EQ Paramétrico con C++ Juce con 3 filtros: Low, High y Band Pass. Incluye visualización de espectro",
+      image: "/simple-eq.png",
+      year: "2024",
+      url: "https://github.com/inagoy/simpleEQ",
     },
     {
       title: "Project 1",

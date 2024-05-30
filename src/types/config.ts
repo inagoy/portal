@@ -77,7 +77,13 @@ export type Project = {
   url: string;
 };
 
-export type ProjectPageContent = {
+export type MusicalProjectPageContent = {
+  seo: SEOInfo;
+  subtitle: string;
+  projects: Project[];
+};
+
+export type ProgrammingProjectPageContent = {
   seo: SEOInfo;
   subtitle: string;
   projects: Project[];

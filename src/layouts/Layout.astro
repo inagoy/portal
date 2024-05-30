@@ -68,18 +68,18 @@ const { seo } = Astro.props;
           <Image
             src={identity.logo}
             alt={"Logo"}
-            width={50}
+            width={100}
             height={50}
-            class="w-[50px] h-[50px] object-cover"
+            class="0bject-cover"
           />
         </a>
         <nav class="ml-auto mr-6 sm:m-0">
-          <ul class="hidden sm:flex sm:items-center sm:gap-2">
+          <ul class="hidden sm:flex sm:items-center sm:gap-2 text-sm">
             {
               navBarLinks.map((link) => (
                 <li>
                   <a
-                    class="group px-4 py-2 rounded-lg hover:bg-gray-bg opacity-60 hover:opacity-100 transition-all"
+                    class="group px-4 py-2 rounded-lg opacity-60 hover:opacity-100 hover:line-through transition-all"
                     href={link.url}
                     target={link.external ? "_blank" : "_self"}
                   >
@@ -151,17 +151,7 @@ const { seo } = Astro.props;
     color: white;
   }
 
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
+
 
   .hover-underline {
     text-decoration: underline 1px rgba(0, 0, 0, 0);
