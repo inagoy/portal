@@ -83,12 +83,12 @@ export const homePageContent: HomePageContent = {
 // About (/about)
 export const aboutPageContent: AboutPageContent = {
   seo: {
-    title: "About | Tim Witzdam",
+    title: "Sobre Mí | Iñaki Goyeneche",
     description:
-      "Full time student from Germany who loves building cool things using code.",
+      "Productor Musical | Programador",
     image: identity.logo,
   },
-  subtitle: "Some information about myself",
+  subtitle: "Un poco de data sobre mí",
   about: {
     description: `
 I'm Tim Witzdam, a full time student from Germany who also loves building cool things using code.
@@ -136,32 +136,56 @@ Facere quibusdam reiciendis, distinctio sunt praesentium error accusantium conse
 // Projects (/musical-projects)
 export const musicalProjectsPageContent: MusicalProjectPageContent = {
   seo: {
-    title: "Projects | Tim Witzdam",
-    description: "Check out what I've been working.",
+    title: "Proyectos | Iñaki Goyeneche",
+    description: "Algunos proyectos en los que trabajé.",
     image: identity.logo,
   },
-  subtitle: "Check out what I've been working on  on MUSIC.",
+  subtitle: "Algunos proyectos en los que trabajé.",
   projects: [
     {
-      title: "Project 1",
-      description: "Project 1 Description",
-      image: "/demo-2.jpg",
+      title: "El Azar | William Campbell",
+      description: "Producción Musical, Edición.",
+      image: "https://img.youtube.com/vi/FZ8_0mR61XQ/hqdefault.jpg",
       year: "2024",
-      url: "https://open.spotify.com/embed/album/3QNumfCFJRBvHEuKA3A4HU?utm_source=generator&theme=0" ,
+      url: "https://www.youtube.com/watch?v=FZ8_0mR61XQ",
+      socio: "Santiago Monroy y Nicolás Carlino"
     },
     {
-      title: "Project 1",
-      description: "Project 1 Description",
-      image: "/demo-2.jpg",
+      title: "Calisto I (En Vivo) | Calisto",
+      description: "Edición, Mezcla y Master.",
+      image: "https://i.scdn.co/image/ab67616d0000b2730365a2fbbbf6f54c06b260a3",
       year: "2024",
-      url: "https://github.com/TimWitzdam",
+      url: "https://open.spotify.com/intl-es/album/1zgMN1cBvOGP8DuGdMPQOV?si=GKPNwWRHS3-0IWpqDSwIFQ",
     },
     {
-      title: "Project 1",
-      description: "Project 1 Description",
-      image: "/demo-2.jpg",
-      year: "2024",
-      url: "https://github.com/TimWitzdam",
+      title: "Ella (Short Film)",
+      description: "Edición, Foley y Diseño Sonoro.",
+      image: "https://img.youtube.com/vi/Sdn0tO06pts/hqdefault.jpg",
+      year: "2023",
+      url: "https://youtu.be/Sdn0tO06pts",
+    },
+    {
+      title: "La Nostalgia del Abandono (Short Film)",
+      description: "Producción Musical y Mezcla.",
+      image: "https://img.youtube.com/vi/otk4bo-59fg/hqdefault.jpg",
+      year: "2022",
+      url: "https://youtu.be/otk4bo-59fg",
+      socio: "Alejo Ávila y Mauro Cigliuti"
+    },
+    {
+      title: "Living Session | William Cambell",
+      description: "Edición, Mezcla y Mastering.",
+      image: "https://img.youtube.com/vi/oL4fy55xHiA/hqdefault.jpg",
+      year: "2021",
+      url: "https://youtu.be/oL4fy55xHiA",
+    },
+    {
+      title: "Nuevo Protagonista (Album) | William Cambell",
+      description: "Producción Musical, Edición y Mezcla.",
+      image: "https://i.scdn.co/image/ab67616d00001e02c3ff32a171372ec984542598",
+      year: "2019",
+      url: "https://open.spotify.com/intl-es/album/3QNumfCFJRBvHEuKA3A4HU?si=dQu_QvnkQGmH02g0s_vX8g",
+      socio:"Sebastián Medina"
     },
   ],
 };
@@ -169,10 +193,10 @@ export const musicalProjectsPageContent: MusicalProjectPageContent = {
 export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
   seo: {
     title: "Projects | Tim Witzdam",
-    description: "Check out what I've been working on.",
+    description: "Algunos proyectos en los que trabajé.",
     image: identity.logo,
   },
-  subtitle: "Check out what I've been working on PROGRAMMING.",
+  subtitle: "Algunos proyectos en los que trabajé.",
   projects: [
     {
       title: "SimpleEQ VST Plugin",
@@ -182,18 +206,25 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
       url: "https://github.com/inagoy/simpleEQ",
     },
     {
-      title: "Project 1",
-      description: "Project 1 Description",
-      image: "/demo-2.jpg",
-      year: "2024",
-      url: "https://github.com/TimWitzdam",
+      title: "CIDEPINT Web App",
+      description: "Aplicación web hecha con Flask (Python) y Vue.js. Incluye sitio privado para administración y sitio público para clientes.",
+      image: "/cidepint.png",
+      year: "2023",
+      url: "https://github.com/inagoy/CIDEPINT-App",
     },
     {
-      title: "Project 1",
-      description: "Project 1 Description",
-      image: "/demo-2.jpg",
-      year: "2024",
-      url: "https://github.com/TimWitzdam",
+      title: "Chq.to Web App",
+      description: "Aplicación web hecha con Ruby on Rails para acortamiento de links. Cuenta con usuarios y distintos tipos de links (privados, públicos, temporales, etc)",
+      image: "/chqto.png",
+      year: "2023",
+      url: "https://github.com/inagoy/chq.to/",
+    },
+    {
+      title: "DRUMSEP",
+      description: "Implementación de un Modelo de Separación de Baterías Acústicas con Python a partir del entrenamiento de la arquitectura de deep learning 'Hybrid Demucs'",
+      image: "/drumsep.png",
+      year: "2022",
+      url: "https://github.com/inagoy/drumsep/",
     },
   ],
 };
