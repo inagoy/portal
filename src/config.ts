@@ -83,12 +83,12 @@ export const homePageContent: HomePageContent = {
 // About (/about)
 export const aboutPageContent: AboutPageContent = {
   seo: {
-    title: "Sobre Mí | Iñaki Goyeneche",
+    title: "Contacto | Iñaki Goyeneche",
     description:
       "Productor Musical | Programador",
     image: identity.logo,
   },
-  subtitle: "Un poco de data sobre mí",
+  subtitle: "Cómo contactarme",
   about: {
     description: `
 I'm Tim Witzdam, a full time student from Germany who also loves building cool things using code.
