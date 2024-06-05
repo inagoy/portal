@@ -17,10 +17,6 @@ export const identity: Identity = {
 
 export const navBarLinks: NavBarLink[] = [
   {
-    title: "Home",
-    url: "/",
-  },
-  {
     title: "Música",
     url: "/musical-projects",
   },
@@ -31,10 +27,6 @@ export const navBarLinks: NavBarLink[] = [
   {
     title: "Sobre Mí",
     url: "/about",
-  },
-  {
-    title: "Blog",
-    url: "/blog",
   },
 ];
 
