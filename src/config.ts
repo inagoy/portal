@@ -104,29 +104,6 @@ Facere quibusdam reiciendis, distinctio sunt praesentium error accusantium conse
       alt: "Right Picture",
     },
   },
-  work: {
-    description: `I've worked with a variety of technologies and tools to build cool things. Here are some of the projects I've worked on.`, // Markdown is supported
-    items: [
-      {
-        title: "Software Developer",
-        company: {
-          name: "Freelance",
-          image: "/logo.png",
-          url: "https://github.com/TimWitzdam",
-        },
-        date: "2021 - Present",
-      },
-      {
-        title: "Software Developer",
-        company: {
-          name: "Freelance",
-          image: "/logo.png",
-          url: "https://github.com/TimWitzdam",
-        },
-        date: "2019 - 2021",
-      },
-    ],
-  },
   connect: {
     description: `I'm always interested in meeting new people and learning new things. Feel free to connect with me on any of the following platforms.`, // Markdown is supported
     links: socialLinks,

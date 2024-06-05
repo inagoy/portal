@@ -52,6 +52,17 @@ export type AboutPageContent = {
     description: string;
     links: SocialLink[];
   };
+  about: {
+    description: string;
+    image_l: {
+      url: string;
+      alt: string;
+    };
+    image_r: {
+      url: string;
+      alt: string;
+    };
+  };
 };
 
 export type Project = {
