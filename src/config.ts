@@ -5,7 +5,6 @@ import type {
   AboutPageContent,
   MusicalProjectPageContent,
   ProgrammingProjectPageContent,
-  BlogPageContent,
   HomePageContent,
 } from "./types/config";
 
@@ -196,14 +195,4 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
       url: "https://github.com/inagoy/drumsep/",
     },
   ],
-};
-
-// Blog (/blog)
-export const blogPageContent: BlogPageContent = {
-  seo: {
-    title: "Blog | Tim Witzdam",
-    description: "Thoughts, stories and ideas.",
-    image: identity.logo,
-  },
-  subtitle: "Thoughts, stories and ideas.",
 };

@@ -86,7 +86,3 @@ export type ProgrammingProjectPageContent = {
   projects: Project[];
 };
 
-export type BlogPageContent = {
-  seo: SEOInfo;
-  subtitle: string;
-};
