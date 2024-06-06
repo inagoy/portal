@@ -17,15 +17,15 @@ export const identity: Identity = {
 export const navBarLinks: NavBarLink[] = [
   {
     title: "Música",
-    url: "/musical-projects",
+    url: "/music-projects",
   },
   {
     title: "Programación",
     url: "/programming-projects",
   },
   {
-    title: "Sobre Mí",
-    url: "/about",
+    title: "Contacto",
+    url: "/contact",
   },
 ];
 
@@ -34,6 +34,18 @@ export const socialLinks: SocialLink[] = [
     title: "GitHub",
     url: "https://github.com/inagoy",
     icon: "mdi:github",
+    external: true,
+  },
+  { 
+    title: "Instagram",
+    url: "https://instagram.com/inagoy",
+    icon: "mdi:instagram",
+    external: true, 
+  },
+  {
+    title: "LinkedIn",
+    url: "https://www.linkedin.com/in/i%C3%B1aki-goyeneche-49809624a/",
+    icon: "mdi:linkedin",
     external: true,
   },
   {

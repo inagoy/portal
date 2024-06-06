@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import { programmingProjectsPageContent } from "../config";
 import ProjectCard from "../components/ProgrammingProjectCard.astro";
+import SocialLinkBox from "../components/SocialLinkBox.astro";
+import { aboutPageContent } from "../config";
 ---
 
 <Layout seo={programmingProjectsPageContent.seo}>
@@ -16,4 +18,14 @@ import ProjectCard from "../components/ProgrammingProjectCard.astro";
       }
     </div>
   </section>
+<section class="mt-10 max-w-2xl mx-auto px-6 sm:flex sm:gap-16">
+  <div class="flex mx-auto">
+    <h2 class="opacity-60 w-1/2"> Más proyectos en </h2>
+    <div class="w-1/2">
+      {
+          <SocialLinkBox {...aboutPageContent.connect.links[0]} />
+      }
+    </div>
+  </div>
+</section>
 </Layout>
