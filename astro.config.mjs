@@ -14,4 +14,5 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
+  site: 'https://inagoy.vercel.app/'
 });
