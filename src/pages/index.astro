@@ -3,10 +3,7 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import { homePageContent, identity } from "../config";
 import SocialLink from "../components/SocialLink.astro";
-import Link from "../components/Link.astro";
 import { getCollection } from "astro:content";
-
-const posts = await getCollection("posts");
 ---
 
 <Layout seo={homePageContent.seo}>
@@ -39,3 +36,9 @@ const posts = await getCollection("posts");
     </p>
   </section>
 </Layout>
+
+<style>
+  html{
+    width: 99%;
+  }
+</style>

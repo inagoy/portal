@@ -1,14 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { aboutPageContent } from "../config";
+import { contactPageContent } from "../config";
 import SocialLinkBox from "../components/SocialLinkBox.astro";
 import MailForm from "../components/MailForm.astro";
 ---
 
-<Layout seo={aboutPageContent.seo}>
+<Layout seo={contactPageContent.seo}>
   <section class="mt-10 max-w-2xl mx-auto px-6">
     <h1 class="font-bold text-3xl mb-1">Contacto</h1>
-    <p class="opacity-60 mb-10">{aboutPageContent.subtitle}</p>
+    <p class="opacity-60 mb-10">{contactPageContent.subtitle}</p>
   </section>
   <section class="place-content-center max-w-2xl mx-auto px-6 sm:gap-10">
     <MailForm/>
@@ -18,8 +18,8 @@ import MailForm from "../components/MailForm.astro";
     <div>
       <div class="grid grid-cols-2 gap-2 group ">
         {
-          aboutPageContent.connect.links.map((item) => (
-            <SocialLinkBox {...item} />
+          contactPageContent.links.map((link) => (
+            <SocialLinkBox {...link} />
           ))
         }
       </div>

@@ -35,34 +35,10 @@ export type HomePageContent = {
   }[];
 };
 
-export type ResumeItem = {
-  title: string;
-  company: {
-    name: string;
-    image: string;
-    url: string;
-  };
-  date: string;
-};
-
-export type AboutPageContent = {
+export type ContactPageContent = {
   seo: SEOInfo;
   subtitle: string;
-  connect: {
-    description: string;
-    links: SocialLink[];
-  };
-  about: {
-    description: string;
-    image_l: {
-      url: string;
-      alt: string;
-    };
-    image_r: {
-      url: string;
-      alt: string;
-    };
-  };
+  links: SocialLink[];
 };
 
 export type Project = {

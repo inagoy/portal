@@ -2,7 +2,7 @@ import type {
   NavBarLink,
   SocialLink,
   Identity,
-  AboutPageContent,
+  ContactPageContent,
   MusicalProjectPageContent,
   ProgrammingProjectPageContent,
   HomePageContent,
@@ -65,7 +65,7 @@ export const homePageContent: HomePageContent = {
   },
   role: "Productor Musical | Programador",
   description:
-    "Obrero del audio. Desarrollador de herramientas de audio",
+    "Portfolio y contacto",
   socialLinks: socialLinks,
   links: [
     {
@@ -77,14 +77,14 @@ export const homePageContent: HomePageContent = {
       url: "/programming-projects",
     },
     {
-      title: "Sobre Mí",
-      url: "/about",
+      title: "Contacto",
+      url: "/contact",
     },
   ],
 };
 
-// About (/about)
-export const aboutPageContent: AboutPageContent = {
+// Contact (/contact)
+export const contactPageContent: ContactPageContent = {
   seo: {
     title: "Contacto | Iñaki Goyeneche",
     description:
@@ -92,25 +92,7 @@ export const aboutPageContent: AboutPageContent = {
     image: identity.logo,
   },
   subtitle: "Cómo contactarme",
-  about: {
-    description: `
-I'm Tim Witzdam, a full time student from Germany who also loves building cool things using code.
-<br/><br/>
-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque placeat est architecto tempora voluptatem sit suscipit aspernatur? <br/><br/>
-Facere quibusdam reiciendis, distinctio sunt praesentium error accusantium consectetur nemo vero officia itaque.`, // Markdown is supported
-    image_l: {
-      url: "/demo-1.jpg",
-      alt: "Left Picture",
-    },
-    image_r: {
-      url: "/demo-1.jpg",
-      alt: "Right Picture",
-    },
-  },
-  connect: {
-    description: `I'm always interested in meeting new people and learning new things. Feel free to connect with me on any of the following platforms.`, // Markdown is supported
-    links: socialLinks,
-  },
+  links: socialLinks,
 };
 
 // Projects (/musical-projects)
