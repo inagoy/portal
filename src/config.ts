@@ -63,22 +63,18 @@ export const homePageContent: HomePageContent = {
       "Productor musical y programador",
     image: identity.logo,
   },
-  role: "Productor Musical | Programador",
+  role: "Productor Musical y Técnico en Sonido | Programador",
   description:
     "Portfolio y contacto",
   socialLinks: socialLinks,
   links: [
     {
-      title: "Proyectos de programación",
-      url: "/musical-projects",
+      title: "Portfolio de Audio",
+      url: "/music-projects",
     },
     {
-      title: "Proyectos musicales",
+      title: "Portfolio de Programación",
       url: "/programming-projects",
-    },
-    {
-      title: "Contacto",
-      url: "/contact",
     },
   ],
 };

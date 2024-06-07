@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import { homePageContent, identity } from "../config";
 import SocialLink from "../components/SocialLink.astro";
-import { getCollection } from "astro:content";
+import Link from "../components/Link.astro"
 ---
 
 <Layout seo={homePageContent.seo}>
@@ -31,10 +31,17 @@ import { getCollection } from "astro:content";
         }
       </div>
     </div>
-    <p class="max-w-md mb-8">
-      {homePageContent.description}
-    </p>
   </section>
+  <section class="flex justify-center ">
+    <div class="flex items-center gap-4 group w-fit">
+      {
+        homePageContent.links.map((link) => (
+          <Link text={link.title} href={link.url} external={link.external} />
+        ))
+      }
+    </div>
+</section>
+
 </Layout>
 
 <style>
