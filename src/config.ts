@@ -94,7 +94,7 @@ export const contactPageContent: ContactPageContent = {
 // Projects (/musical-projects)
 export const musicalProjectsPageContent: MusicalProjectPageContent = {
   seo: {
-    title: "Proyectos | Iñaki Goyeneche",
+    title: "Música | Iñaki Goyeneche",
     description: "Algunos proyectos en los que trabajé.",
     image: identity.logo,
   },
@@ -150,7 +150,7 @@ export const musicalProjectsPageContent: MusicalProjectPageContent = {
 // Projects (/programming-projects)
 export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
   seo: {
-    title: "Projects | Tim Witzdam",
+    title: "Programación | Iñaki Goyeneche",
     description: "Algunos proyectos en los que trabajé.",
     image: identity.logo,
   },
