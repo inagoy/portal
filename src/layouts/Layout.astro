@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
 import { navBarLinks, identity } from "../config";
 import type { SEOInfo } from "../types/config";
 
@@ -151,11 +149,3 @@ const currentUrl = Astro.url.pathname;
     transition: text-decoration-color 300ms;
   }
 </style>
-<script>
-  const navLinks = document.querySelectorAll('nav');
-  navLinks.forEach(link => {
-    console.log(link.href);
-    if (link.href) {
-    }
-});
-</script>
