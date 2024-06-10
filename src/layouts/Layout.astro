@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { seo } = Astro.props;
+const currentUrl = Astro.url.pathname;
 ---
 
 <script>
@@ -79,7 +80,7 @@ const { seo } = Astro.props;
               navBarLinks.map((link) => (
                 <li>
                   <a
-                    class="group px-4 py-2 rounded-lg opacity-100 hover:opacity-80 hover:line-through transition-all"
+                    class={`group px-4 py-2 rounded-lg opacity-100 hover:opacity-80 hover:line-through transition-all ${currentUrl === link.url ? 'line-through' : ''}`}
                     href={link.url}
                     target={link.external ? "_blank" : "_self"}
                   >
@@ -150,3 +151,11 @@ const { seo } = Astro.props;
     transition: text-decoration-color 300ms;
   }
 </style>
+<script>
+  const navLinks = document.querySelectorAll('nav');
+  navLinks.forEach(link => {
+    console.log(link.href);
+    if (link.href) {
+    }
+});
+</script>
