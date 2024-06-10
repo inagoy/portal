@@ -50,7 +50,7 @@ export type Project = {
   socio? : string;
 };
 
-export type MusicalProjectPageContent = {
+export type MusicProjectPageContent = {
   seo: SEOInfo;
   subtitle: string;
   projects: Project[];

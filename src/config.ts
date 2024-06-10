@@ -3,7 +3,7 @@ import type {
   SocialLink,
   Identity,
   ContactPageContent,
-  MusicalProjectPageContent,
+  MusicProjectPageContent,
   ProgrammingProjectPageContent,
   HomePageContent,
 } from "./types/config";
@@ -16,7 +16,7 @@ export const identity: Identity = {
 
 export const navBarLinks: NavBarLink[] = [
   {
-    title: "Música",
+    title: "Música/Audio",
     url: "/music-projects",
   },
   {
@@ -63,7 +63,7 @@ export const homePageContent: HomePageContent = {
       "Productor musical y programador",
     image: identity.logo,
   },
-  role: "Productor Musical y Técnico en Sonido | Programador",
+  role: "Productor Musical | Programador",
   description:
     "Portfolio y contacto",
   socialLinks: socialLinks,
@@ -91,14 +91,14 @@ export const contactPageContent: ContactPageContent = {
   links: socialLinks,
 };
 
-// Projects (/musical-projects)
-export const musicalProjectsPageContent: MusicalProjectPageContent = {
+// Projects (/music-projects)
+export const musicProjectsPageContent: MusicProjectPageContent = {
   seo: {
     title: "Proyectos | Iñaki Goyeneche",
-    description: "Algunos proyectos en los que trabajé.",
+    description: "Algunos proyectos en los que trabajé",
     image: identity.logo,
   },
-  subtitle: "Algunos proyectos en los que trabajé.",
+  subtitle: "Algunos proyectos en los que trabajé",
   projects: [
     {
       title: "El Azar | William Campbell",
@@ -151,14 +151,14 @@ export const musicalProjectsPageContent: MusicalProjectPageContent = {
 export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
   seo: {
     title: "Projects | Tim Witzdam",
-    description: "Algunos proyectos en los que trabajé.",
+    description: "Algunos proyectos en los que trabajé",
     image: identity.logo,
   },
-  subtitle: "Algunos proyectos en los que trabajé.",
+  subtitle: "Algunos proyectos en los que trabajé",
   projects: [
     {
       title: "SimpleEQ VST Plugin",
-      description: "EQ Paramétrico con C++ Juce con 3 filtros: Low, High y Band Pass. Incluye visualización de espectro",
+      description: "EQ Paramétrico con C++ Juce con 3 filtros: Low, High y Band Pass. Incluye visualización de espectro.",
       image: "/simple-eq.png",
       year: "2024",
       url: "https://github.com/inagoy/simpleEQ",
@@ -172,14 +172,14 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
     },
     {
       title: "Chq.to Web App",
-      description: "Aplicación web hecha con Ruby on Rails para acortamiento de links. Cuenta con usuarios y distintos tipos de links (privados, públicos, temporales, etc)",
+      description: "Aplicación web hecha con Ruby on Rails para acortamiento de links. Cuenta con usuarios y distintos tipos de links (privados, públicos, temporales, etc).",
       image: "/chqto.png",
       year: "2023",
       url: "https://github.com/inagoy/chq.to/",
     },
     {
       title: "DRUMSEP",
-      description: "Implementación de un Modelo de Separación de Baterías Acústicas con Python a partir del entrenamiento de la arquitectura de deep learning 'Hybrid Demucs'",
+      description: "Implementación de un Modelo de Separación de Baterías Acústicas con Python a partir del entrenamiento de la arquitectura de deep learning 'Hybrid Demucs'.",
       image: "/drumsep.png",
       year: "2022",
       url: "https://github.com/inagoy/drumsep/",
