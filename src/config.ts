@@ -17,15 +17,15 @@ export const identity: Identity = {
 export const navBarLinks: NavBarLink[] = [
   {
     title: "Música/Audio",
-    url: "/music-projects",
+    url: "/music-projects/",
   },
   {
     title: "Programación",
-    url: "/programming-projects",
+    url: "/programming-projects/",
   },
   {
     title: "Contacto",
-    url: "/contact",
+    url: "/contact/",
   },
 ];
 
@@ -70,11 +70,11 @@ export const homePageContent: HomePageContent = {
   links: [
     {
       title: "Portfolio de Audio",
-      url: "/music-projects",
+      url: "/music-projects/",
     },
     {
       title: "Portfolio de Programación",
-      url: "/programming-projects",
+      url: "/programming-projects/",
     },
   ],
 };
