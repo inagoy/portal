@@ -7,9 +7,7 @@ interface Props {
 }
 
 const { seo } = Astro.props;
-const currentUrl = Astro.url.pathname;
-
-
+const currentUrl = Astro.url.pathname.slice(0, -1);
 
 ---
 
@@ -124,10 +122,7 @@ const currentUrl = Astro.url.pathname;
     <main class="mb-32">
       <slot />
     </main>
-    <footer>
-      <div>'Current URL:' {currentUrl}</div>
-      <div>'Link URL:' {navBarLinks[0].url}</div>
-    </footer>
+    <footer></footer>
   </body>
 </html>
 
