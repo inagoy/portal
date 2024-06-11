@@ -8,6 +8,10 @@ interface Props {
 
 const { seo } = Astro.props;
 const currentUrl = Astro.url.pathname;
+
+
+console.log('Current URL:', currentUrl);
+console.log('Link URL:', navBarLinks[0].url);
 ---
 
 <script>
