@@ -10,8 +10,7 @@ const { seo } = Astro.props;
 const currentUrl = Astro.url.pathname;
 
 
-console.log('Current URL:', currentUrl);
-console.log('Link URL:', navBarLinks[0].url);
+
 ---
 
 <script>
@@ -125,7 +124,10 @@ console.log('Link URL:', navBarLinks[0].url);
     <main class="mb-32">
       <slot />
     </main>
-    <footer></footer>
+    <footer>
+      <div>'Current URL:' {currentUrl}</div>
+      <div>'Link URL:' {navBarLinks[0].url}</div>
+    </footer>
   </body>
 </html>
 
