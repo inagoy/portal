@@ -32,11 +32,11 @@ import Link from "../components/Link.astro"
       </div>
     </div>
   </section>
-  <section class="flex justify-center ">
+  <section class="flex justify-center px-6 mx-auto">
     <div class="flex items-center gap-4 group w-fit">
       {
         homePageContent.links.map((link) => (
-          <Link text={link.title} href={link.url} external={link.external} />
+          <Link text={link.title} href={link.url} external={link.external}/>
         ))
       }
     </div>
