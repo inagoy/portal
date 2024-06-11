@@ -11,41 +11,30 @@ const currentUrl = Astro.url.pathname.slice(0, -1);
 
 ---
 
-<script>
-  const linkMenuButton = document.getElementById(
-    "link-menu-button"
-  ) as HTMLButtonElement;
-  const linkMenu = document.getElementById("link-menu") as HTMLDivElement;
-  const openIndicator = document.getElementById(
-    "open-indicator"
-  ) as HTMLSpanElement;
-
-  linkMenuButton.addEventListener("click", () => {
-    if (linkMenu.classList.contains("opacity-0")) {
-      linkMenu.classList.remove("pointer-events-none");
-      linkMenu.classList.remove("opacity-0");
-      openIndicator.innerText = "-";
-    } else {
-      linkMenu.classList.add("pointer-events-none");
-      linkMenu.classList.add("opacity-0");
-      openIndicator.innerText = "+";
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+  
+    html {
+      font-family:  "JetBrains Mono", monospace;
+      background: #231208;
     }
-  });
-
-  document.addEventListener("click", (event) => {
-    const isLinkMenuButtonClicked =
-      event.target === linkMenuButton ||
-      linkMenuButton.contains(event.target as Node);
-    const isLinkMenuClicked =
-      event.target === linkMenu || linkMenu.contains(event.target as Node);
-
-    if (!isLinkMenuButtonClicked && !isLinkMenuClicked) {
-      linkMenu.classList.add("pointer-events-none");
-      linkMenu.classList.add("opacity-0");
-      openIndicator.innerText = "+";
+  
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      color: white;
     }
-  });
-</script>
+  
+  
+  
+    .hover-underline {
+      text-decoration: underline 1px rgba(0, 0, 0, 0);
+      text-underline-offset: 5px;
+      transition: text-decoration-color 300ms;
+    }
+</style>
 
 <html lang="en">
   <head>
@@ -64,6 +53,14 @@ const currentUrl = Astro.url.pathname.slice(0, -1);
       <div
         class="px-6 py-6 max-w-2xl mx-auto flex items-center justify-between"
       >
+        <a href="/">
+          <img
+            src={identity.logo}
+            alt={"Logo"}
+            width=100px
+            class="object-cover"
+          />
+        </a>
         <nav class="ml-auto mr-6 sm:m-0">
           <ul class="hidden sm:flex sm:items-center sm:gap-2 text-sm">
             {
@@ -117,27 +114,38 @@ const currentUrl = Astro.url.pathname.slice(0, -1);
   </body>
 </html>
 
-<style is:global>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+<script>
+  const linkMenuButton = document.getElementById(
+    "link-menu-button"
+  ) as HTMLButtonElement;
+  const linkMenu = document.getElementById("link-menu") as HTMLDivElement;
+  const openIndicator = document.getElementById(
+    "open-indicator"
+  ) as HTMLSpanElement;
 
-  html {
-    font-family:  "JetBrains Mono", monospace;
-    background: #231208;
-  }
+  linkMenuButton.addEventListener("click", () => {
+    if (linkMenu.classList.contains("opacity-0")) {
+      linkMenu.classList.remove("pointer-events-none");
+      linkMenu.classList.remove("opacity-0");
+      openIndicator.innerText = "-";
+    } else {
+      linkMenu.classList.add("pointer-events-none");
+      linkMenu.classList.add("opacity-0");
+      openIndicator.innerText = "+";
+    }
+  });
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    color: white;
-  }
+  document.addEventListener("click", (event) => {
+    const isLinkMenuButtonClicked =
+      event.target === linkMenuButton ||
+      linkMenuButton.contains(event.target as Node);
+    const isLinkMenuClicked =
+      event.target === linkMenu || linkMenu.contains(event.target as Node);
 
-
-
-  .hover-underline {
-    text-decoration: underline 1px rgba(0, 0, 0, 0);
-    text-underline-offset: 5px;
-    transition: text-decoration-color 300ms;
-  }
-</style>
+    if (!isLinkMenuButtonClicked && !isLinkMenuClicked) {
+      linkMenu.classList.add("pointer-events-none");
+      linkMenu.classList.add("opacity-0");
+      openIndicator.innerText = "+";
+    }
+  });
+</script>
