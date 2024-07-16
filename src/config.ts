@@ -157,6 +157,13 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
   subtitle: "Algunos proyectos en los que trabajé",
   projects: [
     {
+      title: "Portal Web DiqueUNO",
+      description: "Sitio web para la Residencia Estudiantil DiqueUNO hecho con SvelteKit y Tailwind.",
+      image: "/diqueuno.png",
+      year: "2024",
+      url: "https://github.com/inagoy/diqueuno",
+    },
+    {
       title: "SimpleEQ VST Plugin",
       description: "EQ Paramétrico con C++ Juce con 3 filtros: Low, High y Band Pass. Incluye visualización de espectro.",
       image: "/simple-eq.png",
