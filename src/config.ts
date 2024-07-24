@@ -156,13 +156,13 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
   },
   subtitle: "Algunos proyectos en los que trabajé",
   projects: [
-    {
+/*     {
       title: "Portal Web DiqueUNO",
       description: "Sitio web para la Residencia Estudiantil DiqueUNO hecho con SvelteKit y Tailwind.",
       image: "/diqueuno.png",
       year: "2024",
       url: "https://github.com/inagoy/diqueuno",
-    },
+    }, */
     {
       title: "SimpleEQ VST Plugin",
       description: "EQ Paramétrico con C++ Juce con 3 filtros: Low, High y Band Pass. Incluye visualización de espectro.",
@@ -170,7 +170,7 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
       year: "2024",
       url: "https://github.com/inagoy/simpleEQ",
     },
-    {
+/*     {
       title: "CIDEPINT Web App",
       description: "Aplicación web hecha con Flask (Python) y Vue.js. Incluye sitio privado para administración y sitio público para clientes.",
       image: "/cidepint.png",
@@ -183,7 +183,7 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
       image: "/chqto.png",
       year: "2023",
       url: "https://github.com/inagoy/chq.to/",
-    },
+    }, */
     {
       title: "DRUMSEP",
       description: "Implementación de un Modelo de Separación de Baterías Acústicas con Python a partir del entrenamiento de la arquitectura de deep learning 'Hybrid Demucs'.",
