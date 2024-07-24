@@ -30,12 +30,6 @@ export const navBarLinks: NavBarLink[] = [
 ];
 
 export const socialLinks: SocialLink[] = [
-  {
-    title: "GitHub",
-    url: "https://github.com/inagoy",
-    icon: "mdi:github",
-    external: true,
-  },
   { 
     title: "Instagram",
     url: "https://instagram.com/inagoy",
@@ -46,6 +40,12 @@ export const socialLinks: SocialLink[] = [
     title: "LinkedIn",
     url: "https://www.linkedin.com/in/i%C3%B1aki-goyeneche-49809624a/",
     icon: "mdi:linkedin",
+    external: true,
+  },
+  {
+    title: "GitHub",
+    url: "https://github.com/inagoy",
+    icon: "mdi:github",
     external: true,
   },
   {
