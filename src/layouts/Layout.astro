@@ -57,6 +57,7 @@ const currentUrl = Astro.url.pathname.slice(0, -1);
     <meta property="og:title" content={seo.title} />
     <meta property="og:description" content={seo.description} />
     <meta property="og:image" content={seo.image} />
+    <link rel="preload" href={identity.logo} as="image">
   </head>
   <body>
     <header>
@@ -65,9 +66,9 @@ const currentUrl = Astro.url.pathname.slice(0, -1);
       >
         <a href="/">
           <img
-            src="/logo.png"
+            src={identity.logo}
             alt={"Logo"}
-            width="300" height="200"
+            width="200" height="125"
             class="object-cover"
           />
         </a>
