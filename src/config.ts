@@ -101,8 +101,16 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   subtitle: "Algunos proyectos en los que trabajé",
   projects: [
     {
+      title: "Los Ángeles | William Campbell",
+      description: "Co-Producción Musical, Edición.",
+      image: "https://img.youtube.com/vi/wFfDda5opSU/hqdefault.jpg",
+      year: "2024",
+      url: "https://www.youtube.com/watch?v=wFfDda5opSU",
+      socio: "Santiago Monroy"
+    },
+    {
       title: "El Azar | William Campbell",
-      description: "Producción Musical, Edición.",
+      description: "Co-Producción Musical, Edición.",
       image: "https://img.youtube.com/vi/FZ8_0mR61XQ/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=FZ8_0mR61XQ",
