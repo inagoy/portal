@@ -106,7 +106,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/wFfDda5opSU/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=wFfDda5opSU",
-      socio: "Santiago Monroy"
+      socio: "Santiago Monroy y Nicolás Carlino"
     },
     {
       title: "El Azar | William Campbell",
