@@ -23,5 +23,10 @@
   "devDependencies": {
     "@iconify-json/mdi": "^1.1.64",
     "@tailwindcss/typography": "^0.5.12"
+  },
+  "overrides": {
+    "@iconify/tools": "4.0.5",
+    "@iconify/types": "2.0.0",
+    "@iconify/utils": "2.1.30"
   }
 }
