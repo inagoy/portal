@@ -102,7 +102,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   projects: [
     {
       title: "Los Ángeles | William Campbell",
-      description: "Co-Producción Musical, Edición.",
+      description: "Producción Musical, Edición.",
       image: "https://img.youtube.com/vi/wFfDda5opSU/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=wFfDda5opSU",
@@ -110,7 +110,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "El Azar | William Campbell",
-      description: "Co-Producción Musical, Edición.",
+      description: "Producción Musical, Edición.",
       image: "https://img.youtube.com/vi/FZ8_0mR61XQ/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=FZ8_0mR61XQ",
