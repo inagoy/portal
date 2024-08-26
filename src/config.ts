@@ -16,7 +16,7 @@ export const identity: Identity = {
 
 export const navBarLinks: NavBarLink[] = [
   {
-    title: "Música/Audio",
+    title: "Música|Audio",
     url: "/music-projects",
   },
   {
@@ -60,10 +60,10 @@ export const homePageContent: HomePageContent = {
   seo: {
     title: "Iñaki Goyeneche",
     description:
-      "Productor musical y programador",
+      "Productor musical y programador para audio",
     image: identity.logo,
   },
-  role: "Productor Musical | Programador",
+  role: "Productor Musical | Programador para audio",
   description:
     "Portfolio y contacto",
   socialLinks: socialLinks,
@@ -158,7 +158,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
 // Projects (/programming-projects)
 export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
   seo: {
-    title: "Programación | Iñaki Goyeneche",
+    title: "Programación de Audio | Iñaki Goyeneche",
     description: "Algunos proyectos en los que trabajé",
     image: identity.logo,
   },
