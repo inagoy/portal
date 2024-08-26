@@ -102,7 +102,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   projects: [
     {
       title: "Los Ángeles | William Campbell",
-      description: "Coproducción Musical, Edición.",
+      description: "Producción Musical, Edición.",
       image: "https://img.youtube.com/vi/wFfDda5opSU/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=wFfDda5opSU",
@@ -110,7 +110,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "El Azar | William Campbell",
-      description: "Coproducción Musical, Edición.",
+      description: "Producción Musical, Edición.",
       image: "https://img.youtube.com/vi/FZ8_0mR61XQ/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=FZ8_0mR61XQ",
@@ -132,7 +132,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "La Nostalgia del Abandono (Short Film)",
-      description: "Coproducción Musical y Mezcla.",
+      description: "Producción Musical y Mezcla.",
       image: "https://img.youtube.com/vi/otk4bo-59fg/hqdefault.jpg",
       year: "2022",
       url: "https://youtu.be/otk4bo-59fg",
@@ -147,7 +147,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "Nuevo Protagonista (Album) | William Cambell",
-      description: "Coproducción Musical, Edición y Mezcla.",
+      description: "Producción Musical, Edición y Mezcla.",
       image: "https://i.scdn.co/image/ab67616d00001e02c3ff32a171372ec984542598",
       year: "2019",
       url: "https://open.spotify.com/intl-es/album/3QNumfCFJRBvHEuKA3A4HU?si=dQu_QvnkQGmH02g0s_vX8g",
