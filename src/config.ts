@@ -65,7 +65,7 @@ export const homePageContent: HomePageContent = {
   },
   role: "Productor Musical | Programador para audio",
   description:
-    "Portfolio y contacto",
+    "Siempre estoy dando vueltas entre el hacer musical y el aprendizaje y desarrollo de herramientas de audio ",
   socialLinks: socialLinks,
   links: [
     {

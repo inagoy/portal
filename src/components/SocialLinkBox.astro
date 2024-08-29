@@ -8,7 +8,7 @@ const { title, url, icon, external } = Astro.props;
 ---
 <a
   href={url}
-  class="p-4 rounded-lg border border-white border-opacity-30 flex items-center gap-3 opacity-100 hover:opacity-80 transition-opacity hover:line-through"
+  class="p-4 rounded-sm border border-white border-opacity-30 flex items-center gap-3 opacity-100 hover:opacity-80 transition-opacity hover:line-through"
   target={external ? "_blank" : "_self"}
 >
   <Icon name={icon} width={25} height={25} />

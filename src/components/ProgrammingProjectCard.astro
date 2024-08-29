@@ -13,13 +13,13 @@ const { title, description, image, year, url } = Astro.props;
   target="_blank"
   class="sm:py-5 py-10 flex flex-col sm:flex-row gap-6 opacity-100 hover:opacity-60 transition-opacity"
 >
-  <div class="h-full bg-gray-700 rounded-lg aspect-video sm:h-[150px]">
+  <div class="h-full bg-gray-700 rounded-sm aspect-video sm:h-[150px]">
     <Image
       width={1920}
       height={1080}
       src={image}
       alt={title}
-      class="w-full h-full object-cover rounded-lg aspect-video"
+      class="w-full h-full object-cover rounded-sm aspect-video"
     />
   </div>
   <div>
