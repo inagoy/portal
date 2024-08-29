@@ -117,7 +117,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       socio: "Santiago Monroy y Nicolás Carlino"
     },
     {
-      title: "Calisto I (En Vivo) | Calisto",
+      title: "Calisto I (En Vivo en C.C. Richards) | Calisto",
       description: "Edición, Mezcla y Master.",
       image: "https://i.scdn.co/image/ab67616d0000b2730365a2fbbbf6f54c06b260a3",
       year: "2024",
