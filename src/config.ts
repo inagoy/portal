@@ -129,6 +129,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/Sdn0tO06pts/hqdefault.jpg",
       year: "2023",
       url: "https://youtu.be/Sdn0tO06pts",
+      socio: "Renzo Leveroni y Alejo Ávila"
     },
     {
       title: "La Nostalgia del Abandono (Short Film)",
