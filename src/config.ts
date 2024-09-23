@@ -95,7 +95,7 @@ export const contactPageContent: ContactPageContent = {
 export const musicProjectsPageContent: MusicProjectPageContent = {
   seo: {
     title: "Música | Iñaki Goyeneche",
-    description: "Algunos proyectos en los que trabajé",
+    description: "Algunos proyectos de producción musical",
     image: identity.logo,
   },
   subtitle: "Algunos proyectos en los que trabajé",
@@ -132,7 +132,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "La Nostalgia del Abandono (Short Film)",
-      description: "Co-producción y Mezcla.",
+      description: "Co-producción",
       image: "https://img.youtube.com/vi/otk4bo-59fg/hqdefault.jpg",
       year: "2022",
       url: "https://youtu.be/otk4bo-59fg",
@@ -159,7 +159,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
 export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
   seo: {
     title: "Programación de Audio | Iñaki Goyeneche",
-    description: "Algunos proyectos en los que trabajé",
+    description: "Algunos proyectos de programación de herramientas de audio",
     image: identity.logo,
   },
   subtitle: "Algunos proyectos en los que trabajé",
