@@ -117,7 +117,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       socio: "Santiago Monroy y Nicolás Carlino"
     },
     {
-      title: "Calisto I (En Vivo en C.C. Richards) | Calisto",
+      title: "Calisto I (Album en Vivo en C.C. Richards) | Calisto",
       description: "Edición, Mezcla y Master.",
       image: "https://i.scdn.co/image/ab67616d0000b2730365a2fbbbf6f54c06b260a3",
       year: "2024",
@@ -194,7 +194,7 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
       url: "https://github.com/inagoy/chq.to/",
     }, */
     {
-      title: "DRUMSEP",
+      title: "DRUMSEP ⭐",
       description: "Implementación de un Modelo de Separación de Baterías Acústicas con Python a partir del entrenamiento de la arquitectura de deep learning 'Hybrid Demucs'.",
       image: "/drumsep.png",
       year: "2022",
