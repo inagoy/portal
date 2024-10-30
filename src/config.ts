@@ -102,7 +102,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   projects: [
     {
       title: "Los Ángeles | William Campbell",
-      description: "Producción conjunta, Post y Edición.",
+      description: "Producción conjunta y Edición",
       image: "https://img.youtube.com/vi/wFfDda5opSU/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=wFfDda5opSU",
@@ -110,7 +110,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "El Azar | William Campbell",
-      description: "Producción conjunta, Post y Edición.",
+      description: "Producción conjunta y Edición",
       image: "https://img.youtube.com/vi/FZ8_0mR61XQ/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=FZ8_0mR61XQ",
@@ -118,14 +118,14 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "Calisto I (Album en Vivo en C.C. Richards) | Calisto",
-      description: "Edición, Mezcla y Master.",
+      description: "Edición, Mezcla y Master",
       image: "https://i.scdn.co/image/ab67616d0000b2730365a2fbbbf6f54c06b260a3",
       year: "2024",
       url: "https://open.spotify.com/intl-es/album/1zgMN1cBvOGP8DuGdMPQOV?si=GKPNwWRHS3-0IWpqDSwIFQ",
     },
     {
       title: "Ella (Short Film)",
-      description: "Edición, Foley y Diseño Sonoro.",
+      description: "Edición, Foley y Diseño Sonoro",
       image: "https://img.youtube.com/vi/Sdn0tO06pts/hqdefault.jpg",
       year: "2023",
       url: "https://youtu.be/Sdn0tO06pts",
@@ -141,14 +141,14 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "Living Session | William Cambell",
-      description: "Edición, Mezcla y Mastering.",
+      description: "Edición, Mezcla y Mastering",
       image: "https://img.youtube.com/vi/oL4fy55xHiA/hqdefault.jpg",
       year: "2021",
       url: "https://youtu.be/oL4fy55xHiA",
     },
     {
       title: "Nuevo Protagonista (Album) | William Cambell",
-      description: "Producción conjunta, Edición y Mezcla.",
+      description: "Producción conjunta, Edición y Mezcla",
       image: "https://i.scdn.co/image/ab67616d00001e02c3ff32a171372ec984542598",
       year: "2019",
       url: "https://open.spotify.com/intl-es/album/3QNumfCFJRBvHEuKA3A4HU?si=dQu_QvnkQGmH02g0s_vX8g",
