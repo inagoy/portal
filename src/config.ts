@@ -101,6 +101,14 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   subtitle: "Algunos proyectos en los que trabajé",
   projects: [
     {
+      title: "Rolling | William Campbell",
+      description: "Producción conjunta y Edición",
+      image: "https://img.youtube.com/vi/aqbNW4f89EQ/hqdefault.jpg",
+      year: "2024",
+      url: "https://www.youtube.com/watch?v=aqbNW4f89EQ",
+      socio: "Santiago Monroy y Nicolás Carlino"
+    },    
+    {
       title: "Los Ángeles | William Campbell",
       description: "Producción conjunta y Edición",
       image: "https://img.youtube.com/vi/wFfDda5opSU/hqdefault.jpg",
