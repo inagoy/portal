@@ -126,7 +126,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "Calisto I (Album en Vivo en C.C. Richards) | Calisto",
-      description: "Edición, Mezcla y Master",
+      description: "Edición y Mezcla",
       image: "https://i.scdn.co/image/ab67616d0000b2730365a2fbbbf6f54c06b260a3",
       year: "2024",
       url: "https://open.spotify.com/intl-es/album/1zgMN1cBvOGP8DuGdMPQOV?si=GKPNwWRHS3-0IWpqDSwIFQ",
