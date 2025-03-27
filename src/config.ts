@@ -101,8 +101,16 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   subtitle: "Algunos proyectos en los que trabajé",
   projects: [
     {
+      title: "Película de Acción | William Campbell",
+      description: "Co-Producción, Edición",
+      image: "https://i.scdn.co/image/ab67616d00001e02034120fafbe9a4c46495e48d",
+      year: "2025",
+      url: "https://www.youtube.com/watch?v=aqbNW4f89EQ",
+      socio: "Santiago Monroy y Nicolás Carlino"
+    },   
+    {
       title: "Rolling | William Campbell",
-      description: "Producción conjunta y Edición",
+      description: "Co-Producción, Edición",
       image: "https://img.youtube.com/vi/aqbNW4f89EQ/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=aqbNW4f89EQ",
@@ -110,7 +118,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },    
     {
       title: "Los Ángeles | William Campbell",
-      description: "Producción conjunta y Edición",
+      description: "Co-Producción, Edición",
       image: "https://img.youtube.com/vi/wFfDda5opSU/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=wFfDda5opSU",
@@ -118,7 +126,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "El Azar | William Campbell",
-      description: "Producción conjunta y Edición",
+      description: "Co-Producción, Edición",
       image: "https://img.youtube.com/vi/FZ8_0mR61XQ/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=FZ8_0mR61XQ",
@@ -141,7 +149,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "La Nostalgia del Abandono (Short Film)",
-      description: "Producción conjunta",
+      description: "Co-Producción",
       image: "https://img.youtube.com/vi/otk4bo-59fg/hqdefault.jpg",
       year: "2022",
       url: "https://youtu.be/otk4bo-59fg",
@@ -156,7 +164,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "Nuevo Protagonista (Album) | William Cambell",
-      description: "Producción conjunta, Edición y Mezcla",
+      description: "Co-Producción, Edición y Mezcla",
       image: "https://i.scdn.co/image/ab67616d00001e02c3ff32a171372ec984542598",
       year: "2019",
       url: "https://open.spotify.com/intl-es/album/3QNumfCFJRBvHEuKA3A4HU?si=dQu_QvnkQGmH02g0s_vX8g",
