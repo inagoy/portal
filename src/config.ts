@@ -105,7 +105,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       description: "Co-Producción, Edición",
       image: "https://i.scdn.co/image/ab67616d00001e02034120fafbe9a4c46495e48d",
       year: "2025",
-      url: "https://www.youtube.com/watch?v=aqbNW4f89EQ",
+      url: "https://open.spotify.com/intl-es/album/07cDDnNsCAZZSNCi1F241l",
       socio: "Santiago Monroy y Nicolás Carlino"
     },   
     {
