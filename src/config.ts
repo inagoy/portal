@@ -101,7 +101,15 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   subtitle: "Algunos proyectos en los que trabajé",
   projects: [
     {
-      title: "Película de Acción | William Campbell",
+      title: "Amuleto (Álbum) | William Campbell",
+      description: "Co-Producción, Edición",
+      image: "https://i.scdn.co/image/ab67616d00001e02262bef791f1b56d5f3c139ef",
+      year: "2025",
+      url: "https://open.spotify.com/intl-es/album/0hhdU6F6EzirZ1vRdvziLl?si=lJrv_fQcSyqEiOKI-bzktA",
+      socio: "Santiago Monroy y Nicolás Carlino"
+    }, 
+    {
+      title: "Película de acción | William Campbell",
       description: "Co-Producción, Edición",
       image: "https://i.scdn.co/image/ab67616d00001e02034120fafbe9a4c46495e48d",
       year: "2025",
