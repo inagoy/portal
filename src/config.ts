@@ -101,7 +101,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   subtitle: "Algunos proyectos en los que trabajé",
   projects: [
     {
-      title: "[Próximamante] Otro Idioma (Short Álbum) | Camila Guerrero",
+      title: "[Próximamante] Otro Idioma (Álbum) | Camila Guerrero",
       description: "Producción, Mezcla",
       image: "https://i1.sndcdn.com/artworks-fQzUPrnwkJI65O2c-xsqnNA-t1080x1080.png",
       year: "2025",
@@ -149,7 +149,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       socio: "Santiago Monroy y Nicolás Carlino"
     },
     {
-      title: "Calisto I (Album en Vivo en C.C. Richards) | Calisto",
+      title: "Calisto I (Álbum en Vivo en C.C. Richards) | Calisto",
       description: "Edición y Mezcla",
       image: "https://i.scdn.co/image/ab67616d0000b2730365a2fbbbf6f54c06b260a3",
       year: "2024",
@@ -179,7 +179,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       url: "https://youtu.be/oL4fy55xHiA",
     },
     {
-      title: "Nuevo Protagonista (Album) | William Cambell",
+      title: "Nuevo Protagonista (Álbum) | William Cambell",
       description: "Co-Producción, Edición y Mezcla",
       image: "https://i.scdn.co/image/ab67616d00001e02c3ff32a171372ec984542598",
       year: "2019",
