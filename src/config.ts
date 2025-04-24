@@ -101,6 +101,14 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   subtitle: "Algunos proyectos en los que trabajé",
   projects: [
     {
+      title: "[Próximamante] Otro Idioma (Short Álbum) | Camila Guerrero",
+      description: "Producción, Mezcla",
+      image: "https://i1.sndcdn.com/artworks-fQzUPrnwkJI65O2c-xsqnNA-t1080x1080.png",
+      year: "2025",
+      url: "https://soundcloud.com/user-559244959/mi-verdad-camila-guerrero-recorte/s-kCvldrRl3X3?si=cf5a90a4bff348dc905cd4e1de189ae5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+      socio: "Alejo Ávila"
+    }, 
+    {
       title: "Amuleto (Álbum) | William Campbell",
       description: "Co-Producción, Edición",
       image: "https://i.scdn.co/image/ab67616d00001e02262bef791f1b56d5f3c139ef",
