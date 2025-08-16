@@ -172,7 +172,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       socio: "renzo leveroni y alejo avila"
     },
     {
-      title: "La nostalgia del abandono (short film)",
+      title: "la nostalgia del abandono (short film)",
       description: "co-producción",
       image: "https://img.youtube.com/vi/otk4bo-59fg/hqdefault.jpg",
       year: "2022",
