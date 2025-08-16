@@ -105,7 +105,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       description: "producción y mezcla",
       image: "https://i.scdn.co/image/ab67616d0000b27343171c055e4e037aaf8d3613",
       year: "2025",
-      url: "https://open.spotify.com/oembed?url=https://open.spotify.com/album/3sgRznpNzqUsa0UV8vPYzc",
+      url: "https://open.spotify.com/intl-es/album/3sgRznpNzqUsa0UV8vPYzc",
       socio: "Alejo Ávila"
     }, 
     {
