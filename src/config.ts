@@ -235,7 +235,7 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
     }, */
     {
       title: "drumsep ⭐",
-      description: "implementación del primer modelo de separación de baterías acústicas con deep learning a partir del entrenamiento de 'hybrid demucs'.",
+      description: "implementación del primer modelo de separación de baterías con deep learning a partir del entrenamiento de 'hybrid demucs'.",
       image: "/drumsep.png",
       year: "2022",
       url: "https://github.com/inagoy/drumsep/",
