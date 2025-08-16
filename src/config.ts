@@ -106,7 +106,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://i.scdn.co/image/ab67616d0000b27343171c055e4e037aaf8d3613",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/3sgRznpNzqUsa0UV8vPYzc",
-      socio: "Alejo Ávila"
+      socio: "alejo avila"
     }, 
     {
       title: "2064 + polonio (audiovisual) | estrugamou",
@@ -114,7 +114,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/jntOZoAx9fk/hqdefault.jpg",
       year: "2025",
       url: "https://www.youtube.com/watch?v=jntOZoAx9fk",
-      socio: "Mauro Cigliuti y Alejo Ávila"
+      socio: "mauro cigliuti y alejo avila"
     }, 
     {
       title: "amuleto (álbum) | william campbell",
@@ -122,7 +122,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://i.scdn.co/image/ab67616d00001e02262bef791f1b56d5f3c139ef",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/0hhdU6F6EzirZ1vRdvziLl?si=lJrv_fQcSyqEiOKI-bzktA",
-      socio: "Santiago Monroy y Nicolás Carlino"
+      socio: "santiago monroy y nicolás carlino"
     }, 
     {
       title: "película de acción | william campbell",
@@ -130,7 +130,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://i.scdn.co/image/ab67616d00001e02034120fafbe9a4c46495e48d",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/07cDDnNsCAZZSNCi1F241l",
-      socio: "Santiago Monroy y Nicolás Carlino"
+      socio: "santiago monroy y nicolás carlino"
     },   
     {
       title: "rolling | william campbell",
@@ -138,7 +138,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/aqbNW4f89EQ/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=aqbNW4f89EQ",
-      socio: "Santiago Monroy y Nicolás Carlino"
+      socio: "santiago monroy y nicolás carlino"
     },    
     {
       title: "los ángeles | william campbell",
@@ -146,7 +146,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/wFfDda5opSU/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=wFfDda5opSU",
-      socio: "Santiago Monroy y Nicolás Carlino"
+      socio: "santiago monroy y nicolás carlino"
     },
     {
       title: "el azar | william campbell",
@@ -154,7 +154,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/FZ8_0mR61XQ/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=FZ8_0mR61XQ",
-      socio: "Santiago Monroy y Nicolás Carlino"
+      socio: "santiago monroy y nicolás carlino"
     },
     {
       title: "calisto I (álbum en vivo en c.c. richards) | calisto",
@@ -169,7 +169,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/Sdn0tO06pts/hqdefault.jpg",
       year: "2023",
       url: "https://youtu.be/Sdn0tO06pts",
-      socio: "Renzo Leveroni y Alejo Ávila"
+      socio: "renzo leveroni y alejo avila"
     },
     {
       title: "La nostalgia del abandono (short film)",
@@ -177,7 +177,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/otk4bo-59fg/hqdefault.jpg",
       year: "2022",
       url: "https://youtu.be/otk4bo-59fg",
-      socio: "Alejo Ávila y Mauro Cigliuti"
+      socio: "alejo avila y mauro cigliuti"
     },
     {
       title: "living session | william cambell",
@@ -192,7 +192,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://i.scdn.co/image/ab67616d00001e02c3ff32a171372ec984542598",
       year: "2019",
       url: "https://open.spotify.com/intl-es/album/3QNumfCFJRBvHEuKA3A4HU?si=dQu_QvnkQGmH02g0s_vX8g",
-      socio:"Sebastián Medina"
+      socio:"sebastián medina"
     },
   ],
 };
