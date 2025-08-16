@@ -9,47 +9,47 @@ import type {
 } from "./types/config";
 
 export const identity: Identity = {
-  name: "Iñaki Goyeneche",
+  name: "iñaki goyeneche",
   logo: "/logo.png",
   email: "igoyeneche.98@gmail.com",
 };
 
 export const navBarLinks: NavBarLink[] = [
   {
-    title: "Música|Audio",
+    title: "música | audio",
     url: "/music-projects",
   },
   {
-    title: "Programación",
+    title: "programación",
     url: "/programming-projects",
   },
   {
-    title: "Contacto",
+    title: "contacto",
     url: "/contact",
   },
 ];
 
 export const socialLinks: SocialLink[] = [
   { 
-    title: "Instagram",
+    title: "instagram",
     url: "https://instagram.com/inagoy",
     icon: "mdi:instagram",
     external: true, 
   },
   {
-    title: "LinkedIn",
+    title: "linkedIn",
     url: "https://www.linkedin.com/in/i%C3%B1aki-goyeneche-49809624a/",
     icon: "mdi:linkedin",
     external: true,
   },
   {
-    title: "GitHub",
+    title: "gitHub",
     url: "https://github.com/inagoy",
     icon: "mdi:github",
     external: true,
   },
   {
-    title: "Mail",
+    title: "mail",
     url: "mailto:igoyeneche.98@gmail.com",
     icon: "mdi:email",
   },
@@ -58,22 +58,22 @@ export const socialLinks: SocialLink[] = [
 // Home (/)
 export const homePageContent: HomePageContent = {
   seo: {
-    title: "Iñaki Goyeneche",
+    title: "iñaki goyeneche",
     description:
-      "Productor musical y programador para audio",
+      "productor musical y programador para audio",
     image: identity.logo,
   },
-  role: "Productor Musical | Programador para audio",
+  role: "productor musical | programador para audio",
   description:
-    "Siempre estoy dando vueltas entre el hacer musical y el aprendizaje y desarrollo de herramientas de audio ",
+    "siempre estoy dando vueltas entre el hacer musical y el aprendizaje y desarrollo de herramientas de audio ",
   socialLinks: socialLinks,
   links: [
     {
-      title: "Portfolio de Audio",
+      title: "portfolio de audio",
       url: "/music-projects/",
     },
     {
-      title: "Portfolio de Programación",
+      title: "portfolio de programación",
       url: "/programming-projects/",
     },
   ],
@@ -82,105 +82,113 @@ export const homePageContent: HomePageContent = {
 // Contact (/contact)
 export const contactPageContent: ContactPageContent = {
   seo: {
-    title: "Contacto | Iñaki Goyeneche",
+    title: "contacto | iñaki goyeneche",
     description:
-      "Productor Musical | Programador",
+      "productor musical | programador para audio",
     image: identity.logo,
   },
-  subtitle: "Cómo contactarme",
+  subtitle: "cómo contactarme",
   links: socialLinks,
 };
 
 // Projects (/music-projects)
 export const musicProjectsPageContent: MusicProjectPageContent = {
   seo: {
-    title: "Música | Iñaki Goyeneche",
-    description: "Algunos proyectos de producción musical",
+    title: "música | iñaki goyeneche",
+    description: "algunos proyectos de producción musical",
     image: identity.logo,
   },
-  subtitle: "Algunos proyectos en los que trabajé",
+  subtitle: "algunos proyectos en los que trabajé",
   projects: [
     {
-      title: "[Próximamante] Otro Idioma (Álbum) | Camila Guerrero",
-      description: "Producción, Mezcla",
-      image: "https://i1.sndcdn.com/artworks-fQzUPrnwkJI65O2c-xsqnNA-t1080x1080.png",
+      title: "otro idioma (álbum) | camila inés",
+      description: "producción y mezcla",
+      image: "https://i.scdn.co/image/ab67616d0000b27343171c055e4e037aaf8d3613",
       year: "2025",
-      url: "https://soundcloud.com/user-559244959/mi-verdad-recorte/s-riyQIK3hSgy?si=c6624f7a2e234b5382b58598ed4645a5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+      url: "https://open.spotify.com/oembed?url=https://open.spotify.com/album/3sgRznpNzqUsa0UV8vPYzc",
       socio: "Alejo Ávila"
     }, 
     {
-      title: "Amuleto (Álbum) | William Campbell",
-      description: "Co-Producción, Edición",
+      title: "2064 + polonio (audiovisual) | estrugamou",
+      description: "co-producción, mezcla y master",
+      image: "https://img.youtube.com/vi/jntOZoAx9fk/hqdefault.jpg",
+      year: "2025",
+      url: "https://www.youtube.com/watch?v=jntOZoAx9fk",
+      socio: "Mauro Cigliuti y Alejo Ávila"
+    }, 
+    {
+      title: "amuleto (álbum) | william campbell",
+      description: "co-producción, edición",
       image: "https://i.scdn.co/image/ab67616d00001e02262bef791f1b56d5f3c139ef",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/0hhdU6F6EzirZ1vRdvziLl?si=lJrv_fQcSyqEiOKI-bzktA",
       socio: "Santiago Monroy y Nicolás Carlino"
     }, 
     {
-      title: "Película de acción | William Campbell",
-      description: "Co-Producción, Edición",
+      title: "película de acción | william campbell",
+      description: "co-producción, edición",
       image: "https://i.scdn.co/image/ab67616d00001e02034120fafbe9a4c46495e48d",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/07cDDnNsCAZZSNCi1F241l",
       socio: "Santiago Monroy y Nicolás Carlino"
     },   
     {
-      title: "Rolling | William Campbell",
-      description: "Co-Producción, Edición",
+      title: "rolling | william campbell",
+      description: "co-producción, edición",
       image: "https://img.youtube.com/vi/aqbNW4f89EQ/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=aqbNW4f89EQ",
       socio: "Santiago Monroy y Nicolás Carlino"
     },    
     {
-      title: "Los Ángeles | William Campbell",
-      description: "Co-Producción, Edición",
+      title: "los ángeles | william campbell",
+      description: "co-producción, edición",
       image: "https://img.youtube.com/vi/wFfDda5opSU/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=wFfDda5opSU",
       socio: "Santiago Monroy y Nicolás Carlino"
     },
     {
-      title: "El Azar | William Campbell",
-      description: "Co-Producción, Edición",
+      title: "el azar | william campbell",
+      description: "co-producción, edición",
       image: "https://img.youtube.com/vi/FZ8_0mR61XQ/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=FZ8_0mR61XQ",
       socio: "Santiago Monroy y Nicolás Carlino"
     },
     {
-      title: "Calisto I (Álbum en Vivo en C.C. Richards) | Calisto",
-      description: "Edición y Mezcla",
+      title: "calisto I (álbum en vivo en c.c. richards) | calisto",
+      description: "edición y mezcla",
       image: "https://i.scdn.co/image/ab67616d0000b2730365a2fbbbf6f54c06b260a3",
       year: "2024",
       url: "https://open.spotify.com/intl-es/album/1zgMN1cBvOGP8DuGdMPQOV?si=GKPNwWRHS3-0IWpqDSwIFQ",
     },
     {
-      title: "Ella (Short Film)",
-      description: "Edición, Foley y Diseño Sonoro",
+      title: "ella (short film)",
+      description: "edición, foley y diseño sonoro",
       image: "https://img.youtube.com/vi/Sdn0tO06pts/hqdefault.jpg",
       year: "2023",
       url: "https://youtu.be/Sdn0tO06pts",
       socio: "Renzo Leveroni y Alejo Ávila"
     },
     {
-      title: "La Nostalgia del Abandono (Short Film)",
-      description: "Co-Producción",
+      title: "La nostalgia del abandono (short film)",
+      description: "co-producción",
       image: "https://img.youtube.com/vi/otk4bo-59fg/hqdefault.jpg",
       year: "2022",
       url: "https://youtu.be/otk4bo-59fg",
       socio: "Alejo Ávila y Mauro Cigliuti"
     },
     {
-      title: "Living Session | William Cambell",
-      description: "Edición, Mezcla y Mastering",
+      title: "living session | william cambell",
+      description: "edición, mezcla y mastering",
       image: "https://img.youtube.com/vi/oL4fy55xHiA/hqdefault.jpg",
       year: "2021",
       url: "https://youtu.be/oL4fy55xHiA",
     },
     {
-      title: "Nuevo Protagonista (Álbum) | William Cambell",
-      description: "Co-Producción, Edición y Mezcla",
+      title: "nuevo protagonista (álbum) | william campbell",
+      description: "co-producción, edición y mezcla",
       image: "https://i.scdn.co/image/ab67616d00001e02c3ff32a171372ec984542598",
       year: "2019",
       url: "https://open.spotify.com/intl-es/album/3QNumfCFJRBvHEuKA3A4HU?si=dQu_QvnkQGmH02g0s_vX8g",
