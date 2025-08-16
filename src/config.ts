@@ -199,11 +199,11 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
 // Projects (/programming-projects)
 export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
   seo: {
-    title: "Programación de Audio | Iñaki Goyeneche",
-    description: "Algunos proyectos de programación de herramientas de audio",
+    title: "programación de audio | iñaki goyeneche",
+    description: "algunos proyectos de programación de herramientas de audio",
     image: identity.logo,
   },
-  subtitle: "Algunos proyectos en los que trabajé",
+  subtitle: "algunos proyectos en los que trabajé",
   projects: [
 /*     {
       title: "Portal Web DiqueUNO",
@@ -213,8 +213,8 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
       url: "https://github.com/inagoy/diqueuno",
     }, */
     {
-      title: "SimpleEQ VST Plugin",
-      description: "EQ Paramétrico con C++ Juce con 3 filtros: Low, High y Band Pass. Incluye visualización de espectro.",
+      title: "simpleEQ vst plugin",
+      description: "eq paramétrico con c++ juce con 3 filtros: low, high y band pass. incluye visualización de espectro.",
       image: "/simple-eq.png",
       year: "2024",
       url: "https://github.com/inagoy/simpleEQ",
@@ -234,8 +234,8 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
       url: "https://github.com/inagoy/chq.to/",
     }, */
     {
-      title: "DRUMSEP ⭐",
-      description: "Implementación de un Modelo de Separación de Baterías Acústicas con Python a partir del entrenamiento de la arquitectura de deep learning 'Hybrid Demucs'.",
+      title: "drumsep ⭐",
+      description: "implementación del primer modelo de separación de baterías acústicas con deep learning a partir del entrenamiento de 'hybrid demucs'.",
       image: "/drumsep.png",
       year: "2022",
       url: "https://github.com/inagoy/drumsep/",
