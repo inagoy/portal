@@ -8,6 +8,7 @@ type Props = Project & { lang?: Lang };
 
 const { title, description, image, year, url, socio, lang, type } = Astro.props as Props;
 const t = getStrings(normalizeLang(lang));
+const baseHeight = type === 'album' ? 'h-[300px]' : type === 'audiovisual' ? 'h-[200px]' : 'h-[120px]';
 const imgHeight = type === 'album' ? 'sm:h-[200px]' : type === 'audiovisual' ? 'sm:h-[170px]' : 'sm:h-[140px]';
 const padY = type === 'album' ? 'py-10 sm:py-6' : type === 'audiovisual' ? 'py-8 sm:py-5' : 'py-6 sm:py-4';
 ---
@@ -17,7 +18,7 @@ const padY = type === 'album' ? 'py-10 sm:py-6' : type === 'audiovisual' ? 'py-8
   target="_blank"
   class={`flex flex-col sm:flex-row gap-6 opacity-100 hover:opacity-60 transition-opacity ${padY}`}
 >
-  <div class={`h-full bg-gray-700 rounded-sm aspect-video ${imgHeight}`}>
+  <div class={`h-full bg-gray-700 rounded-sm aspect-video ${baseHeight} ${imgHeight}`}>
     <Image
       width={1920}
       height={1080}
