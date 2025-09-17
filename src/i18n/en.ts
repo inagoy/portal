@@ -46,9 +46,6 @@ export const en = {
       description: 'some projects building audio tools',
     },
   },
-  labels: {
-    with: 'with',
-  },
   form: {
     name_placeholder: 'full name',
     name_required: 'please enter your full name.',
@@ -63,8 +60,16 @@ export const en = {
     error: 'Something went wrong!',
   },
   selector: {
-    en: 'EN',
-    es: 'ES',
+    en: 'en',
+    es: 'es',
+  },
+  labels: {
+    with: 'with',
+    types: {
+      album: 'album',
+      single: 'single',
+      audiovisual: 'audiovisual',
+    },
   },
 } as const;
 

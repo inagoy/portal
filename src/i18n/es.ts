@@ -46,9 +46,6 @@ export const es = {
       description: 'algunos proyectos de programación de herramientas de audio',
     },
   },
-  labels: {
-    with: 'junto con',
-  },
   form: {
     name_placeholder: 'nombre completo',
     name_required: 'por favor ingresa tu nombre completo.',
@@ -63,9 +60,17 @@ export const es = {
     error: 'Algo salió mal!',
   },
   selector: {
-    en: 'EN',
-    es: 'ES',
+    en: 'en',
+    es: 'es',
+  },
+  labels: {
+    with: 'junto con',
+    types: {
+      album: 'álbum',
+      single: 'single',
+      audiovisual: 'audiovisual',
+    },
   },
 } as const;
 
-export type ES = typeof es;
+export type es = typeof es;
