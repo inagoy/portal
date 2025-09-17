@@ -46,6 +46,9 @@ export const en = {
       description: 'some projects building audio tools',
     },
   },
+  labels: {
+    with: 'with',
+  },
   form: {
     name_placeholder: 'full name',
     name_required: 'please enter your full name.',
@@ -66,4 +69,3 @@ export const en = {
 } as const;
 
 export type EN = typeof en;
-

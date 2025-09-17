@@ -242,7 +242,27 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
 };
 
 export function getMusicProjectsPageContent(lang?: string): MusicProjectPageContent {
-  const t = getStrings(normalizeLang(lang));
+  const normalized = normalizeLang(lang);
+  const t = getStrings(normalized);
+
+  // Map descriptions to English when needed
+  const enDesc: Record<string, string> = {
+    "producción y mezcla": "production and mixing",
+    "co-producción, mezcla y master": "co-production, mixing and mastering",
+    "co-producción, edición": "co-production, editing",
+    "edición y mezcla": "editing and mixing",
+    "edición, foley y diseño sonoro": "editing, foley and sound design",
+    "co-producción": "co-production",
+    "edición, mezcla y mastering": "editing, mixing and mastering",
+    "co-producción, edición y mezcla": "co-production, editing and mixing",
+  };
+
+  const projects = musicProjectsPageContent.projects.map((p) =>
+    normalized === 'en'
+      ? { ...p, description: enDesc[p.description] ?? p.description }
+      : p
+  );
+
   return {
     seo: {
       title: t.music.seo.title,
@@ -250,8 +270,7 @@ export function getMusicProjectsPageContent(lang?: string): MusicProjectPageCont
       image: identity.logo,
     },
     subtitle: t.music.subtitle,
-    // Do NOT translate project names or descriptions here as requested
-    projects: musicProjectsPageContent.projects,
+    projects,
   };
 }
 // Projects (/programming-projects)
@@ -304,7 +323,22 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
 export function getProgrammingProjectsPageContent(
   lang?: string
 ): ProgrammingProjectPageContent {
-  const t = getStrings(normalizeLang(lang));
+  const normalized = normalizeLang(lang);
+  const t = getStrings(normalized);
+
+  const enDesc: Record<string, string> = {
+    "eq paramétrico con c++ juce con 3 filtros: low, high y band pass. incluye visualización de espectro.":
+      "parametric EQ in C++/JUCE with 3 filters: low, high and band-pass. includes spectrum visualization.",
+    "implementación del primer modelo de separación de baterías con deep learning a partir del entrenamiento de 'hybrid demucs'.":
+      "first drum separation model implementation using deep learning by fine-tuning 'hybrid demucs'.",
+  };
+
+  const projects = programmingProjectsPageContent.projects.map((p) =>
+    normalized === 'en'
+      ? { ...p, description: enDesc[p.description] ?? p.description }
+      : p
+  );
+
   return {
     seo: {
       title: t.programming.seo.title,
@@ -312,6 +346,6 @@ export function getProgrammingProjectsPageContent(
       image: identity.logo,
     },
     subtitle: t.programming.subtitle,
-    projects: programmingProjectsPageContent.projects,
+    projects,
   };
 }

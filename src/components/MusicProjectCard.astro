@@ -1,11 +1,13 @@
 ---
 import { Image } from "astro:assets";
 import type { Project } from "../types/config";
+import { getStrings, normalizeLang, type Lang } from "../i18n";
 import { Markdown } from "@astropub/md";
 
-type Props = Project;
+type Props = Project & { lang?: Lang };
 
-const { title, description, image, year, url, socio } = Astro.props;
+const { title, description, image, year, url, socio, lang } = Astro.props as Props;
+const t = getStrings(normalizeLang(lang));
 ---
 
 <a
@@ -30,10 +32,11 @@ const { title, description, image, year, url, socio } = Astro.props;
     <div class="opacity-70 mb-1">
       <Markdown of={description} />
     </div>
-    {
-      socio && 
-      <p class="opacity-50 text-sm sm:absolute inset-x-0 bottom-0" > junto con: {socio}</p>
-    }
+    {socio && (
+      <p class="opacity-50 text-sm sm:absolute inset-x-0 bottom-0">
+        {t.labels.with}: {socio}
+      </p>
+    )}
     
   </div>
 </a>
