@@ -60,8 +60,8 @@ export const en = {
     error: 'Something went wrong!',
   },
   selector: {
-    en: 'EN',
-    es: 'ES',
+    en: 'en',
+    es: 'es',
   },
   labels: {
     with: 'with',

@@ -60,8 +60,8 @@ export const es = {
     error: 'Algo salió mal!',
   },
   selector: {
-    en: 'EN',
-    es: 'ES',
+    en: 'en',
+    es: 'es',
   },
   labels: {
     with: 'junto con',
@@ -73,4 +73,4 @@ export const es = {
   },
 } as const;
 
-export type ES = typeof es;
+export type es = typeof es;
