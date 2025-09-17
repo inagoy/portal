@@ -1,13 +1,27 @@
 ---
-import { navBarLinks, identity } from "../config";
+import { getNavBarLinks, identity } from "../config";
+import { normalizeLang, type Lang } from "../i18n";
+import LanguageSelector from "../components/LanguageSelector.astro";
 import type { SEOInfo } from "../types/config";
 
 interface Props {
   seo: SEOInfo;
+  lang?: Lang;
 }
 
 const { seo } = Astro.props;
-const currentUrl = Astro.url.pathname.slice(0, -1);
+const url = Astro.url;
+const currentUrl = url.pathname.slice(0, -1);
+const paramLang = url.searchParams.get('lang');
+const pageLang: Lang = normalizeLang(paramLang ?? (Astro.props.lang as string | undefined));
+const navBarLinks = getNavBarLinks(pageLang);
+function withLangPath(u: URL, lang: string): string {
+  const rest = u.pathname.replace(/^\/(en|es)/, '');
+  const path = `/${lang}${rest}`;
+  return path;
+}
+const esHref = withLangPath(url, 'es');
+const enHref = withLangPath(url, 'en');
 
 ---
 
@@ -46,7 +60,7 @@ const currentUrl = Astro.url.pathname.slice(0, -1);
     }
 </style>
 
-<html lang="en">
+<html lang={pageLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -57,13 +71,14 @@ const currentUrl = Astro.url.pathname.slice(0, -1);
     <meta property="og:title" content={seo.title} />
     <meta property="og:description" content={seo.description} />
     <meta property="og:image" content={seo.image} />
+    
   </head>
   <body>
     <header>
       <div
         class="absolute inset-x-0 px-6 my-5 max-w-2xl mx-auto flex items-center justify-between"
       >
-        <a href="/">
+        <a href={`/${pageLang}/`}>
           <img
             src={identity.logo}
             alt={"Logo"}
@@ -71,13 +86,13 @@ const currentUrl = Astro.url.pathname.slice(0, -1);
             class="object-cover"
           />
         </a>
-        <nav class="ml-auto mr-6 sm:m-0">
+        <nav class="ml-auto mr-6 sm:m-0 flex items-center gap-4">
           <ul class="hidden sm:flex sm:items-center sm:gap-2 text-sm">
             {
               navBarLinks.map((link) => (
                 <li>
                   <a
-                    class={`group px-4 py-2 rounded-lg opacity-100 hover:opacity-80 hover:line-through transition-all ${currentUrl === link.url ? 'line-through' : ''}`}
+                    class={`group px-4 py-2 rounded-lg opacity-100 hover:opacity-80 hover:line-through transition-all whitespace-nowrap ${currentUrl === link.url ? 'line-through' : ''}`}
                     href={link.url}
                     target={link.external ? "_blank" : "_self"}
                   >
@@ -87,6 +102,7 @@ const currentUrl = Astro.url.pathname.slice(0, -1);
               ))
             }
           </ul>
+          <LanguageSelector lang={pageLang} esHref={esHref} enHref={enHref} />
           <div class="relative sm:hidden">
             <button
               id="link-menu-button"
@@ -102,7 +118,7 @@ const currentUrl = Astro.url.pathname.slice(0, -1);
                   navBarLinks.map((link) => (
                     <li>
                       <a
-                        class={`block pl-4 py-3 ${currentUrl === link.url ? 'line-through' : ''}`}
+                        class={`block pl-4 py-3 whitespace-nowrap ${currentUrl === link.url ? 'line-through' : ''}`}
                         href={link.url}
                         target={link.external ? "_blank" : "_self"}
                       >

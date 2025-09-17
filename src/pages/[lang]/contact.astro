@@ -1,0 +1,41 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+import Layout from "../../layouts/Layout.astro";
+import { getContactPageContent } from "../../config";
+import { normalizeLang, getStrings } from "../../i18n";
+import SocialLinkBox from "../../components/SocialLinkBox.astro";
+import MailForm from "../../components/MailForm.astro";
+
+const lang = normalizeLang(Astro.params.lang as string);
+const t = getStrings(lang);
+const contactPageContent = getContactPageContent(lang);
+---
+
+<Layout seo={contactPageContent.seo} lang={lang}>
+  <section class="mt-10 max-w-2xl mx-auto px-6">
+    <h1 class="font-bold text-3xl mb-1">{t.headings.contact}</h1>
+    <p class="opacity-60 mb-10">{contactPageContent.subtitle}</p>
+  </section>
+  <section class="place-content-center max-w-2xl mx-auto px-6 sm:gap-10">
+    <MailForm lang={lang}/>
+  </section>
+  <section class="mt-20 max-w-2xl mx-auto px-6 ">
+    <p class="opacity-60 mb-10">{t.headings.my_networks}</p>
+    <div>
+      <div class="grid grid-cols-2 gap-2 group ">
+        {
+          contactPageContent.links.map((link: any) => (
+            <SocialLinkBox {...link} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+

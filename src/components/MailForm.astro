@@ -1,3 +1,9 @@
+---
+import { getStrings, normalizeLang, type Lang } from "../i18n";
+interface Props { lang?: Lang }
+const pageLang = normalizeLang(Astro.props.lang as string | undefined);
+const t = getStrings(pageLang);
+---
 <!-- // Styling Requires Tailwind CSS -->
 <form
   action="https://api.web3forms.com/submit"
@@ -5,6 +11,8 @@
   id="form"
   class="needs-validation"
   data-astro-reload
+  data-sending={t.form.sending}
+  data-error={t.form.error}
   novalidate>
   
    <!-- Add your Web3Forms Access Key -->
@@ -14,43 +22,43 @@
         <div class="text-black mb-5">
             <input
             type="text"
-            placeholder="nombre completo"
+            placeholder={t.form.name_placeholder}
             required
             class=" w-full px-4 py-3 border placeholder:text-slate-400 rounded-sm outline-none focus:ring-2 border-slate-300 focus:border-slate-600 ring-slate-100"
             name="name"
             />
             <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
-            por favor ingresa tu nombre completo.
+            {t.form.name_required}
             </div>
         </div>
         <div class="text-black mb-5">
-            <label for="email_address" class="sr-only">dirección Email</label><input
+            <label for="email_address" class="sr-only">{t.form.email_label}</label><input
             id="email_address"
             type="email"
-            placeholder="dirección email"
+            placeholder={t.form.email_placeholder}
             name="email"
             required
             class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-sm outline-none focus:ring-2 border-slate-300 focus:border-slate-600 ring-slate-100"
             />
             <div class="empty-feedback text-red-400 text-sm mt-1">
-            por favor ingresa una dirección de Email.
+            {t.form.email_required}
             </div>
             <div class="invalid-feedback text-red-400 text-sm mt-1">
-            por favor ingresa una dirección válida.
+            {t.form.email_invalid}
             </div>
         </div>
         <div class="text-black mb-3">
             <textarea
             name="message"
             required
-            placeholder="tu mensaje"
+            placeholder={t.form.message_placeholder}
             class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-sm outline-none h-36 focus:ring-2 border-slate-300 focus:border-slate-600 ring-slate-100"
             ></textarea>
             <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
-            por favor ingresa tu mensaje.
+            {t.form.message_required}
             </div>
         </div>
-        <button class="flex mx-auto p-4 opacity-100 rounded-sm border border-white border-opacity-30 hover:opacity-80 transition-opacity hover:line-through" type="submit">enviar mensaje </button>
+        <button class="flex mx-auto p-4 opacity-100 rounded-sm border border-white border-opacity-30 hover:opacity-80 transition-opacity hover:line-through" type="submit">{t.form.send_button}</button>
         <div id="result" class="mt-3 text-center"></div>
     </div>
 </form>
@@ -95,7 +103,8 @@
         const object = Object.fromEntries(formData);
         const json = JSON.stringify(object);
 
-        result.innerHTML = "Sending...";
+        var sending = form.getAttribute('data-sending');
+        result.innerHTML = sending || "Sending...";
 
         fetch("https://api.web3forms.com/submit", {
           method: "POST",
@@ -118,7 +127,8 @@
           })
           .catch((error) => {
             console.log(error);
-            result.innerHTML = "Something went wrong!";
+            var err = form.getAttribute('data-error');
+            result.innerHTML = err || "Something went wrong!";
           })
           .then(function () {
             form.reset();

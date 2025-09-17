@@ -1,0 +1,14 @@
+---
+import type { Lang } from "../i18n";
+interface Props { lang: Lang; esHref: string; enHref: string }
+const { lang, esHref, enHref } = Astro.props as Props;
+---
+<div class="flex items-center gap-2">
+  <a href={esHref}
+     class={`px-2 py-1 opacity-80 hover:opacity-100 ${lang === 'es' ? 'line-through' : ''}`}
+     onclick={`try{localStorage.setItem('lang','es')}catch{}`}>ES</a>
+  <span class="opacity-50">|</span>
+  <a href={enHref}
+     class={`px-2 py-1 opacity-80 hover:opacity-100 ${lang === 'en' ? 'line-through' : ''}`}
+     onclick={`try{localStorage.setItem('lang','en')}catch{}`}>EN</a>
+</div>
