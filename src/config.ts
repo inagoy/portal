@@ -7,6 +7,7 @@ import type {
   ProgrammingProjectPageContent,
   HomePageContent,
 } from "./types/config";
+import { getStrings, normalizeLang } from './i18n';
 
 export const identity: Identity = {
   name: "iñaki goyeneche",
@@ -28,6 +29,18 @@ export const navBarLinks: NavBarLink[] = [
     url: "/contact",
   },
 ];
+
+// New: language-aware getters (non-breaking; pages can switch to these)
+export function getNavBarLinks(lang?: string): NavBarLink[] {
+  const normalized = normalizeLang(lang);
+  const t = getStrings(normalized);
+  const prefix = `/${normalized}`;
+  return [
+    { title: t.nav.music, url: `${prefix}/music-projects` },
+    { title: t.nav.programming, url: `${prefix}/programming-projects` },
+    { title: t.nav.contact, url: `${prefix}/contact` },
+  ];
+}
 
 export const socialLinks: SocialLink[] = [
   { 
@@ -79,6 +92,24 @@ export const homePageContent: HomePageContent = {
   ],
 };
 
+export function getHomePageContent(lang?: string): HomePageContent {
+  const t = getStrings(normalizeLang(lang));
+  return {
+    seo: {
+      title: t.home.seo.title,
+      description: t.home.seo.description,
+      image: identity.logo,
+    },
+    role: t.home.role,
+    description: t.home.description,
+    socialLinks: socialLinks,
+    links: [
+      { title: t.home.links.music, url: "/music-projects/" },
+      { title: t.home.links.programming, url: "/programming-projects/" },
+    ],
+  };
+}
+
 // Contact (/contact)
 export const contactPageContent: ContactPageContent = {
   seo: {
@@ -90,6 +121,19 @@ export const contactPageContent: ContactPageContent = {
   subtitle: "cómo contactarme",
   links: socialLinks,
 };
+
+export function getContactPageContent(lang?: string): ContactPageContent {
+  const t = getStrings(normalizeLang(lang));
+  return {
+    seo: {
+      title: t.contact.seo.title,
+      description: t.contact.seo.description,
+      image: identity.logo,
+    },
+    subtitle: t.contact.subtitle,
+    links: socialLinks,
+  };
+}
 
 // Projects (/music-projects)
 export const musicProjectsPageContent: MusicProjectPageContent = {
@@ -196,6 +240,20 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
   ],
 };
+
+export function getMusicProjectsPageContent(lang?: string): MusicProjectPageContent {
+  const t = getStrings(normalizeLang(lang));
+  return {
+    seo: {
+      title: t.music.seo.title,
+      description: t.music.seo.description,
+      image: identity.logo,
+    },
+    subtitle: t.music.subtitle,
+    // Do NOT translate project names or descriptions here as requested
+    projects: musicProjectsPageContent.projects,
+  };
+}
 // Projects (/programming-projects)
 export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
   seo: {
@@ -242,3 +300,18 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
     },
   ],
 };
+
+export function getProgrammingProjectsPageContent(
+  lang?: string
+): ProgrammingProjectPageContent {
+  const t = getStrings(normalizeLang(lang));
+  return {
+    seo: {
+      title: t.programming.seo.title,
+      description: t.programming.seo.description,
+      image: identity.logo,
+    },
+    subtitle: t.programming.subtitle,
+    projects: programmingProjectsPageContent.projects,
+  };
+}

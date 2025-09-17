@@ -1,0 +1,44 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+import Layout from "../../layouts/Layout.astro";
+import { getProgrammingProjectsPageContent, getContactPageContent } from "../../config";
+import { normalizeLang, getStrings } from "../../i18n";
+import ProjectCard from "../../components/ProgrammingProjectCard.astro";
+import SocialLinkBox from "../../components/SocialLinkBox.astro";
+
+const lang = normalizeLang(Astro.params.lang as string);
+const t = getStrings(lang);
+const programmingProjectsPageContent = getProgrammingProjectsPageContent(lang);
+const contactContent = getContactPageContent(lang);
+---
+
+<Layout seo={programmingProjectsPageContent.seo} lang={lang}>
+  <section class="mt-10 max-w-2xl mx-auto px-6">
+    <h1 class="font-bold text-3xl mb-1">{t.headings.programming_portfolio}</h1>
+    <p class="opacity-60 mb-10">{programmingProjectsPageContent.subtitle}</p>
+    <div class="grid grid-cols-1 group">
+      {
+        programmingProjectsPageContent.projects.map((project: any) => (
+          <ProjectCard {...project} />
+        ))
+      }
+    </div>
+  </section>
+  <section class="mt-10 max-w-2xl mx-auto px-6 sm:flex sm:gap-16">
+    <div class="flex mx-auto gap-10">
+      <h2 class="opacity-60 my-auto"> {t.headings.more_projects_on} </h2>
+      <div class="">
+        {
+            <SocialLinkBox {...contactContent.links[2]} />
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+

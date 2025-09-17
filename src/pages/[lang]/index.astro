@@ -1,0 +1,49 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import { getHomePageContent, identity } from "../../config";
+import { normalizeLang, getStrings } from "../../i18n";
+import SocialLink from "../../components/SocialLink.astro";
+import Link from "../../components/Link.astro";
+
+const lang = normalizeLang(Astro.params.lang as string);
+const t = getStrings(lang);
+const homePageContent = getHomePageContent(lang);
+---
+<Layout seo={homePageContent.seo} lang={lang}>
+  <section class="mt-10 max-w-2xl mx-auto px-6">
+    <h1 class="font-bold text-3xl mb-1">{identity.name}</h1>
+    <p class="opacity-60 mb-10">{homePageContent.role}</p>
+    <div class="flex flex-col min-[520px]:flex-row gap-6 mb-8">
+      <div class="group flex flex-col justify-center gap-2 w-fit">
+        {
+          homePageContent.socialLinks.map((link: any) => (
+            <SocialLink
+              title={link.title}
+              url={link.url}
+              icon={link.icon}
+              external={link.external}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="flex justify-center px-6 mx-auto">
+    <div class="flex items-center gap-4 group w-fit">
+      {
+        homePageContent.links.map((link: any) => (
+          <Link text={link.title} href={`/${lang}${link.url}`} external={link.external}/>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
+
