@@ -46,9 +46,6 @@ export const es = {
       description: 'algunos proyectos de programación de herramientas de audio',
     },
   },
-  labels: {
-    with: 'junto con',
-  },
   form: {
     name_placeholder: 'nombre completo',
     name_required: 'por favor ingresa tu nombre completo.',
@@ -65,6 +62,14 @@ export const es = {
   selector: {
     en: 'EN',
     es: 'ES',
+  },
+  labels: {
+    with: 'junto con',
+    types: {
+      album: 'álbum',
+      single: 'single',
+      audiovisual: 'audiovisual',
+    },
   },
 } as const;
 

@@ -6,16 +6,18 @@ import { Markdown } from "@astropub/md";
 
 type Props = Project & { lang?: Lang };
 
-const { title, description, image, year, url, socio, lang } = Astro.props as Props;
+const { title, description, image, year, url, socio, lang, type } = Astro.props as Props;
 const t = getStrings(normalizeLang(lang));
+const imgHeight = type === 'album' ? 'sm:h-[200px]' : type === 'audiovisual' ? 'sm:h-[170px]' : 'sm:h-[140px]';
+const padY = type === 'album' ? 'py-10 sm:py-6' : type === 'audiovisual' ? 'py-8 sm:py-5' : 'py-6 sm:py-4';
 ---
 
 <a
   href={url}
   target="_blank"
-  class="sm:py-5 py-10 flex flex-col sm:flex-row gap-6  opacity-100 hover:opacity-60 transition-opacity"
+  class={`flex flex-col sm:flex-row gap-6 opacity-100 hover:opacity-60 transition-opacity ${padY}`}
 >
-  <div class="h-full bg-gray-700 rounded-sm aspect-video sm:h-[150px]">
+  <div class={`h-full bg-gray-700 rounded-sm aspect-video ${imgHeight}`}>
     <Image
       width={1920}
       height={1080}
@@ -26,8 +28,13 @@ const t = getStrings(normalizeLang(lang));
   </div>
   <div class ="relative">
     <div class="items-center gap-1 mb-2">
-      <h2 class="font-medium">{title}</h2>
-      <span class="opacity-60">{year}</span>
+      <h2 class="font-medium inline-block mr-2 align-middle">{title}</h2>
+      <span class="opacity-60 align-middle mr-2">{year}</span>
+      {type && (
+        <span class="align-middle text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-sm border border-white border-opacity-30 opacity-70">
+          {t.labels.types?.[type] ?? type}
+        </span>
+      )}
     </div>
     <div class="opacity-70 mb-1">
       <Markdown of={description} />

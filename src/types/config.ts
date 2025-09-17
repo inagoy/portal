@@ -48,6 +48,7 @@ export type Project = {
   year: string;
   url: string;
   socio? : string;
+  type?: 'album' | 'single' | 'audiovisual';
 };
 
 export type MusicProjectPageContent = {
@@ -61,4 +62,3 @@ export type ProgrammingProjectPageContent = {
   subtitle: string;
   projects: Project[];
 };
-
