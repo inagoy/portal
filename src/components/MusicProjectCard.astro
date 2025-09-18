@@ -8,34 +8,71 @@ type Props = Project & { lang?: Lang };
 
 const { title, description, image, year, url, socio, lang, type } = Astro.props as Props;
 const t = getStrings(normalizeLang(lang));
-const baseHeight = type === 'album' ? 'h-[300px]' : type === 'audiovisual' ? 'h-[200px]' : 'h-[120px]';
-const imgHeight = type === 'album' ? 'sm:h-[200px]' : type === 'audiovisual' ? 'sm:h-[170px]' : 'sm:h-[140px]';
-const padY = type === 'album' ? 'py-10 sm:py-6' : type === 'audiovisual' ? 'py-8 sm:py-5' : 'py-6 sm:py-4';
+
+// Simplified per-type sizing with larger album vs single difference
+type Kind = 'album' | 'single' | 'audiovisual';
+const kind: Kind = (type ?? 'single') as Kind;
+const SIZES: Record<Kind, {
+  padY: string;
+  imgWidthSm: string;
+  baseHeight: string;
+  imgHeight: string;
+  imgScale: string;
+  imgHoverScale: string;
+}> = {
+  album: {
+    padY: 'py-10 sm:py-6',
+    imgWidthSm: 'sm:w-80',
+    baseHeight: 'h-[350px]',
+    imgHeight: 'sm:h-[220px]',
+    imgScale: 'scale-[1.08]',
+    imgHoverScale: 'group-hover/card:scale-[1.16]',
+  },
+  audiovisual: {
+    padY: 'py-8 sm:py-5',
+    imgWidthSm: 'sm:w-64',
+    baseHeight: 'h-[200px]',
+    imgHeight: 'sm:h-[170px]',
+    imgScale: 'scale-[1.18]',
+    imgHoverScale: 'group-hover/card:scale-[1.3]',
+  },
+  single: {
+    padY: 'py-6 sm:py-4',
+    imgWidthSm: 'sm:w-48',
+    baseHeight: 'h-[160px]',
+    imgHeight: 'sm:h-[140px]',
+    imgScale: 'scale-[1.26]',
+    imgHoverScale: 'group-hover/card:scale-[1.36]',
+  },
+};
+const { padY, imgWidthSm, baseHeight, imgHeight, imgScale, imgHoverScale } = SIZES[kind];
 ---
 
 <a
   href={url}
   target="_blank"
-  class={`flex flex-col sm:flex-row gap-6 opacity-100 hover:opacity-60 transition-opacity ${padY}`}
+  class={`group/card flex flex-col sm:flex-row gap-6 opacity-100 hover:opacity-60 transition-opacity ${padY}`}
 >
-  <div class={`bg-gray-700 rounded-sm w-full overflow-hidden ${baseHeight} ${imgHeight}`}>
+  <div class={`relative bg-gray-700 rounded-sm w-full ${imgWidthSm} shrink-0 overflow-hidden ${baseHeight} ${imgHeight}`}>
     <Image
       width={1920}
       height={1080}
       src={image}
       alt={title}
-      class="w-full h-full object-cover rounded-sm"
+      class={`w-full h-full object-cover object-center rounded-sm transform-gpu will-change-transform transition-transform duration-500 ease-out ${imgScale} ${imgHoverScale}`}
     />
-  </div>
-  <div class ="relative">
-    <div class="items-center gap-1 mb-2">
-      <h2 class="font-medium inline-block mr-2 align-middle">{title}</h2>
-      <span class="opacity-60 align-middle mr-2">{year}</span>
-      {type && (
-        <span class="align-middle text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-sm border border-white border-opacity-30 opacity-70">
+    {type && (
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <span class="text-[10px] tracking-wider px-2 py-0.5 rounded-sm border border-white/40 text-white/90 bg-black/30 backdrop-blur-sm">
           {t.labels.types?.[type] ?? type}
         </span>
-      )}
+      </div>
+    )}
+  </div>
+  <div class ="relative sm:flex-1 min-w-0">
+    <div class="mb-2">
+      <h2 class="font-medium text-lg leading-tight">{title}</h2>
+      {year && <p class="opacity-60 text-sm mt-1">{year}</p>}
     </div>
     <div class="opacity-70 mb-1">
       <Markdown of={description} />
