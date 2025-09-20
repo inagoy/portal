@@ -68,6 +68,21 @@ export const socialLinks: SocialLink[] = [
   },
 ];
 
+// Build social links with language-specific internal routes
+export function getSocialLinks(lang?: string): SocialLink[] {
+  const normalized = normalizeLang(lang);
+  // Append OnlyFans as the last item, internal route per language
+  return [
+    ...socialLinks,
+    {
+      title: 'onlyfans',
+      url: `/${normalized}/onlyfans`,
+      icon: 'mdi:incognito',
+      external: false,
+    },
+  ];
+}
+
 // Home (/)
 export const homePageContent: HomePageContent = {
   seo: {
@@ -102,7 +117,7 @@ export function getHomePageContent(lang?: string): HomePageContent {
     },
     role: t.home.role,
     description: t.home.description,
-    socialLinks: socialLinks,
+    socialLinks: getSocialLinks(lang),
     links: [
       { title: t.home.links.music, url: "/music-projects/" },
       { title: t.home.links.programming, url: "/programming-projects/" },
@@ -131,7 +146,7 @@ export function getContactPageContent(lang?: string): ContactPageContent {
       image: identity.logo,
     },
     subtitle: t.contact.subtitle,
-    links: socialLinks,
+    links: getSocialLinks(lang),
   };
 }
 
