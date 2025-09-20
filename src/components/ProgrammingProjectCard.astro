@@ -13,7 +13,7 @@ const { title, description, image, year, url } = Astro.props;
   target="_blank"
   class="sm:py-5 py-10 flex flex-col sm:flex-row gap-6 opacity-100 hover:opacity-60 transition-opacity"
 >
-  <div class="h-full bg-gray-700 rounded-sm aspect-video sm:h-[150px]">
+  <div class="h-full bg-gray-700 rounded-sm aspect-video sm:h-[150px] mx-auto sm:mx-0">
     <Image
       width={1920}
       height={1080}
@@ -22,8 +22,8 @@ const { title, description, image, year, url } = Astro.props;
       class="w-full h-full object-cover rounded-sm aspect-video"
     />
   </div>
-  <div>
-    <div class="flex items-center gap-1 mb-2">
+  <div class="text-left mx-auto sm:mx-0">
+    <div class="flex items-center gap-1 mb-2 justify-start">
       <h2 class="font-medium">{title}</h2>
       <span class="opacity-60">· {year}</span>
     </div>
