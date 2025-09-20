@@ -11,7 +11,7 @@ interface Props {
 
 const { seo } = Astro.props;
 const url = Astro.url;
-const currentUrl = url.pathname.slice(0, -1);
+const currentUrl = url.pathname.endsWith('/') ? url.pathname.slice(0, -1) : url.pathname;
 const paramLang = url.searchParams.get('lang');
 const pageLang: Lang = normalizeLang(paramLang ?? (Astro.props.lang as string | undefined));
 const navBarLinks = getNavBarLinks(pageLang);

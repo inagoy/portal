@@ -1,0 +1,34 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+import Layout from "../../layouts/Layout.astro";
+import { normalizeLang, getStrings } from "../../i18n";
+import { identity } from "../../config";
+
+const lang = normalizeLang(Astro.params.lang as string);
+const t = getStrings(lang);
+const seo = {
+  title: `onlyfans | iñaki goyeneche`,
+  description: t.onlyfans?.text ?? (lang === 'es' ? 'no tengo xd' : "don't have xd"),
+  image: identity.logo,
+};
+---
+<Layout seo={seo} lang={lang}>
+  <section class="mt-10 max-w-2xl mx-auto px-6 min-h-[40vh] grid place-items-center text-center">
+    <div class="space-y-6">
+      <h1 class="font-bold text-3xl">{t.onlyfans?.title ?? 'onlyfans'}</h1>
+      <p class="opacity-70 text-lg">{t.onlyfans?.text ?? (lang === 'es' ? 'no tengo xd' : "don't have xd")}</p>
+    </div>
+  </section>
+  <script>
+    setTimeout(() => {
+      const path = window.location.pathname.replace(/\/onlyfans\/?$/, '/');
+      window.location.href = path;
+    }, 2000);
+  </script>
+</Layout>

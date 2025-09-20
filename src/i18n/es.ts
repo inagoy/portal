@@ -5,6 +5,10 @@ export const es = {
     programming: 'programación',
     contact: 'contacto',
   },
+  onlyfans: {
+    title: 'onlyfans',
+    text: 'no tengo xd',
+  },
   headings: {
     music_portfolio: 'portfolio música/audio',
     programming_portfolio: 'portfolio desarrollo',
