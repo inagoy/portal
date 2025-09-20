@@ -146,7 +146,8 @@ export function getContactPageContent(lang?: string): ContactPageContent {
       image: identity.logo,
     },
     subtitle: t.contact.subtitle,
-    links: getSocialLinks(lang),
+    // Do not include OnlyFans on contact page
+    links: socialLinks,
   };
 }
 

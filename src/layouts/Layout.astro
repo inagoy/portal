@@ -22,6 +22,7 @@ function withLangPath(u: URL, lang: string): string {
 }
 const esHref = withLangPath(url, 'es');
 const enHref = withLangPath(url, 'en');
+const isHome = url.pathname === `/${pageLang}/` || url.pathname === `/${pageLang}`;
 
 ---
 
@@ -133,7 +134,7 @@ const enHref = withLangPath(url, 'en');
         </nav>
       </div>
     </header>
-    <main class="pt-40 mb-32">
+    <main class={`mb-32 ${isHome ? 'pt-40' : 'pt-24'}`}>
       <slot />
     </main>
     <footer></footer>
