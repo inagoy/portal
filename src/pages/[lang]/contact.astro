@@ -9,7 +9,7 @@ export function getStaticPaths() {
 import Layout from "../../layouts/Layout.astro";
 import { getContactPageContent } from "../../config";
 import { normalizeLang, getStrings } from "../../i18n";
-import SocialLinkBox from "../../components/SocialLinkBox.astro";
+import SocialLink from "../../components/SocialLink.astro";
 import MailForm from "../../components/MailForm.astro";
 
 const lang = normalizeLang(Astro.params.lang as string);
@@ -25,17 +25,16 @@ const contactPageContent = getContactPageContent(lang);
   <section class="place-content-center max-w-2xl mx-auto px-6 sm:gap-10">
     <MailForm lang={lang}/>
   </section>
-  <section class="mt-20 max-w-2xl mx-auto px-6 ">
-    <p class="opacity-60 mb-10">{t.headings.my_networks}</p>
-    <div>
-      <div class="grid grid-cols-2 gap-2 group ">
-        {
-          contactPageContent.links.map((link: any) => (
-            <SocialLinkBox {...link} />
-          ))
-        }
-      </div>
-    </div>
+  <section class="mt-10 max-w-2xl mx-auto px-6">
+    <p class="opacity-60 mb-6">{t.headings.my_networks}</p>
+    <ul class="mx-auto max-w-xl flex flex-wrap items-center justify-center sm:justify-between gap-x-6 gap-y-2">
+      {
+        contactPageContent.links.map((link: any) => (
+          <li>
+            <SocialLink title={link.title} url={link.url} icon={link.icon} external={link.external} />
+          </li>
+        ))
+      }
+    </ul>
   </section>
 </Layout>
-

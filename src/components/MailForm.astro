@@ -17,7 +17,9 @@ const t = getStrings(pageLang);
   
    <!-- Add your Web3Forms Access Key -->
   <input type="hidden" name="access_key" value="be4c95cc-555d-48ba-a27c-68d9bd34f384" />
-  <div class="rounded-sm border border-white/30 p-5">
+  <!-- Set Web3Forms email subject -->
+  <input type="hidden" name="subject" value="NEW MESSAGE AT WEB" />
+  <div class="rounded-sm p-5">
     <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
     <div class="grid grid-cols-1 gap-4">
       <div>
@@ -66,7 +68,7 @@ const t = getStrings(pageLang);
       </div>
     </div>
     <button
-      class="flex mx-auto mt-4 px-5 py-3 opacity-100 rounded-sm border border-white/30 hover:opacity-80 transition-opacity hover:line-through focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+      class="flex mx-auto mt-4 px-5 py-3 opacity-100 rounded-sm border border-white/10 hover:opacity-80 transition-opacity hover:line-through focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
       type="submit"
     >
       {t.form.send_button}

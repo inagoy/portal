@@ -10,8 +10,8 @@ export const en = {
     text: "never say never",
   },
   headings: {
-    music_portfolio: 'music/audio portfolio',
-    programming_portfolio: 'development portfolio',
+    music_portfolio: 'music | audio portfolio',
+    programming_portfolio: 'audio development portfolio',
     contact: 'contact',
     more_projects_on: 'more projects on',
     my_networks: 'my socials',

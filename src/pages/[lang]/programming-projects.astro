@@ -10,7 +10,7 @@ import Layout from "../../layouts/Layout.astro";
 import { getProgrammingProjectsPageContent, getContactPageContent } from "../../config";
 import { normalizeLang, getStrings } from "../../i18n";
 import ProjectCard from "../../components/ProgrammingProjectCard.astro";
-import SocialLinkBox from "../../components/SocialLinkBox.astro";
+import SocialLink from "../../components/SocialLink.astro";
 
 const lang = normalizeLang(Astro.params.lang as string);
 const t = getStrings(lang);
@@ -31,14 +31,14 @@ const contactContent = getContactPageContent(lang);
     </div>
   </section>
   <section class="mt-10 max-w-2xl mx-auto px-6 sm:flex sm:gap-16">
-    <div class="flex mx-auto gap-10">
-      <h2 class="opacity-60 my-auto"> {t.headings.more_projects_on} </h2>
-      <div class="">
-        {
-            <SocialLinkBox {...contactContent.links[2]} />
-        }
-      </div>
+    <div class="flex items-center gap-4 mx-auto">
+      <h2 class="opacity-60">{t.headings.more_projects_on}</h2>
+      <SocialLink
+        title={contactContent.links[2].title}
+        url={contactContent.links[2].url}
+        icon={contactContent.links[2].icon}
+        external={contactContent.links[2].external}
+      />
     </div>
   </section>
 </Layout>
-

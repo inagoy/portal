@@ -10,8 +10,8 @@ export const es = {
     text: 'nunca digas nunca',
   },
   headings: {
-    music_portfolio: 'portfolio música/audio',
-    programming_portfolio: 'portfolio desarrollo',
+    music_portfolio: 'portfolio música | audio',
+    programming_portfolio: 'portfolio desarrollo para audio',
     contact: 'contacto',
     more_projects_on: 'más proyectos en',
     my_networks: 'mis redes',
