@@ -50,13 +50,13 @@ export const socialLinks: SocialLink[] = [
     external: true, 
   },
   {
-    title: "linkedIn",
+    title: "linkedin",
     url: "https://www.linkedin.com/in/i%C3%B1aki-goyeneche-49809624a/",
     icon: "mdi:linkedin",
     external: true,
   },
   {
-    title: "gitHub",
+    title: "github",
     url: "https://github.com/inagoy",
     icon: "mdi:github",
     external: true,
