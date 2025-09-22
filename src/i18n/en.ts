@@ -7,7 +7,7 @@ export const en = {
   },
   onlyfans: {
     title: 'onlyfans',
-    text: "don't have xd",
+    text: "never say never",
   },
   headings: {
     music_portfolio: 'music/audio portfolio',
