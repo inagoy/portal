@@ -11,20 +11,20 @@ const { title, description, image, year, url } = Astro.props;
 <a
   href={url}
   target="_blank"
-  class="sm:py-5 py-10 flex flex-col sm:flex-row gap-6 opacity-100 hover:opacity-60 transition-opacity"
+  class="group/card sm:py-5 py-10 flex flex-col sm:flex-row gap-6"
 >
-  <div class="h-full bg-gray-700 rounded-sm aspect-video sm:h-[150px] mx-auto sm:mx-0">
+  <div class="relative bg-gray-700 rounded-sm w-[266px] h-[150px] mx-auto sm:mx-0 overflow-hidden shrink-0">
     <Image
       width={1920}
       height={1080}
       src={image}
       alt={title}
-      class="w-full h-full object-cover rounded-sm aspect-video"
+      class="w-full h-full object-cover rounded-sm transform-gpu will-change-transform transition-transform duration-500 ease-out scale-[1.06] group-hover/card:scale-[1.12]"
     />
   </div>
   <div class="text-left mx-auto sm:mx-0">
     <div class="flex items-center gap-1 mb-2 justify-start">
-      <h2 class="font-medium">{title}</h2>
+      <h2 class="font-medium transition-all group-hover/card:line-through">{title}</h2>
       <span class="opacity-60">· {year}</span>
     </div>
     <div class="opacity-60">

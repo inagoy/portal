@@ -55,7 +55,7 @@ const { padY, imgWidth, textWidthMobile, baseHeight, imgHeight, imgScale, imgHov
 <a
   href={url}
   target="_blank"
-  class={`group/card flex flex-col sm:flex-row gap-6 opacity-100 hover:opacity-60 transition-opacity ${padY}`}
+  class={`group/card flex flex-col sm:flex-row gap-6 ${padY}`}
 >
   <div class={`relative bg-gray-700 rounded-sm ${imgWidth} shrink-0 overflow-hidden ${baseHeight} ${imgHeight} mx-auto sm:mx-0`}>
     <Image
@@ -75,7 +75,7 @@ const { padY, imgWidth, textWidthMobile, baseHeight, imgHeight, imgScale, imgHov
   </div>
   <div class={`relative sm:flex-1 min-w-0 text-left ${textWidthMobile} mx-auto sm:mx-0`}>
     <div class="mb-2">
-      <h2 class="font-medium text-lg leading-tight">{title}</h2>
+      <h2 class="font-medium text-lg leading-tight transition-all group-hover/card:line-through">{title}</h2>
       {year && <p class="opacity-60 text-sm mt-1">{year}</p>}
     </div>
     <div class="opacity-70 mb-1">
