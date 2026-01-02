@@ -166,7 +166,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://i.scdn.co/image/ab67616d00001e02692872973b6ed31153f0d2eb",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/0Krxs5046iOHKuOXSzEQxL?si=Azcx7PFjRR-nbaumiCM8BA",
-      socio: "alejo avila",
+      socio: "mariano bilinkis y julian mahon",
       type: "album"
     },     
     {
