@@ -179,7 +179,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       type: "album"
     }, 
     {
-      title: "william campbell | No ficción ft. Iuio (En Vivo)",
+      title: "no ficción ft.iuio (en vivo en guajira) | william campbell",
       description: "edición, mezcla y mastering",
       image: "https://img.youtube.com/vi/xaK70wtFhzA/hqdefault.jpg",
       year: "2025",
