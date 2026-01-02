@@ -303,9 +303,16 @@ export function getMusicProjectsPageContent(lang?: string): MusicProjectPageCont
     "co-producción, edición y mezcla": "co-production, editing and mixing",
   };
 
+  const translateSocio = (socio?: string) =>
+    socio ? socio.replace(/\by\b/g, '&') : socio;
+
   const projects = musicProjectsPageContent.projects.map((p) =>
     normalized === 'en'
-      ? { ...p, description: enDesc[p.description] ?? p.description }
+      ? {
+          ...p,
+          description: enDesc[p.description] ?? p.description,
+          socio: translateSocio(p.socio),
+        }
       : p
   );
 
