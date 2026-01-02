@@ -161,6 +161,15 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   subtitle: "algunos proyectos en los que trabajé",
   projects: [
     {
+      title: "red bull symphonic | trueno ",
+      description: "asistencia en edición y mezcla",
+      image: "https://i.scdn.co/image/ab67616d00001e02692872973b6ed31153f0d2eb",
+      year: "2025",
+      url: "https://open.spotify.com/intl-es/album/0Krxs5046iOHKuOXSzEQxL?si=Azcx7PFjRR-nbaumiCM8BA",
+      socio: "alejo avila",
+      type: "album"
+    },     
+    {
       title: "otro idioma | camila inés",
       description: "producción y mezcla",
       image: "https://i.scdn.co/image/ab67616d0000b27343171c055e4e037aaf8d3613",
@@ -168,6 +177,14 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       url: "https://open.spotify.com/intl-es/album/3sgRznpNzqUsa0UV8vPYzc",
       socio: "alejo avila",
       type: "album"
+    }, 
+    {
+      title: "william campbell | No ficción ft. Iuio (En Vivo)",
+      description: "edición, mezcla y mastering",
+      image: "https://img.youtube.com/vi/xaK70wtFhzA/hqdefault.jpg",
+      year: "2025",
+      url: "https://www.youtube.com/watch?v=xaK70wtFhzA",
+      type: "single"
     }, 
     {
       title: "2064 + polonio | estrugamou",
@@ -275,6 +292,7 @@ export function getMusicProjectsPageContent(lang?: string): MusicProjectPageCont
 
   // Map descriptions to English when needed
   const enDesc: Record<string, string> = {
+    "asistencia en edición y mezcla": "editing and mixing assistance",
     "producción y mezcla": "production and mixing",
     "co-producción, mezcla y master": "co-production, mixing and mastering",
     "co-producción, edición": "co-production, editing",
