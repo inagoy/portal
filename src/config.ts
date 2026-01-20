@@ -292,7 +292,7 @@ export function getMusicProjectsPageContent(lang?: string): MusicProjectPageCont
 
   // Map descriptions to English when needed
   const enDesc: Record<string, string> = {
-    "asistencia en edición y mezcla": "editing and mixing assistance",
+    "asistencia en edición y en mezcla": "editing and mixing assistance",
     "producción y mezcla": "production and mixing",
     "co-producción, mezcla y master": "co-production, mixing and mastering",
     "co-producción, edición": "co-production, editing",
