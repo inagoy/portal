@@ -162,7 +162,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   projects: [
     {
       title: "red bull symphonic | trueno ",
-      description: "asistencia en edición y mezcla",
+      description: "asistencia en edición y en mezcla",
       image: "https://i.scdn.co/image/ab67616d00001e02692872973b6ed31153f0d2eb",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/0Krxs5046iOHKuOXSzEQxL?si=Azcx7PFjRR-nbaumiCM8BA",
@@ -179,7 +179,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       type: "album"
     }, 
     {
-      title: "no ficción ft.iuio (en vivo en guajira) | william campbell",
+      title: "no ficción ft. iuio (en vivo) | william campbell",
       description: "edición, mezcla y mastering",
       image: "https://img.youtube.com/vi/xaK70wtFhzA/hqdefault.jpg",
       year: "2025",
