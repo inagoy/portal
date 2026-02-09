@@ -1,0 +1,177 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { lang: "es" } },
+    { params: { lang: "en" } },
+  ];
+}
+
+import Layout from "../../layouts/Layout.astro";
+import CVWebsiteCard from "../../components/CVWebsiteCard.astro";
+import ProgrammingProjectCard from "../../components/ProgrammingProjectCard.astro";
+import SocialLink from "../../components/SocialLink.astro";
+import { getContactPageContent, identity } from "../../config";
+import { normalizeLang } from "../../i18n";
+
+const lang = normalizeLang(Astro.params.lang as string);
+const contactContent = getContactPageContent(lang);
+
+const seo =
+  lang === "es"
+    ? {
+        title: `cv web | ${identity.name}`,
+        description: "cv de desarrollo web con sitios en produccion",
+        image: identity.logo,
+      }
+    : {
+        title: `web cv | ${identity.name}`,
+        description: "web development cv with production websites",
+        image: identity.logo,
+      };
+
+const heading =
+  lang === "es" ? "cv | desarrollo web en produccion" : "cv | web development in production";
+const subtitle =
+  lang === "es"
+    ? "sitios de desarrollo web que desarrolle y estan en uso real"
+    : "web development websites I built that are live in production";
+const universitySectionTitle =
+  lang === "es"
+    ? "algunos proyectos de desarrollo de universidad (no en produccion)"
+    : "some university development projects (not in production)";
+const universitySectionSubtitle =
+  lang === "es" ? "solo links a repositorios de github" : "repository links only (github)";
+const githubLabel = lang === "es" ? "mas proyectos en" : "more projects on";
+const githubLink = contactContent.links.find((link) => link.title === "github");
+
+const sections = [
+  {
+    titleEs: "front + back-end",
+    titleEn: "front + back-end",
+    projects: [
+      {
+        title: "iboux",
+        url: "https://iboux.com",
+        logo: "https://hub-international.iboux.com/images/logo.svg",
+        descriptionEs: "plataforma en produccion con desarrollo frontend y backend.",
+        descriptionEn: "production platform with frontend and backend development.",
+      },
+      {
+        title: "iboux admin system",
+        url: "https://adminsystem.iboux.com/",
+        logo: "https://hub-international.iboux.com/images/logo.svg",
+        descriptionEs: "panel administrativo en produccion para operaciones internas.",
+        descriptionEn: "production admin system for internal operations.",
+      },
+    ],
+  },
+  {
+    titleEs: "portales frontend",
+    titleEn: "frontend portals",
+    projects: [
+      {
+        title: "diqueuno",
+        url: "https://diqueuno.com",
+        logo: "https://diqueuno.com/favicon.png",
+        descriptionEs: "sitio portal frontend en produccion.",
+        descriptionEn: "live frontend portal website.",
+      },
+      {
+        title: "goyeneche arq",
+        url: "https://goyenechearq.com",
+        logo: "https://goarq.vercel.app/images/logo_chico.png",
+        descriptionEs: "sitio portal frontend en produccion.",
+        descriptionEn: "live frontend portal website.",
+      },
+      {
+        title: "inagoy",
+        url: "https://inagoy.vercel.app",
+        logo: "/logo.png",
+        descriptionEs: "sitio personal frontend en produccion.",
+        descriptionEn: "personal frontend website in production.",
+      },
+    ],
+  },
+];
+
+const universityRepoProjects = [
+  {
+    title: "CIDEPINT Web App",
+    descriptionEs:
+      "aplicacion web (flask + vue) desarrollada durante universidad. repositorio publico.",
+    descriptionEn:
+      "web app (flask + vue) built during university. public repository.",
+    image: "/cidepint.png",
+    year: "2023",
+    url: "https://github.com/inagoy/CIDEPINT-App",
+  },
+  {
+    title: "Chq.to Web App",
+    descriptionEs:
+      "aplicacion web (ruby on rails) desarrollada durante universidad. repositorio publico.",
+    descriptionEn:
+      "web app (ruby on rails) built during university. public repository.",
+    image: "/chqto.png",
+    year: "2023",
+    url: "https://github.com/inagoy/chq.to/",
+  },
+];
+---
+
+<Layout seo={seo} lang={lang}>
+  <section class="mt-10 max-w-2xl mx-auto px-6">
+    <h1 class="font-bold text-3xl mb-1">{heading}</h1>
+    <p class="opacity-60 mb-10">{subtitle}</p>
+    {
+      sections.map((section) => (
+        <div class="mb-6">
+          <h2 class="opacity-60 text-xs uppercase tracking-[0.12em] mb-2">
+            {lang === "es" ? section.titleEs : section.titleEn}
+          </h2>
+          <div class="grid grid-cols-1 group">
+            {section.projects.map((project) => (
+              <CVWebsiteCard
+                title={project.title}
+                url={project.url}
+                logo={project.logo}
+                description={lang === "es" ? project.descriptionEs : project.descriptionEn}
+              />
+            ))}
+          </div>
+        </div>
+      ))
+    }
+    <div class="mt-12">
+      <h2 class="font-bold text-2xl mb-1">{universitySectionTitle}</h2>
+      <p class="opacity-60 mb-6">{universitySectionSubtitle}</p>
+      <div class="grid grid-cols-1 group">
+        {
+          universityRepoProjects.map((project) => (
+            <ProgrammingProjectCard
+              title={project.title}
+              description={lang === "es" ? project.descriptionEs : project.descriptionEn}
+              image={project.image}
+              year={project.year}
+              url={project.url}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="mt-10 max-w-2xl mx-auto px-6 sm:flex sm:gap-16">
+    <div class="flex items-center gap-4 mx-auto">
+      <h2 class="opacity-60">{githubLabel}</h2>
+      {
+        githubLink && (
+          <SocialLink
+            title={githubLink.title}
+            url={githubLink.url}
+            icon={githubLink.icon}
+            external={githubLink.external}
+          />
+        )
+      }
+    </div>
+  </section>
+</Layout>
