@@ -8,6 +8,7 @@ export function getStaticPaths() {
 
 import Layout from "../../layouts/Layout.astro";
 import CVWebsiteCard from "../../components/CVWebsiteCard.astro";
+import ProgrammingProjectCard from "../../components/ProgrammingProjectCard.astro";
 import SocialLink from "../../components/SocialLink.astro";
 import { getContactPageContent, identity } from "../../config";
 import { normalizeLang } from "../../i18n";
@@ -19,20 +20,27 @@ const seo =
   lang === "es"
     ? {
         title: `cv web | ${identity.name}`,
-        description: "sitios web en produccion para cv",
+        description: "cv de desarrollo web con sitios en produccion",
         image: identity.logo,
       }
     : {
         title: `web cv | ${identity.name}`,
-        description: "production websites for cv",
+        description: "web development cv with production websites",
         image: identity.logo,
       };
 
-const heading = lang === "es" ? "cv | trabajos en produccion" : "cv | production work";
+const heading =
+  lang === "es" ? "cv | desarrollo web en produccion" : "cv | web development in production";
 const subtitle =
   lang === "es"
-    ? "sitios web que desarrolle y estan en uso real"
-    : "websites I developed that are live in production";
+    ? "sitios de desarrollo web que desarrolle y estan en uso real"
+    : "web development websites I built that are live in production";
+const universitySectionTitle =
+  lang === "es"
+    ? "algunos proyectos de desarrollo de universidad (no en produccion)"
+    : "some university development projects (not in production)";
+const universitySectionSubtitle =
+  lang === "es" ? "solo links a repositorios de github" : "repository links only (github)";
 const githubLabel = lang === "es" ? "mas proyectos en" : "more projects on";
 const githubLink = contactContent.links.find((link) => link.title === "github");
 
@@ -85,6 +93,29 @@ const sections = [
     ],
   },
 ];
+
+const universityRepoProjects = [
+  {
+    title: "CIDEPINT Web App",
+    descriptionEs:
+      "aplicacion web (flask + vue) desarrollada durante universidad. repositorio publico.",
+    descriptionEn:
+      "web app (flask + vue) built during university. public repository.",
+    image: "/cidepint.png",
+    year: "2023",
+    url: "https://github.com/inagoy/CIDEPINT-App",
+  },
+  {
+    title: "Chq.to Web App",
+    descriptionEs:
+      "aplicacion web (ruby on rails) desarrollada durante universidad. repositorio publico.",
+    descriptionEn:
+      "web app (ruby on rails) built during university. public repository.",
+    image: "/chqto.png",
+    year: "2023",
+    url: "https://github.com/inagoy/chq.to/",
+  },
+];
 ---
 
 <Layout seo={seo} lang={lang}>
@@ -110,6 +141,23 @@ const sections = [
         </div>
       ))
     }
+    <div class="mt-12">
+      <h2 class="font-bold text-2xl mb-1">{universitySectionTitle}</h2>
+      <p class="opacity-60 mb-6">{universitySectionSubtitle}</p>
+      <div class="grid grid-cols-1 group">
+        {
+          universityRepoProjects.map((project) => (
+            <ProgrammingProjectCard
+              title={project.title}
+              description={lang === "es" ? project.descriptionEs : project.descriptionEn}
+              image={project.image}
+              year={project.year}
+              url={project.url}
+            />
+          ))
+        }
+      </div>
+    </div>
   </section>
   <section class="mt-10 max-w-2xl mx-auto px-6 sm:flex sm:gap-16">
     <div class="flex items-center gap-4 mx-auto">
