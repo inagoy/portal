@@ -1,0 +1,16 @@
+---
+const fallback = "/es/cv";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>redirecting...</title>
+    <script is:inline src="/lang-redirect.js"></script>
+    <noscript>
+      <meta http-equiv="refresh" content={`0;url=${fallback}`} />
+    </noscript>
+  </head>
+  <body></body>
+</html>
