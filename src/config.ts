@@ -162,13 +162,22 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   projects: [
     {
       title: "red bull symphonic | trueno ",
-      description: "asistencia en edición y en mezcla",
+      description: "asistente en edición y asistente en mezcla",
       image: "https://i.scdn.co/image/ab67616d00001e02692872973b6ed31153f0d2eb",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/0Krxs5046iOHKuOXSzEQxL?si=Azcx7PFjRR-nbaumiCM8BA",
       socio: "mariano bilinkis y julian mahon",
       type: "album"
-    },     
+    },
+    {
+      title: "fanatico (en vivo) | lali",
+      description: "asistente en edición y asistente en mezcla",
+      image: "https://i.scdn.co/image/ab67616d00001e02f6ed36ac805c4d231e0537f4",
+      year: "2025",
+      url: "https://open.spotify.com/intl-es/track/7KJVQS5lPJ7WrQ2nTsIcRT?si=7b56b5d0275647a7",
+      socio: "mariano bilinkis",
+      type: "single"
+    },
     {
       title: "otro idioma | camila inés",
       description: "producción y mezcla",
@@ -293,6 +302,7 @@ export function getMusicProjectsPageContent(lang?: string): MusicProjectPageCont
   // Map descriptions to English when needed
   const enDesc: Record<string, string> = {
     "asistencia en edición y en mezcla": "editing and mixing assistance",
+    "asistente en edición y asistente en mezcla": "editing assistant and mixing assistant",
     "producción y mezcla": "production and mixing",
     "co-producción, mezcla y master": "co-production, mixing and mastering",
     "co-producción, edición": "co-production, editing",
