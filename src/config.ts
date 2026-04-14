@@ -347,7 +347,7 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
   projects: [
     {
       title: "drumsep app",
-      description: "plicación JUCE con interfaz de usuario para separación de batería, de-bleeding y procesamiento de las fuentes de batería separadas.",
+      description: "aplicación JUCE con interfaz de usuario para separación de batería, de-bleeding y procesamiento de las fuentes de batería separadas.",
       image: "/drumse-app-thumbnail.png",
       year: "in development",
       url: "https://youtu.be/91WK10WI6Ug",
