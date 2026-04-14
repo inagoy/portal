@@ -345,6 +345,13 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
   },
   subtitle: "algunos proyectos en los que trabajé",
   projects: [
+    {
+      title: "drumsep app",
+      description: "plicación JUCE con interfaz de usuario para separación de batería, de-bleeding y procesamiento de las fuentes de batería separadas.",
+      image: "/drumse-app-thumbnail.png",
+      year: "in development",
+      url: "https://youtu.be/91WK10WI6Ug",
+    },
 /*     {
       title: "Portal Web DiqueUNO",
       description: "Sitio web para la Residencia Estudiantil DiqueUNO hecho con SvelteKit y Tailwind.",
@@ -394,6 +401,8 @@ export function getProgrammingProjectsPageContent(
       "parametric EQ in C++/JUCE with 3 filters: low, high and band-pass. includes spectrum visualization.",
     "implementación del primer modelo de separación de baterías con deep learning a partir del entrenamiento de 'hybrid demucs'.":
       "first drum separation model implementation using deep learning by fine-tuning 'hybrid demucs'.",
+    "aplicación JUCE con interfaz de usuario para separación de batería, de-bleeding y procesamiento de las fuentes de batería separadas.":
+      "JUCE application with a custom UI for drum separation, de-bleeding, and processing of individual drum sources.",
   };
 
   const projects = programmingProjectsPageContent.projects.map((p) =>
