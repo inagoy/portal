@@ -2,12 +2,17 @@
 import { Image } from "astro:assets";
 import type { Project } from "../types/config";
 import { getStrings, normalizeLang, type Lang } from "../i18n";
-import { Markdown } from "@astropub/md";
 
 type Props = Project & { lang?: Lang };
 
 const { title, description, image, year, url, socio, lang, type } = Astro.props as Props;
 const t = getStrings(normalizeLang(lang));
+const descriptionText = description
+  .split(/\s*,\s*|\s+(?:y|and)\s+/i)
+  .map((tag) => tag.trim())
+  .filter(Boolean)
+  .join(', ')
+  .toLowerCase();
 
 // Simplified per-type sizing with larger album vs single difference
 type Kind = 'album' | 'single' | 'audiovisual';
@@ -78,9 +83,7 @@ const { padY, imgWidth, textWidthMobile, baseHeight, imgHeight, imgScale, imgHov
       <h2 class="font-medium text-lg leading-tight transition-all group-hover/card:line-through">{title}</h2>
       {year && <p class="opacity-60 text-sm mt-1">{year}</p>}
     </div>
-    <div class="opacity-70 mb-1">
-      <Markdown of={description} />
-    </div>
+    <p class="opacity-70 mb-1 lowercase">{descriptionText}</p>
     {socio && (
       <p class="opacity-50 text-sm sm:absolute inset-x-0 bottom-0">
         {t.labels.with}: {socio}
