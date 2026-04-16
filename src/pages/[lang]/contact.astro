@@ -18,16 +18,18 @@ const contactPageContent = getContactPageContent(lang);
 ---
 
 <Layout seo={contactPageContent.seo} lang={lang}>
-  <section class="mt-10 max-w-2xl mx-auto px-6">
-    <h1 class="font-bold text-3xl mb-1">{t.headings.contact}</h1>
-    <p class="opacity-60 mb-10">{contactPageContent.subtitle}</p>
+  <section class="page pt-10">
+    <div class="page-header">
+      <h1 class="page-title">{t.headings.contact}</h1>
+      <p class="muted mt-4">{contactPageContent.subtitle}</p>
+    </div>
   </section>
-  <section class="place-content-center max-w-2xl mx-auto px-6 sm:gap-10">
+  <section class="page">
     <MailForm lang={lang}/>
   </section>
-  <section class="mt-10 max-w-2xl mx-auto px-6">
-    <p class="opacity-60 mb-6">{t.headings.my_networks}</p>
-    <ul class="mx-auto max-w-xl flex flex-wrap items-center justify-center sm:justify-between gap-x-6 gap-y-2">
+  <section class="page mt-12">
+    <p class="muted mb-5">{t.headings.my_networks}</p>
+    <ul class="flex flex-wrap gap-x-5 gap-y-3">
       {
         contactPageContent.links.map((link: any) => (
           <li>

@@ -381,7 +381,7 @@ export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
       url: "https://github.com/inagoy/chq.to/",
     }, */
     {
-      title: "drumsep ⭐",
+      title: "drumsep",
       description: "implementación del primer modelo de separación de baterías con deep learning a partir del entrenamiento de 'hybrid demucs'.",
       image: "/drumsep.png",
       year: "2022",

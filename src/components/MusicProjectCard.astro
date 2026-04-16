@@ -13,82 +13,34 @@ const descriptionText = description
   .filter(Boolean)
   .join(', ')
   .toLowerCase();
-
-// Simplified per-type sizing with larger album vs single difference
-type Kind = 'album' | 'single' | 'audiovisual';
-const kind: Kind = (type ?? 'single') as Kind;
-const SIZES: Record<Kind, {
-  padY: string;
-  imgWidth: string; // includes base + sm widths
-  textWidthMobile: string; // phone width for text block
-  baseHeight: string;
-  imgHeight: string;
-  imgScale: string;
-  imgHoverScale: string;
-}> = {
-  album: {
-    padY: 'py-10 sm:py-6',
-    imgWidth: 'w-full sm:w-80',
-    textWidthMobile: 'w-full',
-    baseHeight: 'h-[300px]',
-    imgHeight: 'sm:h-[220px]',
-    imgScale: 'scale-[1.08]',
-    imgHoverScale: 'group-hover/card:scale-[1.16]',
-  },
-  audiovisual: {
-    padY: 'py-8 sm:py-5',
-    imgWidth: 'w-3/4 sm:w-64',
-    textWidthMobile: 'w-3/4',
-    baseHeight: 'h-[160px]',
-    imgHeight: 'sm:h-[170px]',
-    imgScale: 'scale-[1.18]',
-    imgHoverScale: 'group-hover/card:scale-[1.3]',
-  },
-  single: {
-    padY: 'py-6 sm:py-4',
-    imgWidth: 'w-3/4 sm:w-48',
-    textWidthMobile: 'w-3/4',
-    baseHeight: 'h-[110px]',
-    imgHeight: 'sm:h-[120px]',
-    imgScale: 'scale-[1.26]',
-    imgHoverScale: 'group-hover/card:scale-[1.36]',
-  },
-};
-const { padY, imgWidth, textWidthMobile, baseHeight, imgHeight, imgScale, imgHoverScale } = SIZES[kind];
 ---
 
 <a
   href={url}
   target="_blank"
-  class={`group/card flex flex-col sm:flex-row gap-6 ${padY}`}
+  rel="noopener noreferrer"
+  class="project-row group/card"
 >
-  <div class={`relative bg-gray-700 rounded-sm ${imgWidth} shrink-0 overflow-hidden ${baseHeight} ${imgHeight} mx-auto sm:mx-0`}>
+  <div class="aspect-square overflow-hidden bg-[var(--soft)]">
     <Image
       width={1920}
       height={1080}
       src={image}
       alt={title}
-      class={`w-full h-full object-cover object-center rounded-sm transform-gpu will-change-transform transition-transform duration-500 ease-out ${imgScale} ${imgHoverScale}`}
+      class="h-full w-full object-cover opacity-80 transition duration-300 group-hover/card:scale-[1.03] group-hover/card:opacity-100"
     />
-    {type && (
-      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <span class="text-[10px] tracking-wider px-2 py-0.5 rounded-sm border border-white/40 text-white/90 bg-black/30 backdrop-blur-sm">
-          {t.labels.types?.[type] ?? type}
-        </span>
-      </div>
-    )}
   </div>
-  <div class={`relative sm:flex-1 min-w-0 text-left ${textWidthMobile} mx-auto sm:mx-0`}>
-    <div class="mb-2">
-      <h2 class="font-medium text-lg leading-tight transition-all group-hover/card:line-through">{title}</h2>
-      {year && <p class="opacity-60 text-sm mt-1">{year}</p>}
+  <div class="min-w-0">
+    <div class="flex items-start justify-between gap-4">
+      <h2 class="font-medium leading-tight transition-all group-hover/card:line-through">{title}</h2>
+      {year && <p class="muted shrink-0 text-sm">{year}</p>}
     </div>
-    <p class="opacity-70 mb-1 lowercase">{descriptionText}</p>
+    <p class="muted mt-2">{descriptionText}</p>
     {socio && (
-      <p class="opacity-50 text-sm sm:absolute inset-x-0 bottom-0">
+      <p class="muted mt-3 text-sm">
         {t.labels.with}: {socio}
       </p>
     )}
-    
+    {type && <p class="muted mt-3 text-xs">{t.labels.types?.[type] ?? type}</p>}
   </div>
 </a>

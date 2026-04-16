@@ -22,43 +22,127 @@ function withLangPath(u: URL, lang: string): string {
 }
 const esHref = withLangPath(url, 'es');
 const enHref = withLangPath(url, 'en');
-const isHome = url.pathname === `/${pageLang}/` || url.pathname === `/${pageLang}`;
 
 ---
 
 <style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-  
-    html {
-      font-family:  "JetBrains Mono", monospace;
-      background: #231208;
-      overflow-y: scroll;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-  
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-      color: white;
-    }
-  
+  @font-face {
+    font-family: "Inter";
+    src: url("/fonts/InterVariable.woff2") format("woff2");
+    font-weight: 100 900;
+    font-display: swap;
+  }
 
-    body {
-        overflow-y: auto;
-        padding-right: calc(100vw - 100%);
-        margin: 0;
-        box-sizing: border-box;
+  :root {
+    --bg: #1a0c0d;
+    --text: #f5f1e8;
+    --muted: rgba(245, 241, 232, 0.58);
+    --line: rgba(245, 241, 232, 0.14);
+    --soft: rgba(245, 241, 232, 0.06);
+  }
+
+  html {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, sans-serif;
+    overflow-y: scroll;
+  }
+
+  * {
+    box-sizing: border-box;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-height: 100vh;
+    padding-right: calc(100vw - 100%);
+    text-transform: lowercase;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .page {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .page-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 7vw, 4.25rem);
+    font-weight: 520;
+    line-height: 0.95;
+  }
+
+  .muted {
+    color: var(--muted);
+  }
+
+  .text-link {
+    color: var(--muted);
+    transition: color 180ms ease, text-decoration-color 180ms ease;
+  }
+
+  .text-link:hover,
+  .text-link:focus-visible {
+    color: var(--text);
+    text-decoration: line-through;
+    outline: none;
+  }
+
+  .project-row {
+    display: grid;
+    gap: 1rem;
+    border-top: 1px solid var(--line);
+    padding: 1.5rem 0;
+  }
+
+  @media (min-width: 640px) {
+    .project-row {
+      grid-template-columns: 8rem 1fr;
     }
-  
-    .hover-underline {
-      text-decoration: underline 1px rgba(0, 0, 0, 0);
-      text-underline-offset: 5px;
-      transition: text-decoration-color 300ms;
-    }
+  }
+
+  .field {
+    width: 100%;
+    border: 1px solid var(--line);
+    background: transparent;
+    padding: 0.85rem 1rem;
+    color: var(--text);
+    outline: none;
+  }
+
+  .field::placeholder {
+    color: var(--muted);
+  }
+
+  .field:focus {
+    border-color: var(--text);
+  }
+
+  .button {
+    border: 1px solid var(--line);
+    background: transparent;
+    padding: 0.85rem 1.1rem;
+    color: var(--muted);
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+
+  .button:hover,
+  .button:focus-visible {
+    border-color: var(--text);
+    color: var(--text);
+    text-decoration: line-through;
+    outline: none;
+  }
 </style>
 
 <html lang={pageLang}>
@@ -77,23 +161,24 @@ const isHome = url.pathname === `/${pageLang}/` || url.pathname === `/${pageLang
   <body>
     <header>
       <div
-        class="absolute inset-x-0 px-6 my-5 max-w-2xl mx-auto flex items-center justify-between"
+        class="page flex items-center justify-between py-8"
       >
-        <a href={`/${pageLang}/`}>
+        <a href={`/${pageLang}/`} class="text-link text-sm">
           <img
             src={identity.logo}
             alt={"Logo"}
-            width="200" height="125"
-            class="object-cover"
+            width="46"
+            height="46"
+            class="block opacity-90"
           />
         </a>
-        <nav class="ml-auto mr-6 sm:m-0 flex items-center gap-4">
-          <ul class="hidden sm:flex sm:items-center sm:gap-2 text-sm">
+        <nav class="ml-auto flex items-center gap-5 text-sm">
+          <ul class="hidden sm:flex sm:items-center sm:gap-5">
             {
               navBarLinks.map((link) => (
                 <li>
                   <a
-                    class={`group px-4 py-2 rounded-lg opacity-100 hover:opacity-80 hover:line-through transition-all whitespace-nowrap ${currentUrl === link.url ? 'line-through' : ''}`}
+                    class={`text-link whitespace-nowrap ${currentUrl === link.url ? 'text-[var(--text)] line-through' : ''}`}
                     href={link.url}
                     target={link.external ? "_blank" : "_self"}
                   >
@@ -106,19 +191,19 @@ const isHome = url.pathname === `/${pageLang}/` || url.pathname === `/${pageLang
           <div class="relative sm:hidden">
             <button
               id="link-menu-button"
-              class="relative font-medium opacity-60 p-4 inline-flex items-center gap-1 whitespace-nowrap"
+              class="text-link inline-flex items-center gap-1 whitespace-nowrap"
               >menu <span id="open-indicator">+</span></button
             >
             <div
               id="link-menu"
-              class="absolute p-2 right-0 bg-orange-900 bg-opacity-95 rounded-md w-44 transition-opacity ease-in-out duration-300 opacity-0 z-40 "
+              class="pointer-events-none absolute right-0 top-8 z-40 w-44 border border-[var(--line)] bg-[var(--bg)] p-3 opacity-0 transition-opacity duration-200"
             >
               <ul>
                 {
                   navBarLinks.map((link) => (
                     <li>
                       <a
-                        class={`block pl-4 py-3 whitespace-nowrap ${currentUrl === link.url ? 'line-through' : ''}`}
+                        class={`text-link block py-2 whitespace-nowrap ${currentUrl === link.url ? 'text-[var(--text)] line-through' : ''}`}
                         href={link.url}
                         target={link.external ? "_blank" : "_self"}
                       >
@@ -134,7 +219,7 @@ const isHome = url.pathname === `/${pageLang}/` || url.pathname === `/${pageLang
         </nav>
       </div>
     </header>
-    <main class={`mb-32 ${isHome ? 'pt-40' : 'pt-24'}`}>
+    <main class="pb-28">
       <slot />
     </main>
     <footer></footer>

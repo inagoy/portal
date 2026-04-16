@@ -4,7 +4,6 @@ interface Props { lang?: Lang }
 const pageLang = normalizeLang(Astro.props.lang as string | undefined);
 const t = getStrings(pageLang);
 ---
-<!-- // Styling Requires Tailwind CSS -->
 <form
   action="https://api.web3forms.com/submit"
   method="POST"
@@ -19,7 +18,7 @@ const t = getStrings(pageLang);
   <input type="hidden" name="access_key" value="be4c95cc-555d-48ba-a27c-68d9bd34f384" />
   <!-- Set Web3Forms email subject -->
   <input type="hidden" name="subject" value="NEW MESSAGE AT WEB" />
-  <div class="rounded-sm p-5">
+  <div>
     <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
     <div class="grid grid-cols-1 gap-4">
       <div>
@@ -30,9 +29,9 @@ const t = getStrings(pageLang);
           placeholder={t.form.name_placeholder}
           required
           name="name"
-          class="w-full px-4 py-3 rounded-sm bg-white/5 text-white placeholder:text-white/40 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/60 transition"
+          class="field"
         />
-        <div class="empty-feedback invalid-feedback text-red-400 text-xs mt-1">
+        <div class="empty-feedback invalid-feedback mt-2 text-xs text-red-300">
           {t.form.name_required}
         </div>
       </div>
@@ -44,12 +43,12 @@ const t = getStrings(pageLang);
           placeholder={t.form.email_placeholder}
           name="email"
           required
-          class="w-full px-4 py-3 rounded-sm bg-white/5 text-white placeholder:text-white/40 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/60 transition"
+          class="field"
         />
-        <div class="empty-feedback text-red-400 text-xs mt-1">
+        <div class="empty-feedback mt-2 text-xs text-red-300">
           {t.form.email_required}
         </div>
-        <div class="invalid-feedback text-red-400 text-xs mt-1">
+        <div class="invalid-feedback mt-2 text-xs text-red-300">
           {t.form.email_invalid}
         </div>
       </div>
@@ -60,20 +59,20 @@ const t = getStrings(pageLang);
           name="message"
           required
           placeholder={t.form.message_placeholder}
-          class="w-full px-4 py-3 rounded-sm bg-white/5 text-white placeholder:text-white/40 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/60 transition h-36"
+          class="field h-36 resize-none"
         ></textarea>
-        <div class="empty-feedback invalid-feedback text-red-400 text-xs mt-1">
+        <div class="empty-feedback invalid-feedback mt-2 text-xs text-red-300">
           {t.form.message_required}
         </div>
       </div>
     </div>
     <button
-      class="flex mx-auto mt-4 px-5 py-3 opacity-100 rounded-sm border border-white/10 hover:opacity-80 transition-opacity hover:line-through focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+      class="button mt-4"
       type="submit"
     >
       {t.form.send_button}
     </button>
-    <div id="result" class="mt-3 text-center text-sm opacity-70"></div>
+    <div id="result" class="muted mt-3 text-sm"></div>
   </div>
 </form>
 

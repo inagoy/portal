@@ -3,12 +3,12 @@ import type { SocialLink } from "../types/config";
 
 type Props = SocialLink;
 
-const { title, url, icon, external } = Astro.props;
+const { title, url, external } = Astro.props;
 ---
 
 <a
   href={url}
-  class="opacity-100 hover:opacity-80 hover:line-through transition-opacity"
+  class="text-link"
   target={external ? "_blank" : "_self"}
   rel={external ? "noopener noreferrer" : undefined}
 >
