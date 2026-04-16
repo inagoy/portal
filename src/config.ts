@@ -49,12 +49,12 @@ export const socialLinks: SocialLink[] = [
     icon: "mdi:instagram",
     external: true, 
   },
-  {
+/*   {
     title: "linkedin",
     url: "https://www.linkedin.com/in/i%C3%B1aki-goyeneche-49809624a/",
     icon: "mdi:linkedin",
     external: true,
-  },
+  }, */
   {
     title: "github",
     url: "https://github.com/inagoy",

@@ -41,7 +41,7 @@ const universitySectionTitle =
     : "some university development projects (not in production)";
 const universitySectionSubtitle =
   lang === "es" ? "solo links a repositorios de github" : "repository links only (github)";
-const githubLabel = lang === "es" ? "mas proyectos en" : "more projects on";
+const moreProjectsLabel = lang === "es" ? "mas proyectos en" : "more projects at";
 const githubLink = contactContent.links.find((link) => link.title === "github");
 
 const sections = [
@@ -163,7 +163,7 @@ const universityRepoProjects = [
   </section>
   <section class="page mt-12">
     <div class="flex items-center gap-4">
-      <h2 class="muted">{githubLabel}</h2>
+      <h2 class="muted">{moreProjectsLabel}</h2>
       {
         githubLink && (
           <SocialLink

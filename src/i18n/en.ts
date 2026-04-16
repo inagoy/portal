@@ -13,7 +13,7 @@ export const en = {
     music_portfolio: 'music | audio portfolio',
     programming_portfolio: 'audio development portfolio',
     contact: 'contact',
-    more_projects_on: 'more projects on',
+    more_projects_on: 'more projects at',
     my_networks: 'my socials',
   },
   home: {

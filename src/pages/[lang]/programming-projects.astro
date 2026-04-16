@@ -16,6 +16,7 @@ const lang = normalizeLang(Astro.params.lang as string);
 const t = getStrings(lang);
 const programmingProjectsPageContent = getProgrammingProjectsPageContent(lang);
 const contactContent = getContactPageContent(lang);
+const githubLink = contactContent.links.find((link) => link.title === "github");
 ---
 
 <Layout seo={programmingProjectsPageContent.seo} lang={lang}>
@@ -35,12 +36,16 @@ const contactContent = getContactPageContent(lang);
   <section class="page mt-12">
     <div class="flex items-center gap-4">
       <h2 class="muted">{t.headings.more_projects_on}</h2>
-      <SocialLink
-        title={contactContent.links[2].title}
-        url={contactContent.links[2].url}
-        icon={contactContent.links[2].icon}
-        external={contactContent.links[2].external}
-      />
+      {
+        githubLink && (
+          <SocialLink
+            title={githubLink.title}
+            url={githubLink.url}
+            icon={githubLink.icon}
+            external={githubLink.external}
+          />
+        )
+      }
     </div>
   </section>
 </Layout>
