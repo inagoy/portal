@@ -2,7 +2,7 @@ export const en = {
   lang: 'en',
   nav: {
     music: 'music | audio',
-    programming: 'programming',
+    programming: 'audio dev',
     contact: 'contact',
   },
   onlyfans: {
@@ -22,7 +22,7 @@ export const en = {
       'I move between making music and learning/developing audio tools.',
     links: {
       music: 'audio portfolio',
-      programming: 'programming portfolio',
+      programming: 'audio dev portfolio',
     },
     seo: {
       title: 'iñaki goyeneche',
@@ -46,7 +46,7 @@ export const en = {
   programming: {
     subtitle: 'some projects I worked on',
     seo: {
-      title: 'audio programming | iñaki goyeneche',
+      title: 'audio dev | iñaki goyeneche',
       description: 'some projects building audio tools',
     },
   },

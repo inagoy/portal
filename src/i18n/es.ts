@@ -2,7 +2,7 @@ export const es = {
   lang: 'es',
   nav: {
     music: 'música | audio',
-    programming: 'programación',
+    programming: 'audio dev',
     contact: 'contacto',
   },
   onlyfans: {
@@ -11,7 +11,7 @@ export const es = {
   },
   headings: {
     music_portfolio: 'portfolio música | audio',
-    programming_portfolio: 'portfolio desarrollo para audio',
+    programming_portfolio: 'portfolio audio dev',
     contact: 'contacto',
     more_projects_on: 'más proyectos en',
     my_networks: 'mis redes',
@@ -22,7 +22,7 @@ export const es = {
       'siempre estoy dando vueltas entre el hacer musical y el aprendizaje y desarrollo de herramientas de audio',
     links: {
       music: 'portfolio de audio',
-      programming: 'portfolio de programación',
+      programming: 'portfolio audio dev',
     },
     seo: {
       title: 'iñaki goyeneche',
@@ -46,8 +46,8 @@ export const es = {
   programming: {
     subtitle: 'algunos proyectos en los que trabajé',
     seo: {
-      title: 'programación de audio | iñaki goyeneche',
-      description: 'algunos proyectos de programación de herramientas de audio',
+      title: 'audio dev | iñaki goyeneche',
+      description: 'algunos proyectos de desarrollo de herramientas de audio',
     },
   },
   form: {

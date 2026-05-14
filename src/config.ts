@@ -21,7 +21,7 @@ export const navBarLinks: NavBarLink[] = [
     url: "/music-projects",
   },
   {
-    title: "programación",
+    title: "audio dev",
     url: "/programming-projects",
   },
   {
@@ -101,7 +101,7 @@ export const homePageContent: HomePageContent = {
       url: "/music-projects/",
     },
     {
-      title: "portfolio de programación",
+      title: "portfolio audio dev",
       url: "/programming-projects/",
     },
   ],
@@ -339,8 +339,8 @@ export function getMusicProjectsPageContent(lang?: string): MusicProjectPageCont
 // Projects (/programming-projects)
 export const programmingProjectsPageContent: ProgrammingProjectPageContent = {
   seo: {
-    title: "programación de audio | iñaki goyeneche",
-    description: "algunos proyectos de programación de herramientas de audio",
+    title: "audio dev | iñaki goyeneche",
+    description: "algunos proyectos de desarrollo de herramientas de audio",
     image: identity.logo,
   },
   subtitle: "algunos proyectos en los que trabajé",
