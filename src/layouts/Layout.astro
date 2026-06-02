@@ -42,7 +42,7 @@ const enHref = withLangPath(url, 'en');
   }
 
   html {
-    background: var(--bg);
+    background-color: var(--bg);
     color: var(--text);
     font-family: "Inter", system-ui, sans-serif;
     font-size: 15px;
@@ -60,9 +60,25 @@ const enHref = withLangPath(url, 'en');
   }
 
   body {
+    position: relative;
+    isolation: isolate;
     min-height: 100vh;
     padding-right: calc(100vw - 100%);
     text-transform: lowercase;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url("/textures/film-grain-1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    mix-blend-mode: soft-light;
+    opacity: 0.2;
+    pointer-events: none;
   }
 
   a {
@@ -201,7 +217,7 @@ const enHref = withLangPath(url, 'en');
             alt={"Logo"}
             width="46"
             height="46"
-            class="block h-10 w-10 opacity-90 sm:h-[46px] sm:w-[46px]"
+            class="block h-10 w-auto opacity-90 sm:h-[46px]"
           />
         </a>
         <nav class="ml-auto flex items-center gap-3 text-[0.8125rem] sm:gap-5 sm:text-sm">
