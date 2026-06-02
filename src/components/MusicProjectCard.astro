@@ -4,43 +4,314 @@ import type { Project } from "../types/config";
 import { getStrings, normalizeLang, type Lang } from "../i18n";
 
 type Props = Project & { lang?: Lang };
+type InlineMedia = {
+  platform: "spotify" | "youtube";
+  embedUrl: string;
+  frameTitle: string;
+  height?: number;
+};
 
 const { title, description, image, year, url, socio, lang, type } = Astro.props as Props;
-const t = getStrings(normalizeLang(lang));
+const currentLang = normalizeLang(lang);
+const t = getStrings(currentLang);
+const frameTitles =
+  currentLang === "es"
+    ? {
+        spotify: "reproductor de spotify",
+        youtube: "reproductor de youtube",
+      }
+    : {
+        spotify: "spotify player",
+        youtube: "youtube player",
+      };
+
+function getInlineMedia(projectUrl: string): InlineMedia | null {
+  try {
+    const parsedUrl = new URL(projectUrl);
+    const hostname = parsedUrl.hostname.replace(/^www\./, "");
+
+    if (hostname === "open.spotify.com") {
+      const segments = parsedUrl.pathname.split("/").filter(Boolean);
+      const mediaIndex = segments.findIndex((segment) =>
+        ["album", "track", "playlist", "episode", "show"].includes(segment),
+      );
+      const mediaType = segments[mediaIndex];
+      const mediaId = segments[mediaIndex + 1];
+
+      if (mediaType && mediaId) {
+        return {
+          platform: "spotify",
+          embedUrl: `https://open.spotify.com/embed/${mediaType}/${mediaId}?utm_source=generator&theme=0`,
+          frameTitle: frameTitles.spotify,
+          height: mediaType === "track" || mediaType === "episode" ? 152 : 352,
+        };
+      }
+    }
+
+    if (hostname === "youtube.com" || hostname === "m.youtube.com") {
+      const videoId = parsedUrl.searchParams.get("v");
+
+      if (videoId) {
+        return {
+          platform: "youtube",
+          embedUrl: `https://www.youtube-nocookie.com/embed/${videoId}?rel=0`,
+          frameTitle: frameTitles.youtube,
+        };
+      }
+    }
+
+    if (hostname === "youtu.be") {
+      const videoId = parsedUrl.pathname.split("/").filter(Boolean)[0];
+
+      if (videoId) {
+        return {
+          platform: "youtube",
+          embedUrl: `https://www.youtube-nocookie.com/embed/${videoId}?rel=0`,
+          frameTitle: frameTitles.youtube,
+        };
+      }
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
+const inlineMedia = getInlineMedia(url);
 const descriptionText = description
   .split(/\s*,\s*|\s+(?:y|and)\s+/i)
   .map((tag) => tag.trim())
   .filter(Boolean)
-  .join(', ')
+  .join(", ")
   .toLowerCase();
 ---
 
-<a
-  href={url}
-  target="_blank"
-  rel="noopener noreferrer"
-  class="project-row group/card"
->
-  <div class="aspect-[5/4] overflow-hidden bg-[var(--soft)] sm:aspect-square">
-    <Image
-      width={1920}
-      height={1080}
-      src={image}
-      alt={title}
-      class="h-full w-full object-cover opacity-80 transition duration-300 group-hover/card:scale-[1.03] group-hover/card:opacity-100"
-    />
-  </div>
-  <div class="min-w-0">
-    <div class="flex items-start justify-between gap-3 sm:gap-4">
-      <h2 class="text-[0.98rem] font-medium leading-tight transition-all group-hover/card:line-through sm:text-base">{title}</h2>
-      {year && <p class="muted shrink-0 text-xs sm:text-sm">{year}</p>}
-    </div>
-    <p class="muted mt-1.5 text-sm sm:mt-2 sm:text-base">{descriptionText}</p>
-    {socio && (
-      <p class="muted mt-2.5 text-xs sm:mt-3 sm:text-sm">
-        {t.labels.with}: {socio}
-      </p>
-    )}
-    {type && <p class="muted mt-3 text-xs">{t.labels.types?.[type] ?? type}</p>}
-  </div>
-</a>
+{
+  inlineMedia ? (
+    <details class="group/card border-t border-[var(--line)] py-4 sm:py-6">
+      <summary class="music-card-summary grid cursor-pointer gap-[0.85rem] sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-4">
+        <div class="music-card-cover aspect-[5/4] overflow-hidden bg-[var(--soft)] sm:aspect-square">
+          <Image
+            width={1920}
+            height={1080}
+            src={image}
+            alt={title}
+            class="h-full w-full object-cover opacity-80 transition duration-300 group-hover/card:scale-[1.03] group-hover/card:opacity-100 group-open/card:opacity-100"
+          />
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-start justify-between gap-3 sm:gap-4">
+            <h2 class="text-[0.98rem] font-medium leading-tight sm:text-base">
+              {title}
+            </h2>
+            {year && <p class="muted shrink-0 text-xs sm:text-sm">{year}</p>}
+          </div>
+          <p class="muted mt-1.5 text-sm sm:mt-2 sm:text-base">{descriptionText}</p>
+          {socio && (
+            <p class="music-card-extra muted mt-2.5 text-xs sm:mt-3 sm:text-sm">
+              {t.labels.with}: {socio}
+            </p>
+          )}
+          {type && (
+            <p class="music-card-extra muted mt-2 text-xs sm:text-sm">
+              {t.labels.types?.[type] ?? type}
+            </p>
+          )}
+        </div>
+      </summary>
+      <div class="mt-3 flex w-full justify-center">
+        <div class="w-full">
+          {
+            inlineMedia.platform === "youtube" ? (
+              <div class="player-shell aspect-video overflow-hidden" data-player-shell>
+                <div class="player-loading" aria-hidden="true">
+                  <span class="player-dots"></span>
+                </div>
+                <iframe
+                  class="h-full w-full"
+                  data-player-frame
+                  src={inlineMedia.embedUrl}
+                  title={`${title} | ${inlineMedia.frameTitle}`}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            ) : (
+              <div class="player-shell overflow-hidden" data-player-shell>
+                <div class="player-loading" aria-hidden="true">
+                  <span class="player-dots"></span>
+                </div>
+                <iframe
+                  class="block w-full overflow-hidden"
+                  data-player-frame
+                  src={inlineMedia.embedUrl}
+                  title={`${title} | ${inlineMedia.frameTitle}`}
+                  loading="lazy"
+                  width="100%"
+                  height={inlineMedia.height}
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                ></iframe>
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </details>
+  ) : (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="project-row group/card"
+    >
+      <div class="aspect-[5/4] overflow-hidden bg-[var(--soft)] sm:aspect-square">
+        <Image
+          width={1920}
+          height={1080}
+          src={image}
+          alt={title}
+          class="h-full w-full object-cover opacity-80 transition duration-300 group-hover/card:scale-[1.03] group-hover/card:opacity-100"
+        />
+      </div>
+      <div class="min-w-0">
+        <div class="flex items-start justify-between gap-3 sm:gap-4">
+          <h2 class="text-[0.98rem] font-medium leading-tight sm:text-base">
+            {title}
+          </h2>
+          {year && <p class="muted shrink-0 text-xs sm:text-sm">{year}</p>}
+        </div>
+        <p class="muted mt-1.5 text-sm sm:mt-2 sm:text-base">{descriptionText}</p>
+        {socio && (
+          <p class="music-card-extra muted mt-2.5 text-xs sm:mt-3 sm:text-sm">
+            {t.labels.with}: {socio}
+          </p>
+        )}
+        {type && (
+          <p class="music-card-extra muted mt-2 text-xs sm:text-sm">
+            {t.labels.types?.[type] ?? type}
+          </p>
+        )}
+      </div>
+    </a>
+  )
+}
+
+<style>
+  details > summary {
+    list-style: none;
+  }
+
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[open] .music-card-summary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  details[open] .music-card-cover {
+    display: none;
+  }
+
+  details[open] .music-card-extra {
+    display: none;
+  }
+
+  .player-shell {
+    position: relative;
+  }
+
+  .player-shell iframe {
+    opacity: 0;
+    transition: opacity 180ms ease;
+  }
+
+  .player-loading {
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    padding-top: 0.6rem;
+    color: var(--muted);
+    pointer-events: none;
+    transition: opacity 180ms ease;
+  }
+
+  .player-dots::after {
+    content: ".";
+    font-size: 1.15rem;
+    letter-spacing: 0.18em;
+    animation: player-dots 1s steps(1, end) infinite;
+  }
+
+  .player-shell[data-loaded="true"] iframe {
+    opacity: 1;
+  }
+
+  .player-shell[data-loaded="true"] .player-loading {
+    opacity: 0;
+  }
+
+  @keyframes player-dots {
+    0%,
+    24% {
+      content: ".";
+    }
+
+    25%,
+    49% {
+      content: "..";
+    }
+
+    50%,
+    74% {
+      content: "...";
+    }
+
+    75%,
+    100% {
+      content: ".";
+    }
+  }
+</style>
+
+<script is:inline>
+  if (!window.__musicPlayerLoaderInit) {
+    window.__musicPlayerLoaderInit = true;
+
+    const bindMusicPlayerLoaders = () => {
+      document.querySelectorAll("[data-player-shell]").forEach((shell) => {
+        if (!(shell instanceof HTMLElement) || shell.dataset.bound === "true") {
+          return;
+        }
+
+        shell.dataset.bound = "true";
+        const frame = shell.querySelector("[data-player-frame]");
+
+        if (!(frame instanceof HTMLIFrameElement)) {
+          shell.dataset.loaded = "true";
+          return;
+        }
+
+        frame.addEventListener(
+          "load",
+          () => {
+            shell.dataset.loaded = "true";
+          },
+          { once: true },
+        );
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", bindMusicPlayerLoaders, { once: true });
+    } else {
+      bindMusicPlayerLoaders();
+    }
+  }
+</script>
