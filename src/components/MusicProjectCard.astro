@@ -311,7 +311,7 @@ const descriptionText = description
   if (!window.__musicPlayerLoaderInit) {
     window.__musicPlayerLoaderInit = true;
 
-    const bindMusicPlayerLoaders = () => {
+    const bindMusicPlayerInteractions = () => {
       document.querySelectorAll("[data-player-shell]").forEach((shell) => {
         if (!(shell instanceof HTMLElement) || shell.dataset.bound === "true") {
           return;
@@ -333,12 +333,31 @@ const descriptionText = description
           { once: true },
         );
       });
+
+      document.querySelectorAll("details.music-card").forEach((card) => {
+        if (!(card instanceof HTMLDetailsElement) || card.dataset.toggleBound === "true") {
+          return;
+        }
+
+        card.dataset.toggleBound = "true";
+        card.addEventListener("toggle", () => {
+          if (!card.open) {
+            return;
+          }
+
+          document.querySelectorAll("details.music-card[open]").forEach((openCard) => {
+            if (openCard instanceof HTMLDetailsElement && openCard !== card) {
+              openCard.open = false;
+            }
+          });
+        });
+      });
     };
 
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", bindMusicPlayerLoaders, { once: true });
+      document.addEventListener("DOMContentLoaded", bindMusicPlayerInteractions, { once: true });
     } else {
-      bindMusicPlayerLoaders();
+      bindMusicPlayerInteractions();
     }
   }
 </script>
