@@ -89,7 +89,8 @@ const descriptionText = description
 
 {
   inlineMedia ? (
-    <details class="group/card border-t border-[var(--line)] py-4 sm:py-6">
+    <details class="music-card group/card border-t border-[var(--line)] py-4 sm:py-6">
+      <div class="music-card-overlay" aria-hidden="true"></div>
       <summary class="music-card-summary grid cursor-pointer gap-[0.85rem] sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-4">
         <div class="music-card-cover aspect-[5/4] overflow-hidden bg-[var(--soft)] sm:aspect-square">
           <Image
@@ -120,7 +121,7 @@ const descriptionText = description
           )}
         </div>
       </summary>
-      <div class="mt-3 flex w-full justify-center">
+      <div class="music-card-player mt-3 flex w-full justify-center">
         <div class="w-full">
           {
             inlineMedia.platform === "youtube" ? (
@@ -206,6 +207,32 @@ const descriptionText = description
 
   details > summary::-webkit-details-marker {
     display: none;
+  }
+
+  .music-card {
+    position: relative;
+  }
+
+  .music-card-overlay {
+    display: none;
+  }
+
+  details[open].music-card {
+    z-index: 20;
+  }
+
+  details[open].music-card .music-card-overlay {
+    position: fixed;
+    inset: 0;
+    display: block;
+    background: rgba(10, 6, 6, 0.68);
+    pointer-events: none;
+  }
+
+  .music-card-summary,
+  .music-card-player {
+    position: relative;
+    z-index: 1;
   }
 
   details[open] .music-card-summary {
