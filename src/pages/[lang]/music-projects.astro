@@ -17,10 +17,10 @@ const musicProjectsPageContent = getMusicProjectsPageContent(lang);
 ---
 
 <Layout seo={musicProjectsPageContent.seo} lang={lang}>
-  <section class="page pt-10">
+  <section class="page pt-8 sm:pt-10">
     <div class="page-header">
       <h1 class="page-title">{t.headings.music_portfolio}</h1>
-      <p class="muted mt-4">{musicProjectsPageContent.subtitle}</p>
+      <p class="muted mt-3 text-sm sm:mt-4 sm:text-base">{musicProjectsPageContent.subtitle}</p>
     </div>
     <div class="grid grid-cols-1">
       {

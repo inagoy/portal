@@ -119,15 +119,15 @@ const universityRepoProjects = [
 ---
 
 <Layout seo={seo} lang={lang}>
-  <section class="page pt-10">
+  <section class="page pt-8 sm:pt-10">
     <div class="page-header">
       <h1 class="page-title">{heading}</h1>
-      <p class="muted mt-4">{subtitle}</p>
+      <p class="muted mt-3 text-sm sm:mt-4 sm:text-base">{subtitle}</p>
     </div>
     {
       sections.map((section) => (
-        <div class="mb-10">
-          <h2 class="muted mb-3 text-xs">
+        <div class="mb-8 sm:mb-10">
+          <h2 class="muted mb-3 text-[0.7rem] sm:text-xs">
             {lang === "es" ? section.titleEs : section.titleEn}
           </h2>
           <div class="grid grid-cols-1">
@@ -143,9 +143,9 @@ const universityRepoProjects = [
         </div>
       ))
     }
-    <div class="mt-12">
-      <h2 class="text-2xl font-medium leading-tight">{universitySectionTitle}</h2>
-      <p class="muted mt-3 mb-6">{universitySectionSubtitle}</p>
+    <div class="mt-10 sm:mt-12">
+      <h2 class="text-xl font-medium leading-tight sm:text-2xl">{universitySectionTitle}</h2>
+      <p class="muted mt-3 mb-5 text-sm sm:mb-6 sm:text-base">{universitySectionSubtitle}</p>
       <div class="grid grid-cols-1">
         {
           universityRepoProjects.map((project) => (
@@ -161,8 +161,8 @@ const universityRepoProjects = [
       </div>
     </div>
   </section>
-  <section class="page mt-12">
-    <div class="flex items-center gap-4">
+  <section class="page mt-10 sm:mt-12">
+    <div class="flex flex-wrap items-center gap-3 sm:gap-4">
       <h2 class="muted">{moreProjectsLabel}</h2>
       {
         githubLink && (

@@ -3,7 +3,7 @@ import type { Lang } from "../i18n";
 interface Props { lang: Lang; esHref: string; enHref: string }
 const { lang, esHref, enHref } = Astro.props as Props;
 ---
-<div class="flex items-center gap-2 border-l border-[var(--line)] pl-5 text-xs leading-none">
+<div class="flex items-center gap-1.5 border-l border-[var(--line)] pl-3 text-[0.7rem] leading-none sm:gap-2 sm:pl-5 sm:text-xs">
   <a href={esHref}
      class={`text-link ${lang === 'es' ? 'text-[var(--text)] line-through' : ''}`}
      onclick={`try{localStorage.setItem('lang','es')}catch{}`}>es</a>

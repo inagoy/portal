@@ -20,10 +20,10 @@ const githubLink = contactContent.links.find((link) => link.title === "github");
 ---
 
 <Layout seo={programmingProjectsPageContent.seo} lang={lang}>
-  <section class="page pt-10">
+  <section class="page pt-8 sm:pt-10">
     <div class="page-header">
       <h1 class="page-title">{t.headings.programming_portfolio}</h1>
-      <p class="muted mt-4">{programmingProjectsPageContent.subtitle}</p>
+      <p class="muted mt-3 text-sm sm:mt-4 sm:text-base">{programmingProjectsPageContent.subtitle}</p>
     </div>
     <div class="grid grid-cols-1">
       {
@@ -33,8 +33,8 @@ const githubLink = contactContent.links.find((link) => link.title === "github");
       }
     </div>
   </section>
-  <section class="page mt-12">
-    <div class="flex items-center gap-4">
+  <section class="page mt-10 sm:mt-12">
+    <div class="flex flex-wrap items-center gap-3 sm:gap-4">
       <h2 class="muted">{t.headings.more_projects_on}</h2>
       {
         githubLink && (
