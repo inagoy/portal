@@ -132,7 +132,7 @@ const descriptionText = description
                 <iframe
                   class="h-full w-full"
                   data-player-frame
-                  src={inlineMedia.embedUrl}
+                  data-player-src={inlineMedia.embedUrl}
                   title={`${title} | ${inlineMedia.frameTitle}`}
                   loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -148,7 +148,7 @@ const descriptionText = description
                 <iframe
                   class="block w-full overflow-hidden"
                   data-player-frame
-                  src={inlineMedia.embedUrl}
+                  data-player-src={inlineMedia.embedUrl}
                   title={`${title} | ${inlineMedia.frameTitle}`}
                   loading="lazy"
                   width="100%"
@@ -312,6 +312,62 @@ const descriptionText = description
     window.__musicPlayerLoaderInit = true;
 
     const bindMusicPlayerInteractions = () => {
+      const getPlayerFrame = (card) => {
+        const shell = card.querySelector("[data-player-shell]");
+
+        if (!(shell instanceof HTMLElement)) {
+          return null;
+        }
+
+        const frame = shell.querySelector("[data-player-frame]");
+
+        if (!(frame instanceof HTMLIFrameElement)) {
+          shell.dataset.loaded = "true";
+          return null;
+        }
+
+        return { shell, frame };
+      };
+
+      const loadPlayer = (card) => {
+        const player = getPlayerFrame(card);
+
+        if (!player) {
+          return;
+        }
+
+        const { shell, frame } = player;
+        const playerSrc = frame.dataset.playerSrc;
+
+        if (!playerSrc) {
+          shell.dataset.loaded = "true";
+          return;
+        }
+
+        if (frame.getAttribute("src") === playerSrc) {
+          return;
+        }
+
+        shell.dataset.loaded = "false";
+        frame.setAttribute("src", playerSrc);
+      };
+
+      const unloadPlayer = (card) => {
+        const player = getPlayerFrame(card);
+
+        if (!player) {
+          return;
+        }
+
+        const { shell, frame } = player;
+
+        shell.dataset.loaded = "false";
+
+        if (frame.getAttribute("src")) {
+          frame.removeAttribute("src");
+        }
+      };
+
       document.querySelectorAll("[data-player-shell]").forEach((shell) => {
         if (!(shell instanceof HTMLElement) || shell.dataset.bound === "true") {
           return;
@@ -328,9 +384,10 @@ const descriptionText = description
         frame.addEventListener(
           "load",
           () => {
-            shell.dataset.loaded = "true";
+            if (frame.getAttribute("src") === frame.dataset.playerSrc) {
+              shell.dataset.loaded = "true";
+            }
           },
-          { once: true },
         );
       });
 
@@ -340,16 +397,26 @@ const descriptionText = description
         }
 
         card.dataset.toggleBound = "true";
+        if (card.open) {
+          loadPlayer(card);
+        } else {
+          unloadPlayer(card);
+        }
+
         card.addEventListener("toggle", () => {
-          if (!card.open) {
+          if (card.open) {
+            document.querySelectorAll("details.music-card[open]").forEach((openCard) => {
+              if (openCard instanceof HTMLDetailsElement && openCard !== card) {
+                unloadPlayer(openCard);
+                openCard.open = false;
+              }
+            });
+
+            loadPlayer(card);
             return;
           }
 
-          document.querySelectorAll("details.music-card[open]").forEach((openCard) => {
-            if (openCard instanceof HTMLDetailsElement && openCard !== card) {
-              openCard.open = false;
-            }
-          });
+          unloadPlayer(card);
         });
       });
     };
