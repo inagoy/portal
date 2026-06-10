@@ -92,7 +92,7 @@ const descriptionText = description
     <details class="music-card group/card border-t border-[var(--line)] py-4 sm:py-6">
       <div class="music-card-overlay" aria-hidden="true"></div>
       <summary class="music-card-summary grid cursor-pointer gap-[0.85rem] sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-4">
-        <div class="music-card-cover aspect-[5/4] overflow-hidden bg-[var(--soft)] sm:aspect-square">
+        <div class="music-card-cover aspect-square overflow-hidden bg-[var(--soft)]">
           <Image
             width={1920}
             height={1080}
@@ -166,9 +166,9 @@ const descriptionText = description
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      class="project-row group/card"
+      class="project-row media-project-row group/card"
     >
-      <div class="aspect-[5/4] overflow-hidden bg-[var(--soft)] sm:aspect-square">
+      <div class="aspect-square overflow-hidden bg-[var(--soft)]">
         <Image
           width={1920}
           height={1080}
@@ -211,6 +211,11 @@ const descriptionText = description
 
   .music-card {
     position: relative;
+  }
+
+  .music-card-summary {
+    grid-template-columns: clamp(4.5rem, 22vw, 5.5rem) minmax(0, 1fr);
+    align-items: start;
   }
 
   .music-card-overlay {
