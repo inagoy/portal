@@ -213,9 +213,11 @@ const descriptionText = description
     position: relative;
   }
 
-  .music-card-summary {
-    grid-template-columns: clamp(4.5rem, 22vw, 5.5rem) minmax(0, 1fr);
-    align-items: start;
+  @media (max-width: 639px) {
+    .music-card-summary {
+      grid-template-columns: clamp(4.5rem, 22vw, 5.5rem) minmax(0, 1fr);
+      align-items: start;
+    }
   }
 
   .music-card-overlay {
