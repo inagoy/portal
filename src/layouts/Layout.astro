@@ -35,10 +35,13 @@ const enHref = withLangPath(url, 'en');
 
   :root {
     --bg: #251106;
-    --text: #f7ecde;
-    --muted: rgba(247, 236, 222, 0.6);
+    --text: rgba(247, 236, 222, 0.84);
+    --text-strong: rgba(247, 236, 222, 0.94);
+    --muted: rgba(247, 236, 222, 0.54);
     --line: rgba(255, 205, 150, 0.16);
     --soft: rgba(255, 164, 91, 0.08);
+    --media-opacity: 0.78;
+    --media-hover-opacity: 0.9;
   }
 
   html {
@@ -124,9 +127,22 @@ const enHref = withLangPath(url, 'en');
 
   .text-link:hover,
   .text-link:focus-visible {
-    color: var(--text);
+    color: var(--text-strong);
     text-decoration: line-through;
     outline: none;
+  }
+
+  .project-row img,
+  .music-card-cover img {
+    opacity: var(--media-opacity);
+    transition: opacity 300ms ease, transform 300ms ease;
+  }
+
+  .project-row:hover img,
+  .project-row:focus-visible img,
+  .music-card:hover .music-card-cover img,
+  .music-card:focus-within .music-card-cover img {
+    opacity: var(--media-hover-opacity);
   }
 
   .project-row {
@@ -181,7 +197,7 @@ const enHref = withLangPath(url, 'en');
   }
 
   .field:focus {
-    border-color: var(--text);
+    border-color: var(--text-strong);
   }
 
   .button {
@@ -194,8 +210,8 @@ const enHref = withLangPath(url, 'en');
 
   .button:hover,
   .button:focus-visible {
-    border-color: var(--text);
-    color: var(--text);
+    border-color: var(--text-strong);
+    color: var(--text-strong);
     text-decoration: line-through;
     outline: none;
   }
@@ -235,7 +251,7 @@ const enHref = withLangPath(url, 'en');
             alt={"Logo"}
             width="46"
             height="46"
-            class="block h-10 w-auto opacity-90 sm:h-[46px]"
+            class="block h-10 w-auto opacity-[0.74] transition-opacity duration-300 hover:opacity-[0.88] sm:h-[46px]"
           />
         </a>
         <nav class="ml-auto flex items-center gap-3 text-[0.8125rem] sm:gap-5 sm:text-sm">
