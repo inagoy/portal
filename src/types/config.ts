@@ -52,6 +52,8 @@ export type ProjectRole =
   | 'foley'
   | 'soundDesign';
 
+export type ProjectArtistRole = 'interpreter' | 'coWriter';
+
 export type Project = {
   title: string;
   description: string;
@@ -64,6 +66,7 @@ export type Project = {
 
 export type MusicProject = Omit<Project, 'description'> & {
   roles: ProjectRole[];
+  artistRoles?: ProjectArtistRole[];
   description?: string;
 };
 

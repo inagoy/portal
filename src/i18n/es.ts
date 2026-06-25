@@ -80,6 +80,10 @@ export const es = {
       foley: 'foley',
       soundDesign: 'diseño sonoro',
     },
+    artistRoles: {
+      interpreter: 'intérprete',
+      coWriter: 'co-escritor',
+    },
     types: {
       album: 'álbum',
       single: 'single',
