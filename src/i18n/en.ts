@@ -69,6 +69,17 @@ export const en = {
   },
   labels: {
     with: 'with',
+    roles: {
+      production: 'production',
+      coProduction: 'co-production',
+      editing: 'editing',
+      editingAssistant: 'editing assistant',
+      mixing: 'mixing',
+      mixingAssistant: 'mixing assistant',
+      mastering: 'mastering',
+      foley: 'foley',
+      soundDesign: 'sound design',
+    },
     types: {
       album: 'album',
       single: 'single',

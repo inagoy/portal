@@ -41,6 +41,17 @@ export type ContactPageContent = {
   links: SocialLink[];
 };
 
+export type ProjectRole =
+  | 'production'
+  | 'coProduction'
+  | 'editing'
+  | 'editingAssistant'
+  | 'mixing'
+  | 'mixingAssistant'
+  | 'mastering'
+  | 'foley'
+  | 'soundDesign';
+
 export type Project = {
   title: string;
   description: string;
@@ -51,10 +62,15 @@ export type Project = {
   type?: 'album' | 'single' | 'audiovisual';
 };
 
+export type MusicProject = Omit<Project, 'description'> & {
+  roles: ProjectRole[];
+  description?: string;
+};
+
 export type MusicProjectPageContent = {
   seo: SEOInfo;
   subtitle: string;
-  projects: Project[];
+  projects: MusicProject[];
 };
 
 export type ProgrammingProjectPageContent = {

@@ -162,7 +162,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   projects: [
     {
       title: "red bull symphonic | trueno ",
-      description: "asistente en edición y asistente en mezcla",
+      roles: ["editingAssistant", "mixingAssistant"],
       image: "https://i.scdn.co/image/ab67616d00001e02692872973b6ed31153f0d2eb",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/0Krxs5046iOHKuOXSzEQxL?si=Azcx7PFjRR-nbaumiCM8BA",
@@ -171,7 +171,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "fanatico (en vivo) | lali",
-      description: "asistente en edición y asistente en mezcla",
+      roles: ["editingAssistant", "mixingAssistant"],
       image: "https://i.scdn.co/image/ab67616d00001e02f6ed36ac805c4d231e0537f4",
       year: "2025",
       url: "https://open.spotify.com/intl-es/track/7KJVQS5lPJ7WrQ2nTsIcRT?si=7b56b5d0275647a7",
@@ -180,7 +180,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "otro idioma | camila inés",
-      description: "producción y mezcla",
+      roles: ["production", "mixing"],
       image: "https://i.scdn.co/image/ab67616d0000b27343171c055e4e037aaf8d3613",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/3sgRznpNzqUsa0UV8vPYzc",
@@ -189,7 +189,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     }, 
     {
       title: "no ficción ft. iuio (en vivo) | william campbell",
-      description: "edición, mezcla y mastering",
+      roles: ["editing", "mixing", "mastering"],
       image: "https://img.youtube.com/vi/xaK70wtFhzA/hqdefault.jpg",
       year: "2025",
       url: "https://www.youtube.com/watch?v=xaK70wtFhzA",
@@ -197,7 +197,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     }, 
     {
       title: "2064 + polonio | estrugamou",
-      description: "co-producción, mezcla y master",
+      roles: ["coProduction", "mixing", "mastering"],
       image: "https://img.youtube.com/vi/jntOZoAx9fk/hqdefault.jpg",
       year: "2025",
       url: "https://www.youtube.com/watch?v=jntOZoAx9fk",
@@ -206,7 +206,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     }, 
     {
       title: "amuleto | william campbell",
-      description: "co-producción, edición",
+      roles: ["coProduction", "editing"],
       image: "https://i.scdn.co/image/ab67616d00001e02262bef791f1b56d5f3c139ef",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/0hhdU6F6EzirZ1vRdvziLl?si=lJrv_fQcSyqEiOKI-bzktA",
@@ -215,7 +215,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     }, 
     {
       title: "película de acción | william campbell",
-      description: "co-producción, edición",
+      roles: ["coProduction", "editing"],
       image: "https://i.scdn.co/image/ab67616d00001e02034120fafbe9a4c46495e48d",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/07cDDnNsCAZZSNCi1F241l",
@@ -224,7 +224,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },   
     {
       title: "rolling | william campbell",
-      description: "co-producción, edición",
+      roles: ["coProduction", "editing"],
       image: "https://img.youtube.com/vi/aqbNW4f89EQ/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=aqbNW4f89EQ",
@@ -233,7 +233,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },    
     {
       title: "los ángeles | william campbell",
-      description: "co-producción, edición",
+      roles: ["coProduction", "editing"],
       image: "https://img.youtube.com/vi/wFfDda5opSU/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=wFfDda5opSU",
@@ -242,7 +242,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "el azar | william campbell",
-      description: "co-producción, edición",
+      roles: ["coProduction", "editing"],
       image: "https://img.youtube.com/vi/FZ8_0mR61XQ/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=FZ8_0mR61XQ",
@@ -251,7 +251,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "calisto I (en vivo en c.c. richards) | calisto",
-      description: "edición y mezcla",
+      roles: ["editing", "mixing"],
       image: "https://i.scdn.co/image/ab67616d0000b2730365a2fbbbf6f54c06b260a3",
       year: "2024",
       url: "https://open.spotify.com/intl-es/album/1zgMN1cBvOGP8DuGdMPQOV?si=GKPNwWRHS3-0IWpqDSwIFQ",
@@ -259,7 +259,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "ella (short film)",
-      description: "edición, foley y diseño sonoro",
+      roles: ["editing", "foley", "soundDesign"],
       image: "https://img.youtube.com/vi/Sdn0tO06pts/hqdefault.jpg",
       year: "2023",
       url: "https://youtu.be/Sdn0tO06pts",
@@ -268,7 +268,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "la nostalgia del abandono (short film)",
-      description: "co-producción",
+      roles: ["coProduction"],
       image: "https://img.youtube.com/vi/otk4bo-59fg/hqdefault.jpg",
       year: "2022",
       url: "https://youtu.be/otk4bo-59fg",
@@ -276,8 +276,8 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       type: "audiovisual"
     },
     {
-      title: "living session | william cambell",
-      description: "edición, mezcla y mastering",
+      title: "living session | william campbell",
+      roles: ["editing", "mixing", "mastering"],
       image: "https://img.youtube.com/vi/oL4fy55xHiA/hqdefault.jpg",
       year: "2021",
       url: "https://youtu.be/oL4fy55xHiA",
@@ -285,7 +285,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "nuevo protagonista | william campbell",
-      description: "co-producción, edición y mezcla",
+      roles: ["coProduction", "editing", "mixing"],
       image: "https://i.scdn.co/image/ab67616d00001e02c3ff32a171372ec984542598",
       year: "2019",
       url: "https://open.spotify.com/intl-es/album/3QNumfCFJRBvHEuKA3A4HU?si=dQu_QvnkQGmH02g0s_vX8g",
@@ -299,20 +299,6 @@ export function getMusicProjectsPageContent(lang?: string): MusicProjectPageCont
   const normalized = normalizeLang(lang);
   const t = getStrings(normalized);
 
-  // Map descriptions to English when needed
-  const enDesc: Record<string, string> = {
-    "asistencia en edición y en mezcla": "editing and mixing assistance",
-    "asistente en edición y asistente en mezcla": "editing assistant and mixing assistant",
-    "producción y mezcla": "production and mixing",
-    "co-producción, mezcla y master": "co-production, mixing and mastering",
-    "co-producción, edición": "co-production, editing",
-    "edición y mezcla": "editing and mixing",
-    "edición, foley y diseño sonoro": "editing, foley and sound design",
-    "co-producción": "co-production",
-    "edición, mezcla y mastering": "editing, mixing and mastering",
-    "co-producción, edición y mezcla": "co-production, editing and mixing",
-  };
-
   const translateSocio = (socio?: string) =>
     socio ? socio.replace(/\by\b/g, '&') : socio;
 
@@ -320,7 +306,6 @@ export function getMusicProjectsPageContent(lang?: string): MusicProjectPageCont
     normalized === 'en'
       ? {
           ...p,
-          description: enDesc[p.description] ?? p.description,
           socio: translateSocio(p.socio),
         }
       : p

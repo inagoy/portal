@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import type { Project } from "../types/config";
+import type { MusicProject } from "../types/config";
 import { getStrings, normalizeLang, type Lang } from "../i18n";
 
-type Props = Project & { lang?: Lang };
+type Props = MusicProject & { lang?: Lang };
 type InlineMedia = {
   platform: "spotify" | "youtube";
   embedUrl: string;
@@ -11,7 +11,17 @@ type InlineMedia = {
   height?: number;
 };
 
-const { title, description, image, year, url, socio, lang, type } = Astro.props as Props;
+const {
+  title,
+  description,
+  image,
+  year,
+  url,
+  socio,
+  lang,
+  type,
+  roles = [],
+} = Astro.props as Props;
 const currentLang = normalizeLang(lang);
 const t = getStrings(currentLang);
 const frameTitles =
@@ -88,12 +98,13 @@ const coverImageClass = [
   "h-full w-full object-cover transition duration-300",
   isYouTubeProject ? "youtube-cover-image" : "group-hover/card:scale-[1.03]",
 ].join(" ");
-const descriptionText = description
-  .split(/\s*,\s*|\s+(?:y|and)\s+/i)
-  .map((tag) => tag.trim())
-  .filter(Boolean)
-  .join(", ")
-  .toLowerCase();
+const roleLabels = roles.length
+  ? roles.map((role) => t.labels.roles[role] ?? role)
+  : (description ?? "")
+      .split(/\s*,\s*|\s+(?:y|and)\s+/i)
+      .map((tag) => tag.trim())
+      .filter(Boolean);
+const roleListLabel = currentLang === "es" ? "roles del proyecto" : "project roles";
 ---
 
 {
@@ -117,7 +128,13 @@ const descriptionText = description
             </h2>
             {year && <p class="muted shrink-0 text-xs sm:text-sm">{year}</p>}
           </div>
-          <p class="muted mt-1.5 text-sm sm:mt-2 sm:text-base">{descriptionText}</p>
+          {roleLabels.length > 0 && (
+            <ul class="music-role-tags mt-2" aria-label={roleListLabel}>
+              {roleLabels.map((role) => (
+                <li class="music-role-tag text-xs sm:text-sm">{role}</li>
+              ))}
+            </ul>
+          )}
           {socio && (
             <p class="music-card-extra muted mt-2.5 text-xs sm:mt-3 sm:text-sm">
               {t.labels.with}: {socio}
@@ -193,7 +210,13 @@ const descriptionText = description
           </h2>
           {year && <p class="muted shrink-0 text-xs sm:text-sm">{year}</p>}
         </div>
-        <p class="muted mt-1.5 text-sm sm:mt-2 sm:text-base">{descriptionText}</p>
+        {roleLabels.length > 0 && (
+          <ul class="music-role-tags mt-2" aria-label={roleListLabel}>
+            {roleLabels.map((role) => (
+              <li class="music-role-tag text-xs sm:text-sm">{role}</li>
+            ))}
+          </ul>
+        )}
         {socio && (
           <p class="music-card-extra muted mt-2.5 text-xs sm:mt-3 sm:text-sm">
             {t.labels.with}: {socio}
@@ -216,6 +239,22 @@ const descriptionText = description
 
   details > summary::-webkit-details-marker {
     display: none;
+  }
+
+  .music-role-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.45rem;
+    list-style: none;
+  }
+
+  .music-role-tag {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--soft);
+    color: var(--muted);
+    line-height: 1.25;
+    padding: 0.13rem 0.42rem 0.16rem;
   }
 
   .music-card {
