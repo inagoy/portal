@@ -68,17 +68,17 @@ export const socialLinks: SocialLink[] = [
   },
 ];
 
-// Build social links with language-specific internal routes
+// Build social links with language-specific joke item
 export function getSocialLinks(lang?: string): SocialLink[] {
-  const normalized = normalizeLang(lang);
-  // Append OnlyFans as the last item, internal route per language
+  const t = getStrings(normalizeLang(lang));
   return [
     ...socialLinks,
     {
-      title: 'onlyfans',
-      url: `/${normalized}/onlyfans`,
+      title: t.onlyfans?.title ?? 'onlyfans',
+      url: '#',
       icon: 'mdi:incognito',
       external: false,
+      disappearsOnHover: true,
     },
   ];
 }

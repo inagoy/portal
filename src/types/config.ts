@@ -9,6 +9,7 @@ export type SocialLink = {
   url: string;
   icon: string;
   external?: boolean;
+  disappearsOnHover?: boolean;
 };
 
 export type Identity = {

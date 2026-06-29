@@ -3,14 +3,29 @@ import type { SocialLink } from "../types/config";
 
 type Props = SocialLink;
 
-const { title, url, external } = Astro.props;
+const { title, url, external, disappearsOnHover } = Astro.props;
 ---
 
 <a
-  href={url}
+  href={disappearsOnHover ? "#" : url}
   class="text-link"
-  target={external ? "_blank" : "_self"}
+  target={external && !disappearsOnHover ? "_blank" : "_self"}
   rel={external ? "noopener noreferrer" : undefined}
+  data-disappears-on-hover={disappearsOnHover ? "true" : undefined}
 >
   {title}
 </a>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('[data-disappears-on-hover="true"]').forEach((link) => {
+    if (link.dataset.disappearBound === "true") {
+      return;
+    }
+
+    link.dataset.disappearBound = "true";
+    link.addEventListener("click", (event) => event.preventDefault());
+    link.addEventListener("pointerenter", () => {
+      link.hidden = true;
+    }, { once: true });
+  });
+</script>
