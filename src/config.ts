@@ -161,6 +161,15 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   subtitle: "algunos proyectos en los que trabajé",
   projects: [
     {
+      title: "la vida en la tierra | la portuaria",
+      roles: ["mixingAssistant"],
+      image: "https://i.scdn.co/image/ab67616d00001e02032fc3e853c96fe808151080",
+      year: "2026",
+      url: "https://open.spotify.com/intl-es/album/7wCXVXgszjczlChCc69v0V",
+      socio: "mariano bilinkis",
+      type: "album"
+    },
+    {
       title: "red bull symphonic | trueno ",
       roles: ["editingAssistant", "mixingAssistant"],
       image: "https://i.scdn.co/image/ab67616d00001e02692872973b6ed31153f0d2eb",
