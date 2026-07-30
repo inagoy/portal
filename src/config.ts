@@ -167,7 +167,8 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       year: "2026",
       url: "https://open.spotify.com/intl-es/album/7wCXVXgszjczlChCc69v0V",
       socio: "mariano bilinkis",
-      type: "album"
+      type: "album",
+      source: "kamehouse"
     },
     {
       title: "red bull symphonic | trueno ",
@@ -176,7 +177,8 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/0Krxs5046iOHKuOXSzEQxL?si=Azcx7PFjRR-nbaumiCM8BA",
       socio: "mariano bilinkis y julian mahon",
-      type: "album"
+      type: "album",
+      source: "kamehouse"
     },
     {
       title: "fanatico (en vivo) | lali",
@@ -185,7 +187,8 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       year: "2025",
       url: "https://open.spotify.com/intl-es/track/7KJVQS5lPJ7WrQ2nTsIcRT?si=7b56b5d0275647a7",
       socio: "mariano bilinkis",
-      type: "single"
+      type: "single",
+      source: "kamehouse"
     },
     {
       title: "otro idioma | camila inés",

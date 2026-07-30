@@ -69,6 +69,7 @@ export type MusicProject = Omit<Project, 'description'> & {
   roles: ProjectRole[];
   artistRoles?: ProjectArtistRole[];
   description?: string;
+  source?: 'kamehouse';
 };
 
 export type MusicProjectPageContent = {

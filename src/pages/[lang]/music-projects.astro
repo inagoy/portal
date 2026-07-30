@@ -10,10 +10,28 @@ import Layout from "../../layouts/Layout.astro";
 import { getMusicProjectsPageContent } from "../../config";
 import { normalizeLang, getStrings } from "../../i18n";
 import ProjectCard from "../../components/MusicProjectCard.astro";
+import type { MusicProject } from "../../types/config";
 
 const lang = normalizeLang(Astro.params.lang as string);
 const t = getStrings(lang);
 const musicProjectsPageContent = getMusicProjectsPageContent(lang);
+const kamehouseLabel = lang === "es" ? "en estudio kamehouse" : "at estudio kamehouse";
+type ProjectGroup = {
+  source: MusicProject["source"] | "personal";
+  projects: MusicProject[];
+};
+const projectGroups = musicProjectsPageContent.projects.reduce<ProjectGroup[]>((groups, project) => {
+  const source = project.source ?? "personal";
+  const lastGroup = groups[groups.length - 1];
+
+  if (lastGroup?.source === source) {
+    lastGroup.projects.push(project);
+    return groups;
+  }
+
+  groups.push({ source, projects: [project] });
+  return groups;
+}, []);
 ---
 
 <Layout seo={musicProjectsPageContent.seo} lang={lang}>
@@ -24,10 +42,74 @@ const musicProjectsPageContent = getMusicProjectsPageContent(lang);
     </div>
     <div class="grid grid-cols-1">
       {
-        musicProjectsPageContent.projects.map((project: any) => (
-          <ProjectCard {...project} lang={lang} />
+        projectGroups.map((group) => (
+          group.source === "kamehouse" ? (
+            <div class="kamehouse-group">
+              <p class="kamehouse-label">{kamehouseLabel}</p>
+              <div class="kamehouse-list">
+                {group.projects.map((project) => (
+                  <ProjectCard {...project} lang={lang} compact />
+                ))}
+              </div>
+            </div>
+          ) : (
+            group.projects.map((project) => (
+              <ProjectCard {...project} lang={lang} />
+            ))
+          )
         ))
       }
     </div>
   </section>
 </Layout>
+
+<style>
+  .kamehouse-group {
+    position: relative;
+    margin: 0.15rem 0 0.55rem;
+    padding-left: 2.2rem;
+  }
+
+  .kamehouse-group::before {
+    content: "";
+    position: absolute;
+    top: 0.6rem;
+    bottom: 0.6rem;
+    left: 1.1rem;
+    width: 2px;
+    background: #f2c94c;
+  }
+
+  .kamehouse-label {
+    position: absolute;
+    top: 0.8rem;
+    left: 0;
+    color: #f2c94c;
+    font-size: 0.64rem;
+    font-weight: 560;
+    letter-spacing: 0;
+    line-height: 1;
+    text-transform: none;
+    transform: rotate(180deg);
+    writing-mode: vertical-rl;
+  }
+
+  .kamehouse-list {
+    margin-left: auto;
+    width: min(100%, 36rem);
+  }
+
+  @media (min-width: 640px) {
+    .kamehouse-group {
+      padding-left: 2.8rem;
+    }
+
+    .kamehouse-group::before {
+      left: 1.4rem;
+    }
+
+    .kamehouse-list {
+      width: calc(100% - 2rem);
+    }
+  }
+</style>
