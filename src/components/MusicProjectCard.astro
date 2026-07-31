@@ -321,7 +321,7 @@ const linkClass = [
 
   details.music-card-compact {
     padding-block: 0.8rem;
-    transition: padding-block 320ms ease;
+    transition: margin-left 320ms ease, width 320ms ease, padding-block 320ms ease;
   }
 
   .music-card-compact summary h2 {
@@ -392,13 +392,7 @@ const linkClass = [
     }
   }
 
-  details.music-card-compact .music-card-summary,
-  details.music-card-compact .music-card-player {
-    transition: margin-left 320ms ease, width 320ms ease;
-  }
-
-  details[open].music-card-compact .music-card-summary,
-  details[open].music-card-compact .music-card-player {
+  details[open].music-card-compact {
     margin-left: calc(-1 * var(--kamehouse-player-pull, 0rem));
     width: calc(100% + var(--kamehouse-player-pull, 0rem));
   }
@@ -523,9 +517,7 @@ const linkClass = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    details.music-card-compact,
-    details.music-card-compact .music-card-summary,
-    details.music-card-compact .music-card-player {
+    details.music-card-compact {
       transition: none;
     }
 

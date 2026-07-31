@@ -70,14 +70,18 @@ const projectGroups = musicProjectsPageContent.projects.reduce<ProjectGroup[]>((
     padding-left: 2.2rem;
   }
 
-  .kamehouse-group::before {
+  :global(.kamehouse-list > .music-card-compact) {
+    position: relative;
+  }
+
+  :global(.kamehouse-list > .music-card-compact)::before {
     content: "";
     position: absolute;
-    top: 0.6rem;
-    bottom: 0.6rem;
-    left: 1.1rem;
+    inset-block: 0;
+    left: var(--kamehouse-line-inset);
     width: 2px;
     background: #f2c94c;
+    pointer-events: none;
     transition: opacity 180ms ease;
   }
 
@@ -97,12 +101,13 @@ const projectGroups = musicProjectsPageContent.projects.reduce<ProjectGroup[]>((
   }
 
   .kamehouse-list {
+    --kamehouse-line-inset: -1.1rem;
     --kamehouse-player-pull: 2.2rem;
     margin-left: auto;
     width: min(100%, 36rem);
   }
 
-  :global(.kamehouse-group:has(details[open]))::before,
+  :global(.kamehouse-list > details[open].music-card-compact)::before,
   :global(.kamehouse-group:has(details[open]) .kamehouse-label) {
     opacity: 0;
   }
@@ -112,11 +117,8 @@ const projectGroups = musicProjectsPageContent.projects.reduce<ProjectGroup[]>((
       padding-left: 2.8rem;
     }
 
-    .kamehouse-group::before {
-      left: 1.4rem;
-    }
-
     .kamehouse-list {
+      --kamehouse-line-inset: -3.4rem;
       --kamehouse-player-pull: 4.8rem;
       width: calc(100% - 2rem);
     }
