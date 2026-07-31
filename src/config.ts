@@ -166,7 +166,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://i.scdn.co/image/ab67616d00001e02032fc3e853c96fe808151080",
       year: "2026",
       url: "https://open.spotify.com/intl-es/album/7wCXVXgszjczlChCc69v0V",
-      socio: "mariano bilinkis",
+      socio: "mariano bilinkis y julian mahon",
       type: "album",
       source: "kamehouse"
     },
@@ -191,15 +191,6 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       source: "kamehouse"
     },
     {
-      title: "otro idioma | camila inés",
-      roles: ["production", "mixing"],
-      image: "https://i.scdn.co/image/ab67616d0000b27343171c055e4e037aaf8d3613",
-      year: "2025",
-      url: "https://open.spotify.com/intl-es/album/3sgRznpNzqUsa0UV8vPYzc",
-      socio: "alejo avila",
-      type: "album"
-    }, 
-    {
       title: "no ficción ft. iuio (en vivo) | william campbell",
       roles: ["editing", "mixing", "mastering"],
       artistRoles: ["interpreter"],
@@ -207,6 +198,16 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       year: "2025",
       url: "https://www.youtube.com/watch?v=xaK70wtFhzA",
       type: "single"
+    }, 
+    {
+      title: "otro idioma | camila inés",
+      roles: ["production", "mixing"],
+      artistRoles: ["interpreter"],
+      image: "https://i.scdn.co/image/ab67616d0000b27343171c055e4e037aaf8d3613",
+      year: "2025",
+      url: "https://open.spotify.com/intl-es/album/3sgRznpNzqUsa0UV8vPYzc",
+      socio: "alejo avila",
+      type: "album"
     }, 
     {
       title: "2064 + polonio | estrugamou",
