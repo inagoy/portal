@@ -170,7 +170,7 @@ const linkClass = [
             </ul>
           )}
           {socio && (
-            <p class="music-card-extra muted mt-2.5 text-xs sm:mt-3 sm:text-sm">
+            <p class="music-card-extra mt-2.5 text-xs sm:mt-3 sm:text-sm">
               {t.labels.with}: {collaboratorParts.map((part, index) => (
                 <span class={index % 2 ? "uppercase" : "underline underline-offset-2 uppercase"}>{part}</span>
               ))}
@@ -266,7 +266,7 @@ const linkClass = [
           </ul>
         )}
         {socio && (
-          <p class="music-card-extra muted mt-2.5 text-xs sm:mt-3 sm:text-sm">
+          <p class="music-card-extra mt-2.5 text-xs sm:mt-3 sm:text-sm">
             {t.labels.with}: {collaboratorParts.map((part, index) => (
               <span class={index % 2 ? "uppercase" : "underline underline-offset-2 uppercase"}>{part}</span>
             ))}
@@ -301,20 +301,20 @@ const linkClass = [
   }
 
   .music-role-tag {
-    border: 1px solid rgba(23, 23, 17, 0.7);
+    border: 1px solid var(--line);
     border-radius: 999px;
-    background: color-mix(in srgb, var(--cyan) 26%, var(--paper));
-    color: var(--text);
+    background: color-mix(in srgb, var(--cyan) 42%, var(--paper));
+    color: var(--text-strong);
     line-height: 1.25;
     padding: 0.13rem 0.42rem 0.16rem;
     box-shadow: 1px 1px 0 rgba(23, 23, 17, 0.55);
   }
 
   .music-artist-tag {
-    border: 1px solid rgba(255, 244, 244, 0.14);
+    border: 1px solid var(--line);
     border-radius: 999px;
-    background: rgba(255, 244, 244, 0.025);
-    color: rgba(255, 244, 244, 0.46);
+    background: #b5b6b1;
+    color: var(--text);
     line-height: 1.25;
     padding: 0.1rem 0.38rem 0.13rem;
   }
@@ -324,14 +324,15 @@ const linkClass = [
     bottom: 0;
     left: 64%;
     z-index: 2;
-    border: 1px solid rgba(23, 23, 17, 0.55);
+    border: 1px solid var(--line);
     background: var(--paper);
     padding: 0.11rem 0.34rem 0.14rem;
     color: var(--text-strong);
     font-size: 0.62rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.02em;
     line-height: 1;
+    text-transform: uppercase;
     transform: translate(-50%, 50%);
     white-space: nowrap;
   }
