@@ -21,11 +21,11 @@ const githubLink = contactContent.links.find((link) => link.title === "github");
 
 <Layout seo={programmingProjectsPageContent.seo} lang={lang}>
   <section class="page pt-8 sm:pt-10">
-    <div class="page-header">
+    <div class="page-header portfolio-header">
       <h1 class="page-title">{t.headings.programming_portfolio}</h1>
       <p class="muted mt-3 text-sm sm:mt-4 sm:text-base">{programmingProjectsPageContent.subtitle}</p>
     </div>
-    <div class="grid grid-cols-1">
+    <div class="audio-dev-projects grid grid-cols-1">
       {
         programmingProjectsPageContent.projects.map((project) => (
           <ProjectCard {...project} lang={lang} />
@@ -49,3 +49,19 @@ const githubLink = contactContent.links.find((link) => link.title === "github");
     </div>
   </section>
 </Layout>
+
+<style>
+  .page-header.portfolio-header {
+    margin-bottom: 0.75rem;
+  }
+
+  :global(.audio-dev-projects > .music-card:first-child) {
+    border-top: 0;
+  }
+
+  @media (min-width: 640px) {
+    .page-header.portfolio-header {
+      margin-bottom: 1rem;
+    }
+  }
+</style>

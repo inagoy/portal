@@ -21,7 +21,7 @@ export const es = {
     description:
       'siempre estoy dando vueltas entre el hacer musical y el aprendizaje y desarrollo de herramientas de audio',
     links: {
-      music: 'portfolio de audio',
+      music: 'portfolio de música | audio',
       programming: 'portfolio audio dev',
     },
     seo: {

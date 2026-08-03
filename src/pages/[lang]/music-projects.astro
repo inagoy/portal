@@ -36,7 +36,7 @@ const projectGroups = musicProjectsPageContent.projects.reduce<ProjectGroup[]>((
 
 <Layout seo={musicProjectsPageContent.seo} lang={lang}>
   <section class="page pt-8 sm:pt-10">
-    <div class="page-header">
+    <div class="page-header portfolio-header">
       <h1 class="page-title">{t.headings.music_portfolio}</h1>
       <p class="muted mt-3 text-sm sm:mt-4 sm:text-base">{musicProjectsPageContent.subtitle}</p>
     </div>
@@ -64,6 +64,10 @@ const projectGroups = musicProjectsPageContent.projects.reduce<ProjectGroup[]>((
 </Layout>
 
 <style>
+  .page-header.portfolio-header {
+    margin-bottom: 0.75rem;
+  }
+
   .kamehouse-group {
     position: relative;
     margin: 0.15rem 0 0.55rem;
@@ -72,6 +76,10 @@ const projectGroups = musicProjectsPageContent.projects.reduce<ProjectGroup[]>((
 
   :global(.kamehouse-list > .music-card-compact) {
     position: relative;
+  }
+
+  :global(.kamehouse-list > .music-card-compact:first-child) {
+    border-top: 0;
   }
 
   :global(.kamehouse-list > .music-card-compact)::before {
@@ -114,6 +122,10 @@ const projectGroups = musicProjectsPageContent.projects.reduce<ProjectGroup[]>((
   }
 
   @media (min-width: 640px) {
+    .page-header.portfolio-header {
+      margin-bottom: 1rem;
+    }
+
     .kamehouse-group {
       padding-left: 2.8rem;
     }

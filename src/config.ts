@@ -97,7 +97,7 @@ export const homePageContent: HomePageContent = {
   socialLinks: socialLinks,
   links: [
     {
-      title: "portfolio de audio",
+      title: "portfolio de música | audio",
       url: "/music-projects/",
     },
     {
