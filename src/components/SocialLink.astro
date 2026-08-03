@@ -8,7 +8,7 @@ const { title, url, external, disappearsOnHover } = Astro.props;
 
 <a
   href={disappearsOnHover ? "#" : url}
-  class="text-link"
+  class="social-link text-link"
   target={external && !disappearsOnHover ? "_blank" : "_self"}
   rel={external ? "noopener noreferrer" : undefined}
   data-disappears-on-hover={disappearsOnHover ? "true" : undefined}
@@ -23,9 +23,11 @@ const { title, url, external, disappearsOnHover } = Astro.props;
     }
 
     link.dataset.disappearBound = "true";
-    link.addEventListener("click", (event) => event.preventDefault());
-    link.addEventListener("pointerenter", () => {
-      link.hidden = true;
-    }, { once: true });
+    const hideLink = () => (link.closest("li") ?? link).hidden = true;
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      hideLink();
+    });
+    link.addEventListener("pointerenter", hideLink, { once: true });
   });
 </script>

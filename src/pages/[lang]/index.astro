@@ -18,7 +18,9 @@ const homePageContent = getHomePageContent(lang);
 <Layout seo={homePageContent.seo} lang={lang}>
   <section class="page pt-12 sm:pt-24">
     <div class="page-header">
-      <h1 class="page-title">{identity.name}</h1>
+      <h1 class="page-title">
+        {identity.name}<span class="ml-[0.45em] inline-block align-middle text-[0.36em] font-semibold lowercase tracking-normal">(inagoi)</span>
+      </h1>
       <p class="muted mt-3 text-sm sm:mt-4 sm:text-base">{homePageContent.role}</p>
     </div>
 
@@ -38,7 +40,7 @@ const homePageContent = getHomePageContent(lang);
       }
     </ul>
 
-    <div class="mt-10 flex flex-col gap-2.5 sm:mt-12 sm:gap-5">
+    <div class="home-links mt-10 sm:mt-12">
       {
         homePageContent.links.map((link: any) => (
           <Link text={link.title} href={`/${lang}${link.url}`} external={link.external}/>

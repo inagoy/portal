@@ -55,7 +55,7 @@ function getInlineMedia(projectUrl: string): InlineMedia | null {
           platform: "spotify",
           embedUrl: `https://open.spotify.com/embed/${mediaType}/${mediaId}?utm_source=generator&theme=0`,
           frameTitle: frameTitles.spotify,
-          height: mediaType === "track" || mediaType === "episode" ? 152 : 352,
+          height: mediaType === "track" || mediaType === "episode" ? 152 : mediaType === "album" ? 480 : 352,
         };
       }
     }
