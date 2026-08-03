@@ -225,6 +225,10 @@ const enHref = withLangPath(url, 'en');
     font-size: 1.25rem;
   }
 
+  .mobile-menu-panel a[aria-current="page"] {
+    background: var(--accent);
+  }
+
   @keyframes mobile-menu-reveal {
     from {
       opacity: 0;
@@ -271,7 +275,8 @@ const enHref = withLangPath(url, 'en');
   }
 
   .text-link:hover,
-  .text-link:focus-visible {
+  .text-link:focus-visible,
+  .text-link[aria-current] {
     background: var(--accent);
     color: var(--text-strong);
     text-decoration: none;
@@ -510,7 +515,7 @@ const enHref = withLangPath(url, 'en');
                 navBarLinks.map((link) => (
                   <li>
                     <a
-                      class={`text-link whitespace-nowrap ${currentUrl === link.url ? 'text-[var(--text)] line-through' : ''}`}
+                      class="text-link whitespace-nowrap"
                       href={link.url}
                       target={link.external ? "_blank" : "_self"}
                       aria-current={currentUrl === link.url ? "page" : undefined}
@@ -529,7 +534,7 @@ const enHref = withLangPath(url, 'en');
                     navBarLinks.map((link) => (
                       <li>
                         <a
-                          class={`text-link block py-2 whitespace-nowrap ${currentUrl === link.url ? 'text-[var(--text)] line-through' : ''}`}
+                          class="text-link block whitespace-nowrap py-2"
                           href={link.url}
                           target={link.external ? "_blank" : "_self"}
                           aria-current={currentUrl === link.url ? "page" : undefined}
