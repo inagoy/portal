@@ -207,7 +207,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://i.scdn.co/image/ab67616d0000b27343171c055e4e037aaf8d3613",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/3sgRznpNzqUsa0UV8vPYzc",
-      socio: "alejo avila",
+      socio: "alejo ávila",
       type: "album"
     }, 
     {
@@ -217,7 +217,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/jntOZoAx9fk/hqdefault.jpg",
       year: "2025",
       url: "https://www.youtube.com/watch?v=jntOZoAx9fk",
-      socio: "mauro cigliuti y alejo avila",
+      socio: "mauro cigliuti y alejo ávila",
       type: "audiovisual"
     }, 
     {
@@ -284,7 +284,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/Sdn0tO06pts/hqdefault.jpg",
       year: "2023",
       url: "https://youtu.be/Sdn0tO06pts",
-      socio: "renzo leveroni y alejo avila",
+      socio: "renzo leveroni y alejo ",
       type: "audiovisual"
     },
     {
@@ -294,7 +294,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/otk4bo-59fg/hqdefault.jpg",
       year: "2022",
       url: "https://youtu.be/otk4bo-59fg",
-      socio: "alejo avila y mauro cigliuti",
+      socio: "alejo ávila y mauro cigliuti",
       type: "audiovisual"
     },
     {
