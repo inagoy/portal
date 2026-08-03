@@ -11,6 +11,7 @@ const t = getStrings(pageLang);
   class="needs-validation"
   data-astro-reload
   data-sending={t.form.sending}
+  data-success={t.form.success}
   data-error={t.form.error}
   novalidate>
   
@@ -72,7 +73,7 @@ const t = getStrings(pageLang);
     >
       {t.form.send_button}
     </button>
-    <div id="result" class="muted mt-3 text-sm"></div>
+    <div id="result" class="form-result mt-3 text-sm" role="status" aria-live="polite" aria-atomic="true"></div>
   </div>
 </form>
 
@@ -148,6 +149,31 @@ const t = getStrings(pageLang);
     box-shadow: inset 0 0 0 2px #dc3545;
   }
 
+  .form-result:empty {
+    display: none;
+  }
+
+  .form-result {
+    border: 2px solid var(--line);
+    padding: 0.65rem 0.75rem;
+    color: var(--text-strong);
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .form-result-sending {
+    background: var(--paper);
+  }
+
+  .form-result-success {
+    background: rgb(78 143 82 / 0.82);
+    box-shadow: 2px 2px 0 var(--line);
+  }
+
+  .form-result-error {
+    background: color-mix(in srgb, var(--accent) 55%, var(--paper));
+  }
+
   @media (min-width: 640px) {
     .contact-field-row::before {
       padding-top: 0.85rem;
@@ -156,61 +182,56 @@ const t = getStrings(pageLang);
 </style>
 
 <script is:inline>
-
-  // use astro:page-load event if you are using View Transitions
-
   document.addEventListener("DOMContentLoaded", () => {
-  
-      const form = document.getElementById("form");
-      const result = document.getElementById("result");
+    const form = document.getElementById("form");
+    const result = document.getElementById("result");
+    const submitButton = form.querySelector('button[type="submit"]');
+    const showResult = (state, message) => {
+      result.className = `form-result form-result-${state} mt-3 text-sm`;
+      result.textContent = message;
+    };
 
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        form.classList.add("was-validated");
-        if (!form.checkValidity()) {
-          form.querySelectorAll(":invalid")[0].focus();
-          return;
-        }
-        const formData = new FormData(form);
-        const object = Object.fromEntries(formData);
-        const json = JSON.stringify(object);
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      form.classList.add("was-validated");
 
-        var sending = form.getAttribute('data-sending');
-        result.innerHTML = sending || "Sending...";
+      if (!form.checkValidity()) {
+        form.querySelector(":invalid").focus();
+        return;
+      }
 
-        fetch("https://api.web3forms.com/submit", {
+      showResult("sending", form.dataset.sending || "Sending...");
+      let sent = false;
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
-          body: json,
-        })
-          .then(async (response) => {
-            let json = await response.json();
-            if (response.status == 200) {
-              result.classList.add("text-green-500");
-              result.innerHTML = json.message;
-            } else {
-              console.log(response);
-              result.classList.add("text-red-500");
-              result.innerHTML = json.message;
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-            var err = form.getAttribute('data-error');
-            result.innerHTML = err || "Something went wrong!";
-          })
-          .then(function () {
-            form.reset();
-            form.classList.remove("was-validated");
-            setTimeout(() => {
-              result.style.display = "none";
-            }, 5000);
-          });
-      });
-    },
-    { once: true },
-  );
+          body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message);
+        }
+
+        showResult("success", form.dataset.success || "Message sent successfully!");
+        submitButton.hidden = true;
+        sent = true;
+        form.reset();
+        form.classList.remove("was-validated");
+      } catch (error) {
+        console.error(error);
+        showResult("error", form.dataset.error || "Something went wrong!");
+      }
+
+      setTimeout(() => {
+        result.textContent = "";
+        submitButton.hidden = false;
+      }, sent ? 8000 : 5000);
+    });
+  }, { once: true });
 </script>

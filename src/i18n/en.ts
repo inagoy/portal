@@ -61,6 +61,7 @@ export const en = {
     message_required: 'please enter your message.',
     send_button: 'send message',
     sending: 'Sending...',
+    success: 'Message sent successfully — thank you!',
     error: 'Something went wrong!',
   },
   selector: {
