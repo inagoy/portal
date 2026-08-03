@@ -337,10 +337,11 @@ const linkClass = [
 
   .music-type-banner {
     position: absolute;
-    bottom: 0;
-    left: 64%;
+    top: 0;
+    left: 0;
     z-index: 2;
-    border: 1px solid var(--line);
+    border-right: 1.5px solid var(--line);
+    border-bottom: 1.5px solid var(--line);
     background: var(--paper);
     padding: 0.11rem 0.34rem 0.14rem;
     color: var(--text-strong);
@@ -349,12 +350,11 @@ const linkClass = [
     letter-spacing: 0.02em;
     line-height: 1;
     text-transform: uppercase;
-    transform: translate(-50%, 50%);
     white-space: nowrap;
   }
 
   .music-type-banner[data-type="album"] {
-    background: color-mix(in srgb, var(--accent) 45%, var(--paper));
+    background: var(--accent);
   }
 
   .music-type-banner[data-type="single"] {
@@ -367,6 +367,14 @@ const linkClass = [
 
   .music-card {
     position: relative;
+  }
+
+  details.music-card:not(.music-card-compact) {
+    --music-card-content-offset: calc(clamp(4.5rem, 22vw, 5.5rem) + 0.85rem);
+  }
+
+  details.music-card-album:not(.music-card-compact) {
+    --music-card-content-offset: calc(clamp(5.8rem, 31vw, 7rem) + 1rem);
   }
 
   .music-card.media-project-row {
@@ -403,6 +411,14 @@ const linkClass = [
   }
 
   @media (min-width: 640px) {
+    details.music-card:not(.music-card-compact) {
+      --music-card-content-offset: 9rem;
+    }
+
+    details.music-card-album:not(.music-card-compact) {
+      --music-card-content-offset: 10rem;
+    }
+
     details.music-card-compact {
       padding-block: 1rem;
     }
@@ -460,17 +476,21 @@ const linkClass = [
     }
   }
 
-  details[open].music-card-compact {
-    margin-left: calc(-1 * var(--kamehouse-player-pull, 0rem));
-    width: calc(100% + var(--kamehouse-player-pull, 0rem));
-  }
-
   .music-card-overlay {
     display: none;
   }
 
+  details[open].music-card-compact {
+    margin-left: calc(-1 * var(--music-card-player-pull, 0rem));
+    width: calc(100% + var(--music-card-player-pull, 0rem));
+  }
+
   details[open].music-card {
     z-index: 20;
+  }
+
+  details[open].music-card:not(.music-card-compact) .music-card-content {
+    animation: music-card-content-slide 320ms ease both;
   }
 
   details[open].music-card .music-card-overlay {
@@ -584,12 +604,23 @@ const linkClass = [
     }
   }
 
+  @keyframes music-card-content-slide {
+    from {
+      transform: translateX(var(--music-card-content-offset));
+    }
+
+    to {
+      transform: none;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     details.music-card-compact {
       transition: none;
     }
 
-    details[open] .music-card-player {
+    details[open] .music-card-player,
+    details[open].music-card:not(.music-card-compact) .music-card-content {
       animation: none;
     }
   }
