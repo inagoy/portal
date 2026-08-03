@@ -9,7 +9,7 @@ export function getStaticPaths() {
 import Layout from "../../layouts/Layout.astro";
 import { getProgrammingProjectsPageContent, getContactPageContent } from "../../config";
 import { normalizeLang, getStrings } from "../../i18n";
-import ProjectCard from "../../components/ProgrammingProjectCard.astro";
+import ProjectCard from "../../components/MusicProjectCard.astro";
 import SocialLink from "../../components/SocialLink.astro";
 
 const lang = normalizeLang(Astro.params.lang as string);
@@ -27,8 +27,8 @@ const githubLink = contactContent.links.find((link) => link.title === "github");
     </div>
     <div class="grid grid-cols-1">
       {
-        programmingProjectsPageContent.projects.map((project: any) => (
-          <ProjectCard {...project} />
+        programmingProjectsPageContent.projects.map((project) => (
+          <ProjectCard {...project} lang={lang} />
         ))
       }
     </div>

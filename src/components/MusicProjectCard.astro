@@ -1,9 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import type { MusicProject } from "../types/config";
+import type { MusicProject, Project } from "../types/config";
 import { getStrings, normalizeLang, type Lang } from "../i18n";
 
-type Props = MusicProject & { lang?: Lang; compact?: boolean };
+type Props = Omit<Project, "description"> & {
+  description?: string;
+  roles?: MusicProject["roles"];
+  artistRoles?: MusicProject["artistRoles"];
+  lang?: Lang;
+  compact?: boolean;
+};
 type InlineMedia = {
   platform: "spotify" | "youtube";
   embedUrl: string;
@@ -100,12 +106,7 @@ const coverImageClass = [
   "h-full w-full object-cover transition duration-300",
   isYouTubeProject ? "youtube-cover-image" : "group-hover/card:scale-[1.03]",
 ].join(" ");
-const roleLabels = roles.length
-  ? roles.map((role) => t.labels.roles[role] ?? role)
-  : (description ?? "")
-      .split(/\s*,\s*|\s+(?:y|and)\s+/i)
-      .map((tag) => tag.trim())
-      .filter(Boolean);
+const roleLabels = roles.map((role) => t.labels.roles[role] ?? role);
 const artistRoleLabels = artistRoles.map((role) => t.labels.artistRoles[role] ?? role);
 const collaboratorParts = socio?.split(/(\s+(?:y|&)\s+)/i) ?? [];
 const roleListLabel = currentLang === "es" ? "roles del proyecto" : "project roles";
@@ -117,7 +118,7 @@ const cardClass = [
   compact ? "music-card-compact" : "",
 ].join(" ");
 const linkClass = [
-  "project-row media-project-row group/card",
+  "music-card project-row media-project-row group/card",
   albumClass,
   compact ? "music-card-compact" : "",
 ].join(" ");
@@ -150,6 +151,9 @@ const linkClass = [
                 <li class="music-role-tag text-xs sm:text-sm">{role}</li>
               ))}
             </ul>
+          )}
+          {description && roleLabels.length === 0 && (
+            <p class="muted mt-1.5 text-sm sm:mt-2 sm:text-base">{description}</p>
           )}
           {artistRoleLabels.length > 0 && (
             <ul class="music-artist-tags mt-1.5" aria-label={artistRoleListLabel}>
@@ -219,7 +223,7 @@ const linkClass = [
       rel="noopener noreferrer"
       class={linkClass}
     >
-      <div class={coverFrameClass}>
+      <div class={`music-card-cover ${coverFrameClass}`}>
         <Image
           width={1920}
           height={1080}
@@ -241,6 +245,9 @@ const linkClass = [
               <li class="music-role-tag text-xs sm:text-sm">{role}</li>
             ))}
           </ul>
+        )}
+        {description && roleLabels.length === 0 && (
+          <p class="muted mt-1.5 text-sm sm:mt-2 sm:text-base">{description}</p>
         )}
         {artistRoleLabels.length > 0 && (
           <ul class="music-artist-tags mt-1.5" aria-label={artistRoleListLabel}>
@@ -334,6 +341,11 @@ const linkClass = [
 
   .music-card {
     position: relative;
+  }
+
+  .music-card.media-project-row {
+    border-top-width: 1px;
+    padding-block: 1rem;
   }
 
   .music-card-album {

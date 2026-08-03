@@ -272,7 +272,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "calisto I (en vivo en c.c. richards) | calisto",
-      roles: ["editing", "mixing"],
+      roles: ["editing", "mixing", "mastering"],
       image: "https://i.scdn.co/image/ab67616d0000b2730365a2fbbbf6f54c06b260a3",
       year: "2024",
       url: "https://open.spotify.com/intl-es/album/1zgMN1cBvOGP8DuGdMPQOV?si=GKPNwWRHS3-0IWpqDSwIFQ",
@@ -299,7 +299,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
     },
     {
       title: "living session | william campbell",
-      roles: ["editing", "mixing", "mastering"],
+      roles: ["production", "mixing", "mastering"],
       artistRoles: ["interpreter"],
       image: "https://img.youtube.com/vi/oL4fy55xHiA/hqdefault.jpg",
       year: "2021",

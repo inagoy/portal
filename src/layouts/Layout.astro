@@ -138,7 +138,7 @@ const enHref = withLangPath(url, 'en');
   }
 
   .site-shell > header {
-    z-index: 2;
+    z-index: auto;
     border-bottom: 2px solid var(--line);
   }
 
@@ -173,6 +173,7 @@ const enHref = withLangPath(url, 'en');
 
   .mobile-menu-panel {
     position: absolute;
+    z-index: 40;
     top: calc(100% + 0.9rem);
     right: 0;
     width: min(21rem, calc(100vw - 2rem));
