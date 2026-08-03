@@ -163,7 +163,7 @@ const linkClass = [
             </p>
           )}
           {type && (
-            <p class="music-card-extra muted mt-2 text-xs sm:text-sm">
+            <p class="music-card-extra music-type-banner mt-1.5" data-type={type}>
               {t.labels.types?.[type] ?? type}
             </p>
           )}
@@ -252,7 +252,7 @@ const linkClass = [
           </p>
         )}
         {type && (
-          <p class="music-card-extra muted mt-2 text-xs sm:text-sm">
+          <p class="music-card-extra music-type-banner mt-1.5" data-type={type}>
             {t.labels.types?.[type] ?? type}
           </p>
         )}
@@ -300,6 +300,30 @@ const linkClass = [
     color: rgba(255, 244, 244, 0.46);
     line-height: 1.25;
     padding: 0.1rem 0.38rem 0.13rem;
+  }
+
+  .music-type-banner {
+    display: inline-block;
+    border: 1px solid rgba(23, 23, 17, 0.55);
+    background: var(--paper);
+    padding: 0.11rem 0.34rem 0.14rem;
+    color: var(--text-strong);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  .music-type-banner[data-type="album"] {
+    background: color-mix(in srgb, var(--cyan) 55%, var(--paper));
+  }
+
+  .music-type-banner[data-type="single"] {
+    background: color-mix(in srgb, var(--yellow) 55%, var(--paper));
+  }
+
+  .music-type-banner[data-type="audiovisual"] {
+    background: color-mix(in srgb, var(--accent) 45%, var(--paper));
   }
 
   .music-card {

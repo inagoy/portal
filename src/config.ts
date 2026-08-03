@@ -121,6 +121,7 @@ export function getHomePageContent(lang?: string): HomePageContent {
     links: [
       { title: t.home.links.music, url: "/music-projects/" },
       { title: t.home.links.programming, url: "/programming-projects/" },
+      { title: t.nav.contact, url: "/contact/" },
     ],
   };
 }
