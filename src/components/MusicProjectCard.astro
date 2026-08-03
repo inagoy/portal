@@ -107,6 +107,7 @@ const roleLabels = roles.length
       .map((tag) => tag.trim())
       .filter(Boolean);
 const artistRoleLabels = artistRoles.map((role) => t.labels.artistRoles[role] ?? role);
+const collaboratorParts = socio?.split(/(\s+(?:y|&)\s+)/i) ?? [];
 const roleListLabel = currentLang === "es" ? "roles del proyecto" : "project roles";
 const artistRoleListLabel = currentLang === "es" ? "roles artísticos" : "artist roles";
 const albumClass = type === "album" ? "music-card-album" : "";
@@ -159,7 +160,9 @@ const linkClass = [
           )}
           {socio && (
             <p class="music-card-extra muted mt-2.5 text-xs sm:mt-3 sm:text-sm">
-              {t.labels.with}: {socio}
+              {t.labels.with}: {collaboratorParts.map((part, index) => (
+                <span class={index % 2 ? "uppercase" : "underline underline-offset-2 uppercase"}>{part}</span>
+              ))}
             </p>
           )}
           {type && (
@@ -248,7 +251,9 @@ const linkClass = [
         )}
         {socio && (
           <p class="music-card-extra muted mt-2.5 text-xs sm:mt-3 sm:text-sm">
-            {t.labels.with}: {socio}
+            {t.labels.with}: {collaboratorParts.map((part, index) => (
+              <span class={index % 2 ? "uppercase" : "underline underline-offset-2 uppercase"}>{part}</span>
+            ))}
           </p>
         )}
         {type && (
@@ -285,12 +290,13 @@ const linkClass = [
   }
 
   .music-role-tag {
-    border: 1px solid var(--line);
+    border: 1px solid rgba(23, 23, 17, 0.7);
     border-radius: 999px;
-    background: var(--soft);
-    color: var(--muted);
+    background: color-mix(in srgb, var(--cyan) 26%, var(--paper));
+    color: var(--text);
     line-height: 1.25;
     padding: 0.13rem 0.42rem 0.16rem;
+    box-shadow: 1px 1px 0 rgba(23, 23, 17, 0.55);
   }
 
   .music-artist-tag {
