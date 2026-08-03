@@ -284,7 +284,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/Sdn0tO06pts/hqdefault.jpg",
       year: "2023",
       url: "https://youtu.be/Sdn0tO06pts",
-      socio: "renzo leveroni y alejo ",
+      socio: "renzo leveroni y alejo avila",
       type: "audiovisual"
     },
     {
