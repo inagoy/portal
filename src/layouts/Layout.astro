@@ -271,28 +271,51 @@ const enHref = withLangPath(url, 'en');
 
   .home-links {
     display: grid;
-    gap: 0.75rem;
+    gap: 0;
+    border: 2px solid var(--line);
+    counter-reset: home-link;
   }
 
   .primary-link {
-    display: flex;
-    min-height: 3.75rem;
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    min-height: 2.75rem;
     align-items: center;
-    justify-content: space-between;
-    border: 2px solid var(--line);
-    background: #b5b6b1;
-    padding: 0.85rem 1rem;
+    border: 0;
+    border-bottom: 1.5px solid var(--line);
+    background: rgb(243 239 220 / 0.75);
+    padding: 0.35rem 0.55rem;
     color: var(--text-strong);
-    font-weight: 760;
+    font-weight: 700;
     text-decoration: none;
-    box-shadow: 3px 3px 0 var(--line);
-    transition: box-shadow 140ms ease, transform 140ms ease;
+    counter-increment: home-link;
   }
 
-  .primary-link:hover,
-  .primary-link:focus-visible {
-    box-shadow: none;
-    transform: translate(3px, 3px);
+  .primary-link::before {
+    content: "A" counter(home-link);
+    text-transform: uppercase;
+  }
+
+  .primary-link:nth-child(odd) {
+    background: rgb(78 143 82 / 0.82);
+  }
+
+  .primary-link:last-child {
+    border-bottom: 0;
+  }
+
+  .primary-link > div {
+    display: none;
+  }
+
+  .primary-link span {
+    width: fit-content;
+    transition: background-color 140ms ease;
+  }
+
+  .primary-link:hover span,
+  .primary-link:focus-visible span {
+    background: var(--accent);
   }
 
   .project-row img,
