@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { seo } = Astro.props;
+const pageTitle = seo.title.replace("iñaki goyeneche", "inagoi");
 const url = Astro.url;
 const currentUrl = url.pathname.endsWith('/') ? url.pathname.slice(0, -1) : url.pathname;
 const pageLang: Lang = normalizeLang(Astro.props.lang as string | undefined);
@@ -137,7 +138,101 @@ const enHref = withLangPath(url, 'en');
   }
 
   .site-shell > header {
+    z-index: 2;
     border-bottom: 2px solid var(--line);
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+    min-height: 2.75rem;
+    cursor: pointer;
+    list-style: none;
+    align-items: center;
+    gap: 0.55rem;
+    border: 2px solid var(--line);
+    background: var(--accent);
+    padding: 0.45rem 0.65rem;
+    font-weight: 750;
+    box-shadow: 2px 2px 0 var(--line);
+  }
+
+  .mobile-menu-toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-menu-toggle::after {
+    content: "+";
+    font-size: 1.1rem;
+    line-height: 0;
+  }
+
+  .mobile-menu[open] .mobile-menu-toggle {
+    box-shadow: none;
+    transform: translate(2px, 2px);
+  }
+
+  .mobile-menu[open] .mobile-menu-toggle::after {
+    content: "−";
+  }
+
+  .mobile-menu-panel {
+    position: absolute;
+    top: calc(100% + 0.9rem);
+    right: 0;
+    width: min(21rem, calc(100vw - 2rem));
+    border: 2px solid var(--line);
+    background: var(--paper);
+    padding: 0.55rem;
+    box-shadow: 4px 4px 0 var(--line);
+    animation: mobile-menu-reveal 140ms ease both;
+  }
+
+  .mobile-menu-panel li + li {
+    margin-top: 0.45rem;
+  }
+
+  .mobile-menu-panel a {
+    display: flex;
+    min-height: 3.25rem;
+    align-items: center;
+    border: 1.5px solid var(--line);
+    padding: 0.75rem 0.9rem;
+    color: var(--text-strong);
+    font-size: 1rem;
+    font-weight: 720;
+    text-decoration: none;
+    box-shadow: 2px 2px 0 var(--line);
+  }
+
+  .mobile-menu-panel li:nth-child(1) a {
+    background: var(--cyan);
+  }
+
+  .mobile-menu-panel li:nth-child(2) a {
+    background: var(--yellow);
+  }
+
+  .mobile-menu-panel li:nth-child(3) a {
+    background: var(--accent);
+  }
+
+  .mobile-menu-panel a:hover,
+  .mobile-menu-panel a:focus-visible {
+    box-shadow: none;
+    transform: translate(2px, 2px);
+  }
+
+  .mobile-menu-panel a[aria-current="page"]::after {
+    content: "•";
+    margin-left: auto;
+    font-size: 1.25rem;
+  }
+
+  @keyframes mobile-menu-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(-0.4rem);
+    }
   }
 
   .page {
@@ -370,8 +465,12 @@ const enHref = withLangPath(url, 'en');
     .primary-link,
     .project-row img,
     .music-card-cover img,
-    .button {
+    .button,
+    .mobile-menu-toggle,
+    .mobile-menu-panel,
+    .mobile-menu-panel a {
       transition: none;
+      animation: none;
     }
   }
 </style>
@@ -382,9 +481,9 @@ const enHref = withLangPath(url, 'en');
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{seo.title}</title>
+    <title>{pageTitle}</title>
     <meta name="description" content={seo.description} />
-    <meta property="og:title" content={seo.title} />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={seo.description} />
     <meta property="og:image" content={seo.image} />
     
@@ -404,7 +503,7 @@ const enHref = withLangPath(url, 'en');
               class="block h-10 w-auto opacity-[0.82] brightness-0 transition-opacity duration-300 hover:opacity-100 sm:h-[46px]"
             />
           </a>
-          <nav class="ml-auto flex items-center gap-3 text-[0.8125rem] sm:gap-5 sm:text-sm">
+          <nav class="relative ml-auto flex items-center gap-3 text-[0.8125rem] sm:gap-5 sm:text-sm">
             <ul class="hidden sm:flex sm:items-center sm:gap-5">
               {
                 navBarLinks.map((link) => (
@@ -413,6 +512,7 @@ const enHref = withLangPath(url, 'en');
                       class={`text-link whitespace-nowrap ${currentUrl === link.url ? 'text-[var(--text)] line-through' : ''}`}
                       href={link.url}
                       target={link.external ? "_blank" : "_self"}
+                      aria-current={currentUrl === link.url ? "page" : undefined}
                     >
                       {link.title}
                     </a>
@@ -420,16 +520,9 @@ const enHref = withLangPath(url, 'en');
                 ))
               }
             </ul>
-            <div class="relative sm:hidden">
-              <button
-                id="link-menu-button"
-                class="text-link inline-flex items-center gap-1 whitespace-nowrap"
-                >menu <span id="open-indicator">+</span></button
-              >
-              <div
-                id="link-menu"
-                class="pointer-events-none absolute right-0 top-7 z-40 w-40 border-2 border-[var(--line)] bg-[var(--paper)] p-3 opacity-0 transition-opacity duration-200 sm:top-8 sm:w-44"
-              >
+            <details id="mobile-menu" class="mobile-menu static sm:hidden">
+              <summary class="mobile-menu-toggle">menu</summary>
+              <div class="mobile-menu-panel">
                 <ul>
                   {
                     navBarLinks.map((link) => (
@@ -438,6 +531,7 @@ const enHref = withLangPath(url, 'en');
                           class={`text-link block py-2 whitespace-nowrap ${currentUrl === link.url ? 'text-[var(--text)] line-through' : ''}`}
                           href={link.url}
                           target={link.external ? "_blank" : "_self"}
+                          aria-current={currentUrl === link.url ? "page" : undefined}
                         >
                           {link.title}
                         </a>
@@ -446,7 +540,7 @@ const enHref = withLangPath(url, 'en');
                   }
                 </ul>
               </div>
-            </div>
+            </details>
             <LanguageSelector lang={pageLang} esHref={esHref} enHref={enHref} />
           </nav>
         </div>
@@ -460,37 +554,17 @@ const enHref = withLangPath(url, 'en');
 </html>
 
 <script>
-  const linkMenuButton = document.getElementById(
-    "link-menu-button"
-  ) as HTMLButtonElement;
-  const linkMenu = document.getElementById("link-menu") as HTMLDivElement;
-  const openIndicator = document.getElementById(
-    "open-indicator"
-  ) as HTMLSpanElement;
+  const mobileMenu = document.getElementById("mobile-menu") as HTMLDetailsElement | null;
 
-  linkMenuButton.addEventListener("click", () => {
-    if (linkMenu.classList.contains("opacity-0")) {
-      linkMenu.classList.remove("pointer-events-none");
-      linkMenu.classList.remove("opacity-0");
-      openIndicator.innerText = "-";
-    } else {
-      linkMenu.classList.add("pointer-events-none");
-      linkMenu.classList.add("opacity-0");
-      openIndicator.innerText = "+";
+  document.addEventListener("click", (event) => {
+    if (mobileMenu?.open && event.target instanceof Node && !mobileMenu.contains(event.target)) {
+      mobileMenu.open = false;
     }
   });
 
-  document.addEventListener("click", (event) => {
-    const isLinkMenuButtonClicked =
-      event.target === linkMenuButton ||
-      linkMenuButton.contains(event.target as Node);
-    const isLinkMenuClicked =
-      event.target === linkMenu || linkMenu.contains(event.target as Node);
-
-    if (!isLinkMenuButtonClicked && !isLinkMenuClicked) {
-      linkMenu.classList.add("pointer-events-none");
-      linkMenu.classList.add("opacity-0");
-      openIndicator.innerText = "+";
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && mobileMenu?.open) {
+      mobileMenu.open = false;
     }
   });
 </script>
