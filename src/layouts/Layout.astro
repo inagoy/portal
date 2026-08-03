@@ -189,44 +189,12 @@ const enHref = withLangPath(url, 'en');
   }
 
   .mobile-menu-panel a {
-    display: flex;
-    min-height: 3.25rem;
+    display: inline-flex;
+    min-height: 2.75rem;
     align-items: center;
-    border: 1.5px solid var(--line);
-    padding: 0.75rem 0.9rem;
-    color: var(--text-strong);
-    font-size: 1rem;
-    font-weight: 720;
-    text-decoration: none;
-    box-shadow: 2px 2px 0 var(--line);
-  }
-
-  .mobile-menu-panel li:nth-child(1) a {
-    background: var(--paper);
-  }
-
-  .mobile-menu-panel li:nth-child(2) a {
-    background: var(--yellow);
-  }
-
-  .mobile-menu-panel li:nth-child(3) a {
-    background: var(--accent);
-  }
-
-  .mobile-menu-panel a:hover,
-  .mobile-menu-panel a:focus-visible {
-    box-shadow: none;
-    transform: translate(2px, 2px);
-  }
-
-  .mobile-menu-panel a[aria-current="page"]::after {
-    content: "•";
-    margin-left: auto;
-    font-size: 1.25rem;
-  }
-
-  .mobile-menu-panel a[aria-current="page"] {
-    background: var(--accent);
+    padding: 0.5rem 0.2rem;
+    font-size: 0.875rem;
+    font-weight: 400;
   }
 
   @keyframes mobile-menu-reveal {

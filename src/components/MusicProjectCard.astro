@@ -113,7 +113,7 @@ const roleListLabel = currentLang === "es" ? "roles del proyecto" : "project rol
 const artistRoleListLabel = currentLang === "es" ? "roles artísticos" : "artist roles";
 const albumClass = type === "album" ? "music-card-album" : "";
 const cardClass = [
-  "music-card group/card border-t border-[var(--line)] py-4 sm:py-6",
+  "music-card group/card border-t border-[var(--line)] py-5 sm:py-6",
   albumClass,
   compact ? "music-card-compact" : "",
 ].join(" ");
@@ -153,7 +153,7 @@ const linkClass = [
             {year && <p class="muted shrink-0 text-xs sm:text-sm">{year}</p>}
           </div>
           {roleLabels.length > 0 && (
-            <ul class="music-role-tags mt-2" aria-label={roleListLabel}>
+            <ul class="music-role-tags mt-3 sm:mt-2" aria-label={roleListLabel}>
               {roleLabels.map((role) => (
                 <li class="music-role-tag text-xs sm:text-sm">{role}</li>
               ))}
@@ -163,7 +163,7 @@ const linkClass = [
             <p class="muted mt-1.5 text-sm sm:mt-2 sm:text-base">{description}</p>
           )}
           {artistRoleLabels.length > 0 && (
-            <ul class="music-artist-tags mt-1.5" aria-label={artistRoleListLabel}>
+            <ul class="music-artist-tags mt-2.5 sm:mt-1.5" aria-label={artistRoleListLabel}>
               {artistRoleLabels.map((role) => (
                 <li class="music-artist-tag text-xs sm:text-sm">{role}</li>
               ))}
@@ -249,7 +249,7 @@ const linkClass = [
           {year && <p class="muted shrink-0 text-xs sm:text-sm">{year}</p>}
         </div>
         {roleLabels.length > 0 && (
-          <ul class="music-role-tags mt-2" aria-label={roleListLabel}>
+          <ul class="music-role-tags mt-3 sm:mt-2" aria-label={roleListLabel}>
             {roleLabels.map((role) => (
               <li class="music-role-tag text-xs sm:text-sm">{role}</li>
             ))}
@@ -259,7 +259,7 @@ const linkClass = [
           <p class="muted mt-1.5 text-sm sm:mt-2 sm:text-base">{description}</p>
         )}
         {artistRoleLabels.length > 0 && (
-          <ul class="music-artist-tags mt-1.5" aria-label={artistRoleListLabel}>
+          <ul class="music-artist-tags mt-2.5 sm:mt-1.5" aria-label={artistRoleListLabel}>
             {artistRoleLabels.map((role) => (
               <li class="music-artist-tag text-xs sm:text-sm">{role}</li>
             ))}
@@ -354,7 +354,7 @@ const linkClass = [
 
   .music-card.media-project-row {
     border-top-width: 1px;
-    padding-block: 1rem;
+    padding-block: 1.25rem;
   }
 
   .music-card-album {
@@ -371,7 +371,7 @@ const linkClass = [
   }
 
   details.music-card-compact {
-    padding-block: 0.8rem;
+    padding-block: 1.15rem;
     transition: margin-left 320ms ease, width 320ms ease, padding-block 320ms ease;
   }
 
@@ -425,11 +425,11 @@ const linkClass = [
 
   details.music-card-album,
   .music-card-album.media-project-row {
-    padding-block: 1.25rem;
+    padding-block: 1.5rem;
   }
 
   details.music-card-album.music-card-compact {
-    padding-block: 1rem;
+    padding-block: 1.25rem;
   }
 
   @media (min-width: 640px) {
