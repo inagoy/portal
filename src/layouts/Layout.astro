@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { seo } = Astro.props;
-const pageTitle = seo.title.replace("iñaki goyeneche", "inagoi");
+const pageTitle = seo.title.replace("iñaki goyeneche", "inagoy");
 const url = Astro.url;
 const currentUrl = url.pathname.endsWith('/') ? url.pathname.slice(0, -1) : url.pathname;
 const pageLang: Lang = normalizeLang(Astro.props.lang as string | undefined);
@@ -34,7 +34,8 @@ const enHref = withLangPath(url, 'en');
   }
 
   :root {
-    --bg: #d87595;
+    --bg: #b85f78;
+    --title-bg: #d87595;
     --paper: #f3efdc;
     --text: #171711;
     --text-strong: #050505;
@@ -115,7 +116,9 @@ const enHref = withLangPath(url, 'en');
     width: min(calc(100% - 1rem), 48rem);
     margin: 0.5rem auto 1rem;
     border: 2px solid var(--line);
+    border-radius: 3px;
     background: var(--paper);
+    box-shadow: 0 24px 64px rgb(31 12 20 / 0.34), 0 6px 16px rgb(23 23 17 / 0.2);
   }
 
   .site-shell::before {
@@ -123,6 +126,7 @@ const enHref = withLangPath(url, 'en');
     position: absolute;
     inset: 0;
     z-index: 0;
+    border-radius: inherit;
     background-image: radial-gradient(rgba(23, 23, 17, 0.22) 0.5px, transparent 0.7px);
     background-size: 4px 4px;
     opacity: 0.26;
@@ -137,86 +141,10 @@ const enHref = withLangPath(url, 'en');
   .site-shell > header {
     z-index: auto;
     border-bottom: 2px solid var(--line);
-  }
-
-  .mobile-menu-toggle {
-    display: flex;
-    min-height: 3rem;
-    cursor: pointer;
-    list-style: none;
-    align-items: center;
-    gap: 0.55rem;
-    border: 2px solid var(--line);
-    background: rgb(78 143 82 / 0.82);
-    padding: 0.55rem 0.7rem;
-    font-weight: 750;
-  }
-
-  .mobile-menu-toggle::-webkit-details-marker {
-    display: none;
-  }
-
-  .mobile-menu-toggle::after {
-    content: "+";
-    font-size: 1.1rem;
-    line-height: 0;
-  }
-
-  .mobile-menu[open] .mobile-menu-toggle::after {
-    content: "−";
-  }
-
-  .mobile-menu-panel {
-    position: absolute;
-    z-index: 40;
-    top: calc(100% + 0.9rem);
-    right: 0;
-    width: min(21rem, calc(100vw - 2rem));
-    border: 2px solid var(--line);
-    background: var(--paper);
-    counter-reset: mobile-link;
-    animation: mobile-menu-reveal 140ms ease both;
-  }
-
-  .mobile-menu-panel li {
-    counter-increment: mobile-link;
-  }
-
-  .mobile-menu-panel li:nth-child(odd) {
-    background: rgb(78 143 82 / 0.82);
-  }
-
-  .mobile-menu-panel li + li {
-    border-top: 1.5px solid var(--line);
-  }
-
-  .mobile-menu-panel a {
-    display: grid;
-    grid-template-columns: 2rem minmax(0, 1fr);
-    min-height: 3.25rem;
-    align-items: center;
-    padding: 0.6rem 0.75rem;
-    font-size: 0.95rem;
-    font-weight: 700;
-  }
-
-  .mobile-menu-panel a::before {
-    content: "A" counter(mobile-link);
-    text-transform: uppercase;
-  }
-
-  .mobile-menu-panel a:hover,
-  .mobile-menu-panel a:focus-visible,
-  .mobile-menu-panel a[aria-current] {
-    text-decoration: underline;
-    text-underline-offset: 0.22em;
-  }
-
-  @keyframes mobile-menu-reveal {
-    from {
-      opacity: 0;
-      transform: translateY(-0.4rem);
-    }
+    background: rgb(243 239 220 / 0.94);
+    box-shadow: 0 2px 4px rgb(23 23 17 / 0.14), 0 12px 28px rgb(23 23 17 / 0.2);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 
   .page {
@@ -228,49 +156,37 @@ const enHref = withLangPath(url, 'en');
   .page-header {
     margin-bottom: 2.25rem;
     padding-bottom: 1.25rem;
-    border-bottom: 2px solid var(--line);
   }
 
   .page-title {
     display: inline;
     padding: 0.03em 0.14em 0.08em;
-    background: var(--accent);
+    background: var(--title-bg);
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
-    font-size: clamp(2rem, 9vw, 3rem);
+    font-size: clamp(1.7rem, 8.5vw, 3rem);
     font-weight: 800;
     letter-spacing: -0.055em;
     line-height: 1.15;
     text-transform: uppercase;
+    border-radius: 3px;
     box-shadow: inset 0 0 0 2px var(--line);
   }
 
   .page-title.home-title {
-    font-size: clamp(2.2rem, 10.5vw, 3.4rem);
-  }
-
-  .home-heading {
-    display: grid;
-    gap: 0.35rem;
-  }
-
-  .home-heading-row {
-    display: flex;
-    align-items: flex-end;
-    gap: 0.75rem;
-  }
-
-  .home-last-name {
+    display: block;
     width: fit-content;
+    margin-inline: auto;
+    font-size: clamp(2rem, 9.6vw, 3.4rem);
+    white-space: nowrap;
   }
 
   .home-role {
-    max-width: 13rem;
-    font-size: 0.75rem;
+    margin-top: 0.85rem;
+    font-size: 0.875rem;
     font-weight: 650;
-    letter-spacing: normal;
-    line-height: 1.25;
-    text-transform: lowercase;
+    line-height: 1.4;
+    text-align: center;
   }
 
   .muted {
@@ -287,33 +203,21 @@ const enHref = withLangPath(url, 'en');
 
   .text-link:hover,
   .text-link:focus-visible,
+  .text-link:active,
   .text-link[aria-current] {
     background: var(--accent);
     color: var(--text-strong);
     text-decoration: none;
   }
 
-  .social-link {
-    display: inline-block;
-    border: 1.5px solid var(--line);
-    background: var(--paper);
-    padding: 0.32rem 0.52rem 0.38rem;
-    font-weight: 650;
-    line-height: 1;
-    text-decoration: none;
-    transition: background-color 140ms ease;
-  }
-
-  .social-link:hover,
-  .social-link:focus-visible {
-    background: var(--yellow);
-  }
-
   .home-links {
     display: grid;
     gap: 0;
     border: 2px solid var(--line);
+    border-radius: 3px;
+    overflow: hidden;
     counter-reset: home-link;
+    box-shadow: 0 8px 20px rgb(23 23 17 / 0.16);
   }
 
   .primary-link {
@@ -383,7 +287,8 @@ const enHref = withLangPath(url, 'en');
   .project-row > :first-child,
   .music-card-cover {
     border: 1.5px solid var(--line);
-    border-radius: 0 !important;
+    border-radius: 3px !important;
+    box-shadow: 0 5px 12px rgb(23 23 17 / 0.16);
   }
 
   .kamehouse-list > .music-card-compact::before {
@@ -426,16 +331,7 @@ const enHref = withLangPath(url, 'en');
       font-size: clamp(3rem, 7vw, 4.25rem);
     }
 
-    .home-heading {
-      gap: 0.5rem;
-    }
-
-    .home-heading-row {
-      gap: 1rem;
-    }
-
     .home-role {
-      max-width: 18rem;
       font-size: 1rem;
     }
 
@@ -449,7 +345,7 @@ const enHref = withLangPath(url, 'en');
   .field {
     width: 100%;
     border: 2px solid var(--line);
-    border-radius: 0;
+    border-radius: 3px;
     background: rgba(255, 255, 255, 0.24);
     padding: 0.75rem 0.9rem;
     color: var(--text);
@@ -466,6 +362,7 @@ const enHref = withLangPath(url, 'en');
 
   .button {
     border: 2px solid var(--line);
+    border-radius: 3px;
     background: var(--yellow);
     padding: 0.75rem 1rem;
     color: var(--text-strong);
@@ -475,7 +372,8 @@ const enHref = withLangPath(url, 'en');
   }
 
   .button:hover,
-  .button:focus-visible {
+  .button:focus-visible,
+  .button:active {
     background: var(--accent);
     box-shadow: none;
     color: var(--text-strong);
@@ -508,12 +406,62 @@ const enHref = withLangPath(url, 'en');
   }
 
   @media (max-width: 639px) {
+    .site-shell {
+      width: calc(100% - 0.75rem);
+      min-height: calc(100vh - 0.75rem);
+      min-height: calc(100svh - 0.75rem);
+      margin: 0.375rem auto 0.75rem;
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 44px rgb(31 12 20 / 0.38), 0 4px 12px rgb(23 23 17 / 0.24);
+    }
+
+    .site-shell > header {
+      border-bottom-width: 1px;
+      border-radius: 3px 3px 0 0;
+      box-shadow: 0 2px 4px rgb(23 23 17 / 0.16), 0 10px 24px rgb(23 23 17 / 0.24);
+    }
+
+    .page {
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
+    }
+
     .site-shell > header > .page {
-      padding-bottom: 2.5rem;
+      padding-bottom: 0.8rem;
     }
 
     main > .page:first-child:has(.page-title) {
-      margin-top: -1.85rem;
+      margin-top: -0.65rem;
+    }
+
+    .page-header {
+      margin-bottom: 1.75rem;
+      padding-bottom: 1rem;
+    }
+
+    .primary-link {
+      min-height: 3.25rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      min-height: 2.75rem;
+      align-items: center;
+    }
+
+    .field {
+      font-size: 16px;
+    }
+
+    .button {
+      width: 100%;
+      min-height: 3rem;
+    }
+
+    .language-selector a {
+      display: inline-flex;
+      min-height: 2.75rem;
+      align-items: center;
     }
 
     body::after {
@@ -533,10 +481,7 @@ const enHref = withLangPath(url, 'en');
     .primary-link,
     .project-row img,
     .music-card-cover img,
-    .button,
-    .mobile-menu-toggle,
-    .mobile-menu-panel,
-    .mobile-menu-panel a {
+    .button {
       transition: none;
       animation: none;
     }
@@ -560,7 +505,7 @@ const enHref = withLangPath(url, 'en');
     <div class="site-shell">
       <header>
         <div
-          class="page flex items-center justify-between py-7 sm:py-9"
+          class="page flex items-center justify-between py-4 sm:py-9"
         >
           <a href={`/${pageLang}/`} class="text-link text-sm">
             <img
@@ -568,11 +513,11 @@ const enHref = withLangPath(url, 'en');
               alt={"Logo"}
               width="46"
               height="46"
-              class="block h-12 w-auto brightness-0 sm:h-14"
+              class="block h-10 w-auto brightness-0 sm:h-14"
             />
           </a>
-          <nav class="relative ml-auto flex items-center gap-3 text-[0.8125rem] sm:gap-5 sm:text-sm">
-            <ul class="hidden sm:flex sm:items-center sm:gap-5">
+          <nav class="ml-auto flex items-center gap-2 text-xs sm:gap-5 sm:text-sm">
+            <ul class="flex items-center gap-2 sm:gap-5">
               {
                 navBarLinks.map((link) => (
                   <li>
@@ -588,27 +533,6 @@ const enHref = withLangPath(url, 'en');
                 ))
               }
             </ul>
-            <details id="mobile-menu" class="mobile-menu static sm:hidden">
-              <summary class="mobile-menu-toggle">menu</summary>
-              <div class="mobile-menu-panel">
-                <ul>
-                  {
-                    navBarLinks.map((link) => (
-                      <li>
-                        <a
-                          class="block whitespace-nowrap"
-                          href={link.url}
-                          target={link.external ? "_blank" : "_self"}
-                          aria-current={currentUrl === link.url ? "page" : undefined}
-                        >
-                          {link.title}
-                        </a>
-                      </li>
-                    ))
-                  }
-                </ul>
-              </div>
-            </details>
             <LanguageSelector lang={pageLang} esHref={esHref} enHref={enHref} />
           </nav>
         </div>
@@ -620,19 +544,3 @@ const enHref = withLangPath(url, 'en');
     </div>
   </body>
 </html>
-
-<script>
-  const mobileMenu = document.getElementById("mobile-menu") as HTMLDetailsElement | null;
-
-  document.addEventListener("click", (event) => {
-    if (mobileMenu?.open && event.target instanceof Node && !mobileMenu.contains(event.target)) {
-      mobileMenu.open = false;
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && mobileMenu?.open) {
-      mobileMenu.open = false;
-    }
-  });
-</script>

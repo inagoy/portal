@@ -177,7 +177,7 @@ const linkClass = [
           )}
         </div>
         {type && (
-          <p class="music-type-banner" data-type={type}>
+          <p class="music-type-banner">
             {t.labels.types?.[type] ?? type}
           </p>
         )}
@@ -274,7 +274,7 @@ const linkClass = [
         )}
       </div>
       {type && (
-        <p class="music-type-banner" data-type={type}>
+        <p class="music-type-banner">
           {t.labels.types?.[type] ?? type}
         </p>
       )}
@@ -306,6 +306,7 @@ const linkClass = [
   }
 
   .music-role-tag {
+    border-radius: 2px;
     background: rgb(78 143 82 / 0.82);
     color: var(--text-strong);
     font-size: 0.84rem;
@@ -315,6 +316,7 @@ const linkClass = [
   }
 
   .music-artist-tag {
+    border-radius: 2px;
     background: color-mix(in srgb, var(--yellow) 22%, var(--paper));
     color: var(--text-strong);
     font-weight: 650;
@@ -329,14 +331,19 @@ const linkClass = [
   }
 
   .music-card-extra {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
     display: flex;
     width: 100%;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-end;
     gap: 0.18rem 0.28rem;
-    margin-top: auto;
-    padding-top: 0.75rem;
+    margin: 0;
+    padding: 0;
     text-align: right;
+    white-space: nowrap;
   }
 
   .music-type-banner {
@@ -344,29 +351,14 @@ const linkClass = [
     top: 0;
     left: 0;
     z-index: 2;
-    border: 1.5px solid var(--line);
-    background: var(--paper);
-    padding: 0.11rem 0.34rem 0.14rem;
-    color: var(--text-strong);
-    font-size: 0.62rem;
-    font-weight: 800;
+    color: var(--muted);
+    font-size: 0.65rem;
+    font-weight: 700;
     letter-spacing: 0.02em;
     line-height: 1;
     text-transform: uppercase;
     transform: translateY(-100%);
     white-space: nowrap;
-  }
-
-  .music-type-banner[data-type="album"] {
-    background: var(--accent);
-  }
-
-  .music-type-banner[data-type="single"] {
-    background: color-mix(in srgb, var(--yellow) 55%, var(--paper));
-  }
-
-  .music-type-banner[data-type="audiovisual"] {
-    background: color-mix(in srgb, var(--cyan) 55%, var(--paper));
   }
 
   .music-card {
@@ -487,6 +479,10 @@ const linkClass = [
   }
 
   @media (max-width: 639px) {
+    .music-card-extra {
+      font-size: clamp(0.65rem, 2.8vw, 0.75rem);
+    }
+
     .music-card-summary {
       grid-template-columns: clamp(4.5rem, 22vw, 5.5rem) minmax(0, 1fr);
       align-items: start;
@@ -561,6 +557,8 @@ const linkClass = [
 
   .player-shell {
     position: relative;
+    border-radius: 3px;
+    box-shadow: 0 12px 30px rgb(23 23 17 / 0.28);
   }
 
   .player-shell iframe {

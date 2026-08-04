@@ -19,7 +19,7 @@ const t = getStrings(pageLang);
   <input type="hidden" name="access_key" value="be4c95cc-555d-48ba-a27c-68d9bd34f384" />
   <!-- Set Web3Forms email subject -->
   <input type="hidden" name="subject" value="NEW MESSAGE AT WEB" />
-  <div>
+  <div class="contact-form-block">
     <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
     <div class="contact-fields grid grid-cols-1">
       <div class="contact-field-row">
@@ -67,20 +67,39 @@ const t = getStrings(pageLang);
         </div>
       </div>
     </div>
-    <button
-      class="button mt-4"
-      type="submit"
-    >
-      {t.form.send_button}
-    </button>
-    <div id="result" class="form-result mt-3 text-sm" role="status" aria-live="polite" aria-atomic="true"></div>
+    <div class="contact-submit">
+      <button class="button" type="submit">
+        {t.form.send_button}
+      </button>
+      <div id="result" class="form-result text-sm" role="status" aria-live="polite" aria-atomic="true"></div>
+    </div>
   </div>
 </form>
 
 <style>
-  .contact-fields {
+  .contact-form-block {
     border: 2px solid var(--line);
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 8px 22px rgb(23 23 17 / 0.17);
+  }
+
+  .contact-fields {
     counter-reset: contact-field;
+  }
+
+  .contact-submit {
+    display: grid;
+    justify-items: center;
+    gap: 0.75rem;
+    border-top: 1.5px solid var(--line);
+    background: rgb(243 239 220 / 0.75);
+    padding: 1rem;
+  }
+
+  .contact-submit .button {
+    width: auto;
+    margin: 0;
   }
 
   .contact-field-row {
@@ -161,7 +180,9 @@ const t = getStrings(pageLang);
   }
 
   .form-result {
+    width: 100%;
     border: 2px solid var(--line);
+    border-radius: 3px;
     padding: 0.65rem 0.75rem;
     color: var(--text-strong);
     font-weight: 800;
@@ -194,7 +215,7 @@ const t = getStrings(pageLang);
     const result = document.getElementById("result");
     const submitButton = form.querySelector('button[type="submit"]');
     const showResult = (state, message) => {
-      result.className = `form-result form-result-${state} mt-3 text-sm`;
+      result.className = `form-result form-result-${state} text-sm`;
       result.textContent = message;
     };
 

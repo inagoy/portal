@@ -240,7 +240,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       socio: "santiago monroy y nicolás carlino",
       type: "single"
     },   
-    {
+/*     {
       title: "rolling | william campbell",
       roles: ["coProduction", "editing"],
       artistRoles: ["interpreter", "coWriter"],
@@ -249,7 +249,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       url: "https://www.youtube.com/watch?v=aqbNW4f89EQ",
       socio: "santiago monroy y nicolás carlino",
       type: "single"
-    },    
+    },  */   
     {
       title: "los ángeles | william campbell",
       roles: ["coProduction", "editing"],
