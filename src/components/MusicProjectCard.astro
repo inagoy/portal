@@ -4,6 +4,7 @@ import type { MusicProject, Project } from "../types/config";
 import { getStrings, normalizeLang, type Lang } from "../i18n";
 
 type Props = Omit<Project, "description"> & {
+  artist?: string;
   description?: string;
   roles?: MusicProject["roles"];
   artistRoles?: MusicProject["artistRoles"];
@@ -19,6 +20,7 @@ type InlineMedia = {
 
 const {
   title,
+  artist,
   description,
   image,
   year,
@@ -144,6 +146,7 @@ const linkClass = [
           </div>
         </div>
         <div class="music-card-content min-w-0">
+          {artist && <p class="muted mb-1 text-xs font-semibold sm:text-sm">{artist}</p>}
           <div class="flex items-start justify-between gap-3 sm:gap-4">
             <h2 class="text-[0.98rem] font-bold leading-tight sm:text-base">
               {title}
@@ -241,6 +244,7 @@ const linkClass = [
         </div>
       </div>
       <div class="music-card-content min-w-0">
+        {artist && <p class="muted mb-1 text-xs font-semibold sm:text-sm">{artist}</p>}
         <div class="flex items-start justify-between gap-3 sm:gap-4">
           <h2 class="text-[0.98rem] font-bold leading-tight sm:text-base">
             {title}

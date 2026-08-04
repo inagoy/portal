@@ -2,7 +2,7 @@ export const en = {
   lang: 'en',
   nav: {
     music: 'music | audio',
-    programming: 'audio dev',
+    programming: 'audio dev portfolio',
     contact: 'contact',
   },
   onlyfans: {
@@ -11,22 +11,21 @@ export const en = {
   },
   headings: {
     music_portfolio: 'music | audio portfolio',
-    programming_portfolio: 'audio development portfolio',
+    programming_portfolio: 'audio dev portfolio',
     contact: 'contact',
     more_projects_on: 'more projects at',
     my_networks: 'my socials',
   },
   home: {
-    role: 'music producer | audio programmer',
-    description:
-      'I move between making music and learning/developing audio tools.',
+    role: 'Music Producer / Mixing Engineer',
+    description: '',
     links: {
       music: 'audio portfolio',
       programming: 'audio dev portfolio',
     },
     seo: {
-      title: 'iñaki goyeneche',
-      description: 'music producer and audio programmer',
+      title: 'Iñaki Goyeneche — Music Producer & Mixing Engineer',
+      description: 'Selected music production, mixing and audio work by Iñaki Goyeneche.',
     },
   },
   contact: {
@@ -46,8 +45,8 @@ export const en = {
   programming: {
     subtitle: 'some projects I worked on',
     seo: {
-      title: 'audio dev | iñaki goyeneche',
-      description: 'some projects building audio tools',
+      title: 'Iñaki Goyeneche — Audio Software Developer',
+      description: 'Audio software, JUCE, source-separation and development projects by Iñaki Goyeneche.',
     },
   },
   form: {

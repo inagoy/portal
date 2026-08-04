@@ -1,69 +1,15 @@
 ---
 export function getStaticPaths() {
   return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'en' } },
+    { params: { lang: "es" } },
+    { params: { lang: "en" } },
   ];
 }
 
-import Layout from "../../layouts/Layout.astro";
-import { getHomePageContent, identity } from "../../config";
+import MusicPortfolioPage from "../../components/MusicPortfolioPage.astro";
 import { normalizeLang } from "../../i18n";
-import SocialLink from "../../components/SocialLink.astro";
-import Link from "../../components/Link.astro";
 
 const lang = normalizeLang(Astro.params.lang as string);
-const homePageContent = getHomePageContent(lang);
 ---
-<Layout seo={homePageContent.seo} lang={lang}>
-  <section class="page pt-8 sm:pt-10">
-    <div class="home-column">
-      <div class="page-header">
-        <h1 class="page-title home-title">
-          {identity.name}
-        </h1>
-        <p class="mt-2 text-center text-base font-extrabold sm:text-lg">° inagoi °</p>
-        <p class="home-role muted">{homePageContent.role}</p>
-      </div>
 
-      <div class="home-links">
-        {
-          homePageContent.links.map((link: any) => (
-            <Link text={link.title} href={`/${lang}${link.url}`} external={link.external}/>
-          ))
-        }
-      </div>
-    </div>
-
-    <ul class="mt-8 flex flex-wrap justify-center gap-x-4 gap-y-2.5 sm:mt-10 sm:gap-x-5 sm:gap-y-3">
-      {
-        homePageContent.socialLinks.map((link: any) => (
-          <li>
-            <SocialLink
-              title={link.title}
-              url={link.url}
-              icon={link.icon}
-              external={link.external}
-              disappearsOnHover={link.disappearsOnHover}
-            />
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-</Layout>
-
-<style>
-  .home-column {
-    display: grid;
-    width: fit-content;
-    max-width: 100%;
-    margin-inline: auto;
-  }
-
-  .home-title,
-  .home-links {
-    width: 100%;
-    text-align: center;
-  }
-</style>
+<MusicPortfolioPage lang={lang} />

@@ -2,7 +2,7 @@ export const es = {
   lang: 'es',
   nav: {
     music: 'música | audio',
-    programming: 'audio dev',
+    programming: 'portfolio audio dev',
     contact: 'contacto',
   },
   onlyfans: {
@@ -17,16 +17,15 @@ export const es = {
     my_networks: 'mis redes',
   },
   home: {
-    role: 'productor musical | programador para audio',
-    description:
-      'siempre estoy dando vueltas entre el hacer musical y el aprendizaje y desarrollo de herramientas de audio',
+    role: 'prod / mezcla',
+    description: '',
     links: {
       music: 'portfolio de música | audio',
       programming: 'portfolio audio dev',
     },
     seo: {
-      title: 'iñaki goyeneche',
-      description: 'productor musical y programador para audio',
+      title: 'Iñaki Goyeneche — Productor Musical e Ingeniero de Mezcla',
+      description: 'Selección de trabajos de producción musical, mezcla y audio de Iñaki Goyeneche.',
     },
   },
   contact: {
@@ -46,8 +45,8 @@ export const es = {
   programming: {
     subtitle: 'algunos proyectos en los que trabajé',
     seo: {
-      title: 'audio dev | iñaki goyeneche',
-      description: 'algunos proyectos de desarrollo de herramientas de audio',
+      title: 'Iñaki Goyeneche — Desarrollador de Software de Audio',
+      description: 'Software de audio, JUCE, separación de fuentes y proyectos de desarrollo de Iñaki Goyeneche.',
     },
   },
   form: {

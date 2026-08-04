@@ -1,0 +1,102 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MusicGridCard from "./MusicGridCard.astro";
+import SoftwareProjectCard from "./SoftwareProjectCard.astro";
+import {
+  getAudioSoftwareProjects,
+  getHomePageContent,
+  getMusicProjectsPageContent,
+  identity,
+} from "../config";
+import type { Lang } from "../i18n";
+
+interface Props { lang: Lang }
+
+const { lang } = Astro.props;
+const home = getHomePageContent(lang);
+const allMusicProjects = getMusicProjectsPageContent(lang).projects;
+const musicProjects = [
+  "red bull symphonic",
+  "fanático (en vivo)",
+  "no ficción ft. iuio (en vivo)",
+  "otro idioma",
+  "amuleto",
+  "2064 + polonio",
+].flatMap((title) => allMusicProjects.filter((project) => project.title === title));
+const audioProjects = getAudioSoftwareProjects(lang).slice(0, 2);
+const labels = lang === "es"
+  ? {
+      work: "trabajos seleccionados",
+      all: "ver archivo",
+      audio: "audio dev projects",
+      role: "prod / mezcla",
+      contact: "trabajemos",
+      info: "Producción · mezcla · edición",
+    }
+  : {
+      work: "selected works",
+      all: "view archive",
+      audio: "audio dev projects",
+      role: "Music Producer / Mixing Engineer",
+      contact: "work with me",
+      info: "Production · mixing · editing",
+    };
+---
+
+<Layout seo={home.seo} lang={lang} context="music">
+  <section class="page portfolio-hero">
+    <h1 class="page-title home-title portfolio-title">{identity.name}</h1>
+    <div class="portfolio-identity">
+      <p class="portfolio-role">{labels.role}</p>
+      <ul class="context-links" aria-label={lang === "es" ? "contacto y portfolios" : "contact and portfolios"}>
+        <li><a class="text-link" href="https://instagram.com/inagoy" target="_blank" rel="noopener noreferrer">instagram ↗</a></li>
+        <li><a class="text-link" href={`mailto:${identity.email}`}>email ↗</a></li>
+        <li><a class="text-link" href="/audio-dev">audio dev portfolio ↗</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="work" class="page portfolio-section">
+    <div class="section-heading">
+      <h2>{labels.work}</h2>
+      <a class="text-link" href={`/${lang}/music-projects`}>{labels.all} →</a>
+    </div>
+    <div class="project-grid">
+      {musicProjects.map((project) => <MusicGridCard project={project} lang={lang} />)}
+    </div>
+  </section>
+
+  <section id="audio-projects" class="page portfolio-section">
+    <div class="section-heading">
+      <h2>{labels.audio}</h2>
+      <a class="text-link" href="/audio-dev">audio dev portfolio →</a>
+    </div>
+    <div class="project-grid secondary-grid music-audio-grid">
+      {audioProjects.map((project) => <SoftwareProjectCard project={project} compact />)}
+    </div>
+  </section>
+
+  <section id="info" class="page portfolio-info">
+    <h2>{labels.contact}</h2>
+    <div class="portfolio-info-copy">
+      <p>{labels.info}</p>
+      <ul class="direct-links">
+        <li><a class="text-link" href="https://instagram.com/inagoy" target="_blank" rel="noopener noreferrer">instagram ↗</a></li>
+        <li><a class="text-link" href={`mailto:${identity.email}`}>{identity.email} ↗</a></li>
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .music-audio-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 58rem;
+  }
+
+  @media (max-width: 480px) {
+    .music-audio-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

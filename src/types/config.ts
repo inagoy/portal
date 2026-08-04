@@ -4,6 +4,8 @@ export type NavBarLink = {
   external?: boolean;
 };
 
+export type PortfolioContext = 'music' | 'audio-dev';
+
 export type SocialLink = {
   title: string;
   url: string;
@@ -66,10 +68,23 @@ export type Project = {
 };
 
 export type MusicProject = Omit<Project, 'description'> & {
+  artist?: string;
   roles: ProjectRole[];
   artistRoles?: ProjectArtistRole[];
   description?: string;
   source?: 'kamehouse';
+};
+
+export type SoftwareProject = {
+  name: string;
+  summary: string;
+  image: string;
+  role: string;
+  technologies: string[];
+  status: string;
+  repository?: string;
+  demo?: string;
+  category?: string;
 };
 
 export type MusicProjectPageContent = {

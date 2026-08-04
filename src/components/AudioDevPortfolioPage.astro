@@ -1,0 +1,116 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MusicGridCard from "./MusicGridCard.astro";
+import SoftwareProjectCard from "./SoftwareProjectCard.astro";
+import {
+  getAudioSoftwareProjects,
+  getMusicProjectsPageContent,
+  getOtherSoftwareProjects,
+  getProgrammingProjectsPageContent,
+  identity,
+  socialLinks,
+} from "../config";
+import type { Lang } from "../i18n";
+
+interface Props { lang: Lang }
+
+const { lang } = Astro.props;
+const seo = getProgrammingProjectsPageContent(lang).seo;
+const audioProjects = getAudioSoftwareProjects(lang);
+const musicProjects = getMusicProjectsPageContent(lang).projects.slice(0, 4);
+const otherProjects = getOtherSoftwareProjects(lang);
+const linkedIn = socialLinks.find((link) => link.title === "linkedin");
+const labels = lang === "es"
+  ? {
+      role: "Desarrollador de Software de Audio",
+      projects: "audio dev projects",
+      music: "trabajos de música seleccionados",
+      other: "otro software",
+      contact: "contacto",
+      info: "C++ · JUCE · ARA · DSP · Python · separación de fuentes",
+    }
+  : {
+      role: "Audio Software Developer",
+      projects: "audio dev projects",
+      music: "selected music work",
+      other: "other software",
+      contact: "contact",
+      info: "C++ · JUCE · ARA · DSP · Python · source separation",
+    };
+---
+
+<Layout seo={seo} lang={lang} context="audio-dev">
+  <section class="page portfolio-hero">
+    <h1 class="page-title home-title portfolio-title">{identity.name}</h1>
+    <div class="portfolio-identity">
+      <p class="portfolio-role">{labels.role}</p>
+      <ul class="context-links" aria-label={lang === "es" ? "contacto y portfolios" : "contact and portfolios"}>
+        <li><a class="text-link" href={`mailto:${identity.email}`}>email ↗</a></li>
+        <li><a class="text-link" href="https://github.com/inagoy" target="_blank" rel="noopener noreferrer">github ↗</a></li>
+        {linkedIn && <li><a class="text-link" href={linkedIn.url} target="_blank" rel="noopener noreferrer">linkedin ↗</a></li>}
+        <li><a class="text-link" href={`/${lang}/cv`}>cv ↗</a></li>
+        <li><a class="text-link" href={`/${lang}/`}>music ↗</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects" class="page portfolio-section">
+    <div class="section-heading"><h2>{labels.projects}</h2></div>
+    <div class="project-grid audio-primary-grid">
+      {audioProjects.map((project) => <SoftwareProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <section id="music" class="page portfolio-section">
+    <div class="section-heading">
+      <h2>{labels.music}</h2>
+      <a class="text-link" href={`/${lang}/`}>music portfolio →</a>
+    </div>
+    <div class="project-grid secondary-grid music-secondary-grid">
+      {musicProjects.map((project) => <MusicGridCard project={project} lang={lang} compact />)}
+    </div>
+  </section>
+
+  <section class="page portfolio-section">
+    <div class="section-heading"><h2>{labels.other}</h2></div>
+    <div class="project-grid secondary-grid other-software-grid">
+      {otherProjects.map((project) => <SoftwareProjectCard project={project} compact />)}
+    </div>
+  </section>
+
+  <section id="contact" class="page portfolio-info">
+    <h2>{labels.contact}</h2>
+    <div class="portfolio-info-copy">
+      <p>{labels.info}</p>
+      <ul class="direct-links">
+        <li><a class="text-link" href={`mailto:${identity.email}`}>{identity.email} ↗</a></li>
+        {linkedIn && <li><a class="text-link" href={linkedIn.url} target="_blank" rel="noopener noreferrer">linkedin ↗</a></li>}
+        <li><a class="text-link" href="https://github.com/inagoy" target="_blank" rel="noopener noreferrer">github ↗</a></li>
+        <li><a class="text-link" href={`/${lang}/cv`}>cv ↗</a></li>
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  @media (min-width: 761px) {
+    .audio-primary-grid > :first-child {
+      grid-column: span 2;
+    }
+
+    .music-secondary-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 480px) {
+    .audio-primary-grid,
+    .other-software-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .music-secondary-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

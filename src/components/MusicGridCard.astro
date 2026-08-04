@@ -1,0 +1,133 @@
+---
+import type { Lang } from "../i18n";
+import { getStrings } from "../i18n";
+import type { MusicProject } from "../types/config";
+
+interface Props {
+  project: MusicProject;
+  lang: Lang;
+  compact?: boolean;
+}
+
+const { project, lang, compact = false } = Astro.props;
+const t = getStrings(lang);
+const roles = project.roles.map((role) => t.labels.roles[role] ?? role).join(" · ");
+---
+
+<a
+  class:list={["music-grid-card", { compact }]}
+  href={project.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`${project.artist ? `${project.artist}, ` : ""}${project.title} — ${roles}`}
+>
+  <div class="card-image">
+    <img
+      src={project.image}
+      alt={`${project.artist ? `${project.artist} — ` : ""}${project.title}`}
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <div class="card-heading">
+    <div>
+      {project.artist && <p class="artist">{project.artist}</p>}
+      <h3>{project.title}</h3>
+    </div>
+    <span>{project.year}</span>
+  </div>
+  <p class="role">{roles}</p>
+</a>
+
+<style>
+  .music-grid-card {
+    display: block;
+    min-width: 0;
+  }
+
+  .card-image {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--soft);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 220ms ease, transform 220ms ease;
+  }
+
+  .music-grid-card:hover img,
+  .music-grid-card:focus-visible img {
+    filter: saturate(1.08);
+    transform: scale(1.025);
+  }
+
+  .card-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.8rem;
+  }
+
+  .card-heading > div {
+    min-width: 0;
+  }
+
+  .card-heading span {
+    flex: none;
+    color: var(--muted);
+    font-family: var(--meta-font);
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+  }
+
+  .artist {
+    font-family: var(--meta-font);
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin-top: 0.12rem;
+    font-family: var(--meta-font);
+    font-size: 0.92rem;
+    font-weight: 400;
+    letter-spacing: 0.025em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
+  .role {
+    margin-top: 0.35rem;
+    color: var(--muted);
+    font-family: var(--meta-font);
+    font-size: 0.78rem;
+    letter-spacing: 0.035em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .compact .card-heading {
+    margin-top: 0.6rem;
+  }
+
+  .compact .artist,
+  .compact h3 {
+    font-size: 0.82rem;
+  }
+
+  .compact .role,
+  .compact .card-heading span {
+    font-size: 0.72rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    img {
+      transition: none;
+    }
+  }
+</style>
