@@ -78,14 +78,10 @@ const projectGroups = musicProjectsPageContent.projects.reduce<ProjectGroup[]>((
     position: relative;
   }
 
-  :global(.kamehouse-list > .music-card-compact:first-child) {
-    border-top: 0;
-  }
-
   :global(.kamehouse-list > .music-card-compact)::before {
     content: "";
     position: absolute;
-    inset-block: 0;
+    inset-block: -1rem 0;
     left: var(--kamehouse-line-inset);
     width: 2px;
     background: #f2c94c;

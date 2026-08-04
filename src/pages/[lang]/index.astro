@@ -14,14 +14,20 @@ import Link from "../../components/Link.astro";
 
 const lang = normalizeLang(Astro.params.lang as string);
 const homePageContent = getHomePageContent(lang);
+const [firstName, lastName] = identity.name.split(" ");
 ---
 <Layout seo={homePageContent.seo} lang={lang}>
   <section class="page pt-8 sm:pt-20">
     <div class="page-header">
-      <h1 class="page-title home-title">
-        {identity.name}<span class="ml-[0.45em] inline-block align-middle text-[0.36em] font-semibold lowercase tracking-normal">(inagoi)</span>
+      <h1 class="home-heading" aria-label={`${identity.name} — ${homePageContent.role}`}>
+        <span class="home-heading-row">
+          <span class="page-title home-title">{firstName}</span>
+          <span class="home-role muted">{homePageContent.role}</span>
+        </span>
+        <span class="page-title home-title home-last-name">
+          {lastName}<span class="ml-[0.45em] inline-block align-middle text-[0.36em] font-semibold lowercase tracking-normal">(inagoi)</span>
+        </span>
       </h1>
-      <p class="muted mt-3 text-sm sm:mt-4 sm:text-base">{homePageContent.role}</p>
     </div>
 
     <ul class="flex flex-wrap gap-x-4 gap-y-2.5 sm:gap-x-5 sm:gap-y-3">

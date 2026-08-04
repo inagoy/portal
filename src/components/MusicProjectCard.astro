@@ -112,14 +112,17 @@ const collaboratorParts = socio?.split(/(\s+(?:y|&)\s+)/i) ?? [];
 const roleListLabel = currentLang === "es" ? "roles del proyecto" : "project roles";
 const artistRoleListLabel = currentLang === "es" ? "roles artísticos" : "artist roles";
 const albumClass = type === "album" ? "music-card-album" : "";
+const projectClass = type ? "music-card-project" : "";
 const cardClass = [
   "music-card group/card border-t border-[var(--line)] py-5 sm:py-6",
   albumClass,
+  projectClass,
   compact ? "music-card-compact" : "",
 ].join(" ");
 const linkClass = [
   "music-card project-row media-project-row group/card",
   albumClass,
+  projectClass,
   compact ? "music-card-compact" : "",
 ].join(" ");
 ---
@@ -139,11 +142,6 @@ const linkClass = [
               class={coverImageClass}
             />
           </div>
-          {type && (
-            <p class="music-type-banner" data-type={type}>
-              {t.labels.types?.[type] ?? type}
-            </p>
-          )}
         </div>
         <div class="music-card-content min-w-0">
           <div class="flex items-start justify-between gap-3 sm:gap-4">
@@ -178,6 +176,11 @@ const linkClass = [
             </p>
           )}
         </div>
+        {type && (
+          <p class="music-type-banner" data-type={type}>
+            {t.labels.types?.[type] ?? type}
+          </p>
+        )}
       </summary>
       <div class="music-card-player mt-3 flex w-full justify-center">
         <div class="w-full">
@@ -236,11 +239,6 @@ const linkClass = [
             class={coverImageClass}
           />
         </div>
-        {type && (
-          <p class="music-type-banner" data-type={type}>
-            {t.labels.types?.[type] ?? type}
-          </p>
-        )}
       </div>
       <div class="music-card-content min-w-0">
         <div class="flex items-start justify-between gap-3 sm:gap-4">
@@ -275,6 +273,11 @@ const linkClass = [
           </p>
         )}
       </div>
+      {type && (
+        <p class="music-type-banner" data-type={type}>
+          {t.labels.types?.[type] ?? type}
+        </p>
+      )}
     </a>
   )
 }
@@ -350,6 +353,7 @@ const linkClass = [
     letter-spacing: 0.02em;
     line-height: 1;
     text-transform: uppercase;
+    transform: translateY(-100%);
     white-space: nowrap;
   }
 
@@ -369,12 +373,38 @@ const linkClass = [
     position: relative;
   }
 
-  details.music-card:not(.music-card-compact) {
-    --music-card-content-offset: calc(clamp(4.5rem, 22vw, 5.5rem) + 0.85rem);
+  .music-card-project {
+    --closed-card-height: 13rem;
+    margin-top: 1rem;
   }
 
-  details.music-card-album:not(.music-card-compact) {
-    --music-card-content-offset: calc(clamp(5.8rem, 31vw, 7rem) + 1rem);
+  .music-card-project.music-card-compact {
+    --closed-card-height: 11.75rem;
+  }
+
+  details.music-card-project:not([open]),
+  a.music-card-project {
+    height: var(--closed-card-height);
+  }
+
+  details.music-card-project:not([open]) .music-card-summary {
+    height: 100%;
+  }
+
+  details.music-card-project {
+    --music-card-padding: 1.25rem;
+  }
+
+  details.music-card-project.music-card-compact {
+    --music-card-padding: 1.15rem;
+  }
+
+  details.music-card-project .music-type-banner {
+    top: calc(-1 * var(--music-card-padding));
+  }
+
+  details.music-card:not(.music-card-compact) {
+    --music-card-content-offset: calc(clamp(4.5rem, 22vw, 5.5rem) + 0.85rem);
   }
 
   .music-card.media-project-row {
@@ -415,12 +445,16 @@ const linkClass = [
       --music-card-content-offset: 9rem;
     }
 
-    details.music-card-album:not(.music-card-compact) {
-      --music-card-content-offset: 10rem;
-    }
-
     details.music-card-compact {
       padding-block: 1rem;
+    }
+
+    details.music-card-project {
+      --music-card-padding: 1.5rem;
+    }
+
+    details.music-card-project.music-card-compact {
+      --music-card-padding: 1rem;
     }
 
     details.music-card-compact .music-card-summary,
@@ -432,14 +466,12 @@ const linkClass = [
       font-size: 0.94rem;
     }
 
-    details.music-card-album:not(.music-card-compact) .music-card-summary,
-    .music-card-album.media-project-row:not(.music-card-compact) {
-      grid-template-columns: 9rem minmax(0, 1fr);
+    .music-card-project {
+      --closed-card-height: 12rem;
     }
 
-    details.music-card-album.music-card-compact .music-card-summary,
-    .music-card-album.music-card-compact.media-project-row {
-      grid-template-columns: 7.6rem minmax(0, 1fr);
+    .music-card-project.music-card-compact {
+      --closed-card-height: 10.5rem;
     }
   }
 
@@ -449,31 +481,6 @@ const linkClass = [
       align-items: start;
     }
 
-    details.music-card-album .music-card-summary,
-    .music-card-album.media-project-row {
-      grid-template-columns: clamp(5.8rem, 31vw, 7rem) minmax(0, 1fr);
-      gap: 1rem;
-    }
-  }
-
-  details.music-card-album,
-  .music-card-album.media-project-row {
-    padding-block: 1.5rem;
-  }
-
-  details.music-card-album.music-card-compact {
-    padding-block: 1.25rem;
-  }
-
-  @media (min-width: 640px) {
-    details.music-card-album,
-    .music-card-album.media-project-row {
-      padding-block: 1.85rem;
-    }
-
-    details.music-card-album.music-card-compact {
-      padding-block: 1.25rem;
-    }
   }
 
   .music-card-overlay {
@@ -487,6 +494,10 @@ const linkClass = [
 
   details[open].music-card {
     z-index: 20;
+  }
+
+  details[open].music-card .music-type-banner {
+    display: none;
   }
 
   details[open].music-card:not(.music-card-compact) .music-card-content {
