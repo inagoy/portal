@@ -32,7 +32,7 @@ const t = getStrings(pageLang);
           name="name"
           class="field"
         />
-        <div class="empty-feedback invalid-feedback mt-2 text-xs text-red-300">
+        <div class="validation-feedback empty-feedback invalid-feedback">
           {t.form.name_required}
         </div>
       </div>
@@ -46,10 +46,10 @@ const t = getStrings(pageLang);
           required
           class="field"
         />
-        <div class="empty-feedback mt-2 text-xs text-red-300">
+        <div class="validation-feedback empty-feedback">
           {t.form.email_required}
         </div>
-        <div class="invalid-feedback mt-2 text-xs text-red-300">
+        <div class="validation-feedback invalid-feedback">
           {t.form.email_invalid}
         </div>
       </div>
@@ -62,7 +62,7 @@ const t = getStrings(pageLang);
           placeholder={t.form.message_placeholder}
           class="field h-36 resize-none"
         ></textarea>
-        <div class="empty-feedback invalid-feedback mt-2 text-xs text-red-300">
+        <div class="validation-feedback empty-feedback invalid-feedback">
           {t.form.message_required}
         </div>
       </div>
@@ -132,6 +132,14 @@ const t = getStrings(pageLang);
     display: none;
   }
 
+  .validation-feedback {
+    padding: 0 0.9rem 0.75rem;
+    color: #97152e;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
   .was-validated :placeholder-shown:invalid ~ .empty-feedback {
     display: block;
   }
@@ -140,13 +148,12 @@ const t = getStrings(pageLang);
     display: block;
   }
 
-  .is-invalid,
-  .was-validated :invalid {
-    border-color: #dc3545;
+  .was-validated .contact-field-row .field:invalid {
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
   }
 
   .was-validated .contact-field-row:has(:invalid) {
-    box-shadow: inset 0 0 0 2px #dc3545;
+    box-shadow: inset 0 0 0 2px #97152e;
   }
 
   .form-result:empty {
