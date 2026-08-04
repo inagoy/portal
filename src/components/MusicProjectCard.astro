@@ -153,7 +153,7 @@ const linkClass = [
           {roleLabels.length > 0 && (
             <ul class="music-role-tags mt-3 sm:mt-2" aria-label={roleListLabel}>
               {roleLabels.map((role) => (
-                <li class="music-role-tag text-xs sm:text-sm">{role}</li>
+                <li class="music-role-tag">{role}</li>
               ))}
             </ul>
           )}
@@ -250,7 +250,7 @@ const linkClass = [
         {roleLabels.length > 0 && (
           <ul class="music-role-tags mt-3 sm:mt-2" aria-label={roleListLabel}>
             {roleLabels.map((role) => (
-              <li class="music-role-tag text-xs sm:text-sm">{role}</li>
+              <li class="music-role-tag">{role}</li>
             ))}
           </ul>
         )}
@@ -308,9 +308,10 @@ const linkClass = [
   .music-role-tag {
     background: rgb(78 143 82 / 0.82);
     color: var(--text-strong);
+    font-size: 0.84rem;
     font-weight: 650;
     line-height: 1.2;
-    padding: 0 0.12rem 0.04rem;
+    padding: 0.12rem 0.32rem 0.16rem;
   }
 
   .music-artist-tag {
@@ -343,8 +344,7 @@ const linkClass = [
     top: 0;
     left: 0;
     z-index: 2;
-    border-right: 1.5px solid var(--line);
-    border-bottom: 1.5px solid var(--line);
+    border: 1.5px solid var(--line);
     background: var(--paper);
     padding: 0.11rem 0.34rem 0.14rem;
     color: var(--text-strong);
@@ -435,9 +435,12 @@ const linkClass = [
   }
 
   .music-card-compact summary .muted,
-  .music-card-compact .music-role-tag,
   .music-card-compact .music-artist-tag {
     font-size: 0.74rem;
+  }
+
+  .music-card-compact .music-role-tag {
+    font-size: 0.8rem;
   }
 
   @media (min-width: 640px) {
@@ -464,6 +467,14 @@ const linkClass = [
 
     .music-card-compact summary h2 {
       font-size: 0.94rem;
+    }
+
+    .music-role-tag {
+      font-size: 0.9rem;
+    }
+
+    .music-card-compact .music-role-tag {
+      font-size: 0.84rem;
     }
 
     .music-card-project {

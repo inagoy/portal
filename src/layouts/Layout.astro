@@ -246,7 +246,7 @@ const enHref = withLangPath(url, 'en');
   }
 
   .page-title.home-title {
-    font-size: clamp(2.35rem, 11.5vw, 3.7rem);
+    font-size: clamp(2.2rem, 10.5vw, 3.4rem);
   }
 
   .home-heading {
@@ -256,7 +256,7 @@ const enHref = withLangPath(url, 'en');
 
   .home-heading-row {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 0.75rem;
   }
 
@@ -423,7 +423,7 @@ const enHref = withLangPath(url, 'en');
     }
 
     .page-title.home-title {
-      font-size: clamp(3.25rem, 8vw, 4.75rem);
+      font-size: clamp(3rem, 7vw, 4.25rem);
     }
 
     .home-heading {
@@ -497,9 +497,25 @@ const enHref = withLangPath(url, 'en');
       width: min(calc(100% - 3rem), 48rem);
       margin-top: 1.5rem;
     }
+
+    .site-shell > header > .page {
+      padding-bottom: 3.75rem;
+    }
+
+    main > .page:first-child:has(.page-title) {
+      margin-top: -2.65rem;
+    }
   }
 
   @media (max-width: 639px) {
+    .site-shell > header > .page {
+      padding-bottom: 3.25rem;
+    }
+
+    main > .page:first-child:has(.page-title) {
+      margin-top: -2.15rem;
+    }
+
     body::after {
       background-image: none;
     }
