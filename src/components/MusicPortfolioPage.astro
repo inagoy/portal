@@ -28,7 +28,7 @@ const labels = lang === "es"
   ? {
       work: "trabajos seleccionados",
       all: "ver archivo",
-      audio: "audio dev projects",
+      audio: "audio software",
       role: "prod / mezcla",
       contact: "trabajemos",
       info: "Producción · mezcla · edición",
@@ -36,7 +36,7 @@ const labels = lang === "es"
   : {
       work: "selected works",
       all: "view archive",
-      audio: "audio dev projects",
+      audio: "audio software",
       role: "Music Producer / Mixing Engineer",
       contact: "work with me",
       info: "Production · mixing · editing",
@@ -45,13 +45,14 @@ const labels = lang === "es"
 
 <Layout seo={home.seo} lang={lang} context="music">
   <section class="page portfolio-hero">
-    <h1 class="page-title home-title portfolio-title">{identity.name}</h1>
+    <h1 class="page-title home-title portfolio-title">
+      <span class="name-line">iñaki</span><span class="name-line">goyeneche</span><span class="portfolio-alias">°inagoi°</span>
+    </h1>
     <div class="portfolio-identity">
       <p class="portfolio-role">{labels.role}</p>
       <ul class="context-links" aria-label={lang === "es" ? "contacto y portfolios" : "contact and portfolios"}>
         <li><a class="text-link" href="https://instagram.com/inagoy" target="_blank" rel="noopener noreferrer">instagram ↗</a></li>
         <li><a class="text-link" href={`mailto:${identity.email}`}>email ↗</a></li>
-        <li><a class="text-link" href="/audio-dev">audio dev portfolio ↗</a></li>
       </ul>
     </div>
   </section>
@@ -61,18 +62,18 @@ const labels = lang === "es"
       <h2>{labels.work}</h2>
       <a class="text-link" href={`/${lang}/music-projects`}>{labels.all} →</a>
     </div>
-    <div class="project-grid">
-      {musicProjects.map((project) => <MusicGridCard project={project} lang={lang} />)}
+    <div class="project-grid music-featured-grid">
+      {musicProjects.map((project, index) => <MusicGridCard project={project} lang={lang} priority={index === 0} />)}
     </div>
   </section>
 
   <section id="audio-projects" class="page portfolio-section">
     <div class="section-heading">
       <h2>{labels.audio}</h2>
-      <a class="text-link" href="/audio-dev">audio dev portfolio →</a>
+      <a class="text-link" href={`/${lang}/audio-dev`}>audio dev ↗</a>
     </div>
     <div class="project-grid secondary-grid music-audio-grid">
-      {audioProjects.map((project) => <SoftwareProjectCard project={project} compact />)}
+      {audioProjects.map((project) => <SoftwareProjectCard project={project} lang={lang} compact />)}
     </div>
   </section>
 
@@ -97,6 +98,12 @@ const labels = lang === "es"
   @media (max-width: 480px) {
     .music-audio-grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .music-featured-grid > :global(.music-grid-card):first-child {
+      grid-column: 1 / -1;
     }
   }
 </style>

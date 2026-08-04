@@ -14,30 +14,30 @@ import { getStrings, normalizeLang } from './i18n';
 export const identity: Identity = {
   name: "iñaki goyeneche",
   logo: "/logo.png",
-  email: "igoyeneche.98@gmail.com",
+  email: "inagoy.audio@gmail.com",
 };
 
 export function getNavBarLinks(lang?: string, context: PortfolioContext = 'music'): NavBarLink[] {
   const normalized = normalizeLang(lang);
   const prefix = `/${normalized}`;
   const labels = normalized === 'es'
-    ? { work: 'trabajos', audio: 'audio dev projects', projects: 'audio dev projects', music: 'música', contact: 'contacto' }
-    : { work: 'work', audio: 'audio dev projects', projects: 'audio dev projects', music: 'music', contact: 'contact' };
+    ? { work: 'trabajos', archive: 'archivo', projects: 'audio dev projects', music: 'música', contact: 'contacto' }
+    : { work: 'work', archive: 'archive', projects: 'audio dev projects', music: 'music', contact: 'contact' };
 
   if (context === 'audio-dev') {
     return [
-      { title: labels.projects, url: '/audio-dev#projects' },
-      { title: labels.music, url: '/audio-dev#music' },
+      { title: labels.projects, url: `${prefix}/audio-dev#projects` },
+      { title: labels.music, url: `${prefix}/audio-dev#music` },
       { title: 'github', url: 'https://github.com/inagoy', external: true },
-      { title: labels.contact, url: '/audio-dev#contact' },
+      { title: labels.contact, url: `${prefix}/audio-dev#contact` },
     ];
   }
 
   return [
     { title: labels.work, url: `${prefix}/#work` },
-    { title: labels.audio, url: `${prefix}/#audio-projects` },
+    { title: labels.archive, url: `${prefix}/music-projects` },
     { title: 'instagram', url: 'https://instagram.com/inagoy', external: true },
-    { title: 'audio dev portfolio ↗', url: '/audio-dev' },
+    { title: 'audio dev ↗', url: `${prefix}/audio-dev` },
   ];
 }
 
@@ -62,7 +62,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     title: "mail",
-    url: "mailto:igoyeneche.98@gmail.com",
+    url: "mailto:inagoy.audio@gmail.com",
     icon: "mdi:email",
   },
 ];
@@ -161,6 +161,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       roles: ["editing", "mixing", "mastering"],
       artistRoles: ["interpreter"],
       image: "https://img.youtube.com/vi/xaK70wtFhzA/hqdefault.jpg",
+      imagePosition: "center 45%",
       year: "2025",
       url: "https://www.youtube.com/watch?v=xaK70wtFhzA",
       type: "single"
@@ -319,6 +320,20 @@ export function getMusicProjectsPageContent(lang?: string): MusicProjectPageCont
     projects,
   };
 }
+
+const slugify = (value: string) =>
+  value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
+export const getMusicProjectSlug = (project: Pick<MusicProjectPageContent["projects"][number], "title">) =>
+  slugify(project.title);
+
+export const getSoftwareProjectSlug = (project: Pick<SoftwareProject, "name">) =>
+  slugify(project.name);
 export const audioSoftwareProjects: SoftwareProject[] = [
   {
     name: "Kit Velo",

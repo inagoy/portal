@@ -1,32 +1,35 @@
 ---
 import type { Lang } from "../i18n";
 import { getStrings } from "../i18n";
+import { getMusicProjectSlug } from "../config";
 import type { MusicProject } from "../types/config";
 
 interface Props {
   project: MusicProject;
   lang: Lang;
   compact?: boolean;
+  priority?: boolean;
 }
 
-const { project, lang, compact = false } = Astro.props;
+const { project, lang, compact = false, priority = false } = Astro.props;
 const t = getStrings(lang);
 const roles = project.roles.map((role) => t.labels.roles[role] ?? role).join(" Â· ");
+const detailUrl = `/${lang}/music-projects/${getMusicProjectSlug(project)}`;
 ---
 
 <a
   class:list={["music-grid-card", { compact }]}
-  href={project.url}
-  target="_blank"
-  rel="noopener noreferrer"
+  href={detailUrl}
   aria-label={`${project.artist ? `${project.artist}, ` : ""}${project.title} â€” ${roles}`}
 >
   <div class="card-image">
     <img
       src={project.image}
       alt={`${project.artist ? `${project.artist} â€” ` : ""}${project.title}`}
-      loading="lazy"
+      loading={priority ? "eager" : "lazy"}
+      fetchpriority={priority ? "high" : undefined}
       decoding="async"
+      style={`object-position: ${project.imagePosition ?? "center"}`}
     />
   </div>
   <div class="card-heading">
@@ -79,12 +82,11 @@ const roles = project.roles.map((role) => t.labels.roles[role] ?? role).join(" Â
     flex: none;
     color: var(--muted);
     font-family: var(--meta-font);
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     letter-spacing: 0.04em;
   }
 
   .artist {
-    font-family: var(--meta-font);
     font-size: 0.88rem;
     font-weight: 600;
     letter-spacing: 0.045em;
@@ -93,9 +95,8 @@ const roles = project.roles.map((role) => t.labels.roles[role] ?? role).join(" Â
 
   h3 {
     margin-top: 0.12rem;
-    font-family: var(--meta-font);
     font-size: 0.92rem;
-    font-weight: 400;
+    font-weight: 450;
     letter-spacing: 0.025em;
     line-height: 1.25;
     text-transform: uppercase;
@@ -105,7 +106,7 @@ const roles = project.roles.map((role) => t.labels.roles[role] ?? role).join(" Â
     margin-top: 0.35rem;
     color: var(--muted);
     font-family: var(--meta-font);
-    font-size: 0.78rem;
+    font-size: 0.84rem;
     letter-spacing: 0.035em;
     line-height: 1.35;
     text-transform: uppercase;
@@ -116,13 +117,10 @@ const roles = project.roles.map((role) => t.labels.roles[role] ?? role).join(" Â
   }
 
   .compact .artist,
-  .compact h3 {
-    font-size: 0.82rem;
-  }
-
+  .compact h3,
   .compact .role,
   .compact .card-heading span {
-    font-size: 0.72rem;
+    font-size: 0.84rem;
   }
 
   @media (prefers-reduced-motion: reduce) {

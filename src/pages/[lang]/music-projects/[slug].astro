@@ -1,0 +1,189 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import ProjectMediaPlayer from "../../../components/ProjectMediaPlayer.astro";
+import { getMusicProjectSlug, getMusicProjectsPageContent } from "../../../config";
+import { getStrings, type Lang } from "../../../i18n";
+import type { MusicProject, SEOInfo } from "../../../types/config";
+
+export function getStaticPaths() {
+  return (["es", "en"] as const).flatMap((lang) =>
+    getMusicProjectsPageContent(lang).projects.map((project) => ({
+      params: { lang, slug: getMusicProjectSlug(project) },
+      props: { lang, project },
+    })),
+  );
+}
+
+interface Props {
+  lang: Lang;
+  project: MusicProject;
+}
+
+const { lang, project } = Astro.props;
+const t = getStrings(lang);
+const roles = project.roles.map((role) => t.labels.roles[role] ?? role).join(" · ");
+const artistRoles = project.artistRoles?.map((role) => t.labels.artistRoles[role] ?? role).join(" · ");
+const platform = project.url.includes("spotify.com")
+  ? "spotify"
+  : project.url.includes("youtu")
+    ? "youtube"
+    : lang === "es" ? "escuchar" : "listen";
+const labels = lang === "es"
+  ? { back: "archivo", roles: "roles", artisticRoles: "roles artísticos", year: "año", credits: "créditos", release: "formato", listen: "escuchar en" }
+  : { back: "archive", roles: "roles", artisticRoles: "artistic roles", year: "year", credits: "credits", release: "format", listen: "listen on" };
+const seo: SEOInfo = {
+  title: `${project.artist ? `${project.artist} — ` : ""}${project.title} | Iñaki Goyeneche`,
+  description: `${roles} · ${project.year}`,
+  image: project.image,
+};
+---
+
+<Layout seo={seo} lang={lang} context="music">
+  <article class="page project-detail">
+    <a class="text-link back-link" href={`/${lang}/music-projects`}>← {labels.back}</a>
+    <div class="detail-grid">
+      <figure class="detail-artwork">
+        <img
+          src={project.image}
+          alt={`${project.artist ? `${project.artist} — ` : ""}${project.title}`}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          style={`object-position: ${project.imagePosition ?? "center"}`}
+        />
+      </figure>
+      <div class="detail-copy">
+        {project.artist && <p class="detail-artist">{project.artist}</p>}
+        <h1>{project.title}</h1>
+        <dl class="detail-meta">
+          <div><dt>{labels.roles}</dt><dd>{roles}</dd></div>
+          {artistRoles && <div><dt>{labels.artisticRoles}</dt><dd>{artistRoles}</dd></div>}
+          <div><dt>{labels.year}</dt><dd>{project.year}</dd></div>
+          {project.socio && <div><dt>{labels.credits}</dt><dd>{project.socio}</dd></div>}
+          {project.type && <div><dt>{labels.release}</dt><dd>{t.labels.types[project.type] ?? project.type}</dd></div>}
+        </dl>
+        <a class="listen-link" href={project.url} target="_blank" rel="noopener noreferrer">
+          {labels.listen} {platform} ↗
+        </a>
+      </div>
+    </div>
+    <ProjectMediaPlayer url={project.url} title={project.title} lang={lang} />
+  </article>
+</Layout>
+
+<style>
+  .project-detail {
+    padding-top: clamp(1.5rem, 3vw, 3rem);
+  }
+
+  .back-link,
+  .detail-artist,
+  .detail-meta,
+  .listen-link {
+    font-family: var(--meta-font);
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+  }
+
+  .back-link {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    font-size: 0.82rem;
+  }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    margin-top: 1rem;
+    border-top: 1px solid var(--line);
+    padding-top: clamp(1.5rem, 3vw, 3rem);
+  }
+
+  .detail-artwork {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--soft);
+  }
+
+  .detail-artwork img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .detail-copy {
+    align-self: end;
+  }
+
+  .detail-artist {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  h1 {
+    margin-top: 0.4rem;
+    font-size: clamp(2.4rem, 5vw, 5.5rem);
+    font-weight: 500;
+    letter-spacing: -0.055em;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  .detail-meta {
+    margin-top: clamp(2rem, 4vw, 4rem);
+    border-top: 1px solid var(--line);
+    font-size: 0.82rem;
+  }
+
+  .detail-meta > div {
+    display: grid;
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+    gap: 1rem;
+    border-bottom: 1px solid var(--line);
+    padding-block: 0.75rem;
+  }
+
+  dt {
+    color: var(--muted);
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  .listen-link {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    margin-top: 1.5rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.84rem;
+  }
+
+  @media (max-width: 760px) {
+    .project-detail {
+      padding-top: 0.75rem;
+    }
+
+    .detail-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 12vw, 4rem);
+    }
+
+    .detail-meta {
+      margin-top: 1.5rem;
+    }
+
+    .detail-meta > div {
+      grid-template-columns: 7rem minmax(0, 1fr);
+    }
+  }
+</style>

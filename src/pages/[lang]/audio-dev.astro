@@ -1,0 +1,15 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { lang: "es" } },
+    { params: { lang: "en" } },
+  ];
+}
+
+import AudioDevPortfolioPage from "../../components/AudioDevPortfolioPage.astro";
+import { normalizeLang } from "../../i18n";
+
+const lang = normalizeLang(Astro.params.lang as string);
+---
+
+<AudioDevPortfolioPage lang={lang} />

@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import type { MusicProject, Project } from "../types/config";
 import { getStrings, normalizeLang, type Lang } from "../i18n";
+import { getInlineMedia } from "../utils/media.mjs";
 
 type Props = Omit<Project, "description"> & {
   artist?: string;
@@ -11,13 +12,6 @@ type Props = Omit<Project, "description"> & {
   lang?: Lang;
   compact?: boolean;
 };
-type InlineMedia = {
-  platform: "spotify" | "youtube";
-  embedUrl: string;
-  frameTitle: string;
-  height?: number;
-};
-
 const {
   title,
   artist,
@@ -44,59 +38,6 @@ const frameTitles =
         spotify: "spotify player",
         youtube: "youtube player",
       };
-
-function getInlineMedia(projectUrl: string): InlineMedia | null {
-  try {
-    const parsedUrl = new URL(projectUrl);
-    const hostname = parsedUrl.hostname.replace(/^www\./, "");
-
-    if (hostname === "open.spotify.com") {
-      const segments = parsedUrl.pathname.split("/").filter(Boolean);
-      const mediaIndex = segments.findIndex((segment) =>
-        ["album", "track", "playlist", "episode", "show"].includes(segment),
-      );
-      const mediaType = segments[mediaIndex];
-      const mediaId = segments[mediaIndex + 1];
-
-      if (mediaType && mediaId) {
-        return {
-          platform: "spotify",
-          embedUrl: `https://open.spotify.com/embed/${mediaType}/${mediaId}?utm_source=generator&theme=0`,
-          frameTitle: frameTitles.spotify,
-          height: mediaType === "track" || mediaType === "episode" ? 152 : mediaType === "album" ? 480 : 352,
-        };
-      }
-    }
-
-    if (hostname === "youtube.com" || hostname === "m.youtube.com") {
-      const videoId = parsedUrl.searchParams.get("v");
-
-      if (videoId) {
-        return {
-          platform: "youtube",
-          embedUrl: `https://www.youtube-nocookie.com/embed/${videoId}?rel=0`,
-          frameTitle: frameTitles.youtube,
-        };
-      }
-    }
-
-    if (hostname === "youtu.be") {
-      const videoId = parsedUrl.pathname.split("/").filter(Boolean)[0];
-
-      if (videoId) {
-        return {
-          platform: "youtube",
-          embedUrl: `https://www.youtube-nocookie.com/embed/${videoId}?rel=0`,
-          frameTitle: frameTitles.youtube,
-        };
-      }
-    }
-  } catch {
-    return null;
-  }
-
-  return null;
-}
 
 const inlineMedia = getInlineMedia(url);
 const isYouTubeProject = inlineMedia?.platform === "youtube";
@@ -197,9 +138,9 @@ const linkClass = [
                   class="h-full w-full"
                   data-player-frame
                   data-player-src={inlineMedia.embedUrl}
-                  title={`${title} | ${inlineMedia.frameTitle}`}
+                  title={`${title} | ${frameTitles[inlineMedia.platform]}`}
                   loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerpolicy="strict-origin-when-cross-origin"
                   allowfullscreen
                 ></iframe>
@@ -213,11 +154,11 @@ const linkClass = [
                   class="block w-full overflow-hidden"
                   data-player-frame
                   data-player-src={inlineMedia.embedUrl}
-                  title={`${title} | ${inlineMedia.frameTitle}`}
+                  title={`${title} | ${frameTitles[inlineMedia.platform]}`}
                   loading="lazy"
                   width="100%"
                   height={inlineMedia.height}
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 ></iframe>
               </div>
             )

@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
+    "test:media": "node tests/media.test.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

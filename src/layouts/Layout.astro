@@ -17,7 +17,7 @@ const currentUrl = url.pathname.endsWith('/') ? url.pathname.slice(0, -1) : url.
 const pageLang: Lang = normalizeLang(Astro.props.lang as string | undefined);
 const context = Astro.props.context ?? 'music';
 const navBarLinks = getNavBarLinks(pageLang, context);
-const homeHref = context === 'audio-dev' ? '/audio-dev' : `/${pageLang}/`;
+const homeHref = context === 'audio-dev' ? `/${pageLang}/audio-dev` : `/${pageLang}/`;
 function withLangPath(u: URL, lang: string): string {
   const rest = u.pathname.replace(/^\/(en|es)/, '');
   const path = `/${lang}${rest}`;
@@ -340,12 +340,13 @@ const enHref = withLangPath(url, 'en');
     }
 
     .site-shell > header > .page {
-      padding-block: 0.85rem 0.35rem;
+      padding-block: 0.75rem;
     }
 
     .site-header {
-      position: relative;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .site-header > a {
@@ -358,35 +359,12 @@ const enHref = withLangPath(url, 'en');
     }
 
     .header-actions {
-      width: 100%;
-      margin-left: 0;
+      width: auto;
+      margin-left: auto;
     }
 
     .site-nav {
-      flex: none;
-      width: calc(100% + 2rem);
-      margin: 0.6rem -1rem 0;
-      padding-inline: 1rem;
-      justify-content: flex-start;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .site-nav::-webkit-scrollbar {
       display: none;
-    }
-
-    .site-nav-list {
-      width: max-content;
-      min-width: 100%;
-      flex-wrap: nowrap;
-      gap: 1.1rem;
-    }
-
-    .site-nav-list a {
-      display: inline-flex;
-      min-height: 2.5rem;
-      align-items: center;
     }
 
     .page-header {
@@ -401,11 +379,6 @@ const enHref = withLangPath(url, 'en');
     .page-title.home-title {
       font-size: clamp(2.8rem, 14vw, 4rem);
       line-height: 0.86;
-    }
-
-    .page-title.home-title.portfolio-title {
-      white-space: normal;
-      overflow-wrap: anywhere;
     }
 
     .project-row {
@@ -439,9 +412,7 @@ const enHref = withLangPath(url, 'en');
     }
 
     .language-selector {
-      position: absolute;
-      top: 0.45rem;
-      right: 1rem;
+      position: static;
       border-left: 0;
       padding-left: 0;
     }
@@ -501,6 +472,27 @@ const enHref = withLangPath(url, 'en');
   .portfolio-title {
     border-bottom: 1px solid var(--line);
     padding-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
+  }
+
+  .portfolio-alias {
+    display: block;
+    margin-top: clamp(0.75rem, 1.25vw, 1rem);
+    font-family: var(--meta-font);
+    font-size: clamp(1.1rem, 2.5vw, 2.4rem);
+    font-weight: 400;
+    letter-spacing: 0.055em;
+    line-height: 1.1;
+    text-align: right;
+    text-transform: lowercase;
+    white-space: nowrap;
+  }
+
+  .portfolio-title .name-line {
+    display: inline;
+  }
+
+  .portfolio-title .name-line + .name-line::before {
+    content: " ";
   }
 
   .portfolio-identity {
@@ -666,10 +658,11 @@ const enHref = withLangPath(url, 'en');
     }
 
     .section-heading .text-link {
-      flex: none;
-      max-width: 45%;
+      flex: 0 0 40%;
+      min-width: 0;
       font-size: 0.78rem;
       line-height: 1.25;
+      overflow-wrap: anywhere;
       text-align: right;
     }
 
@@ -699,6 +692,35 @@ const enHref = withLangPath(url, 'en');
     .portfolio-info-copy .direct-links a {
       width: 100%;
       overflow-wrap: anywhere;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .portfolio-title .name-line {
+      display: block;
+      white-space: nowrap;
+    }
+
+    .portfolio-title .name-line + .name-line::before {
+      content: none;
+    }
+
+    .portfolio-identity {
+      border-bottom: 0;
+    }
+
+    .portfolio-section {
+      padding-top: 2rem;
+    }
+
+    .section-heading {
+      border-top: 0;
+      border-bottom: 1px solid var(--line);
+      padding-top: 0;
+    }
+
+    .project-grid {
+      padding-top: 1.5rem;
     }
   }
 
@@ -767,7 +789,7 @@ const enHref = withLangPath(url, 'en');
                 }
               </ul>
             </nav>
-            {currentUrl !== '/audio-dev' && <LanguageSelector lang={pageLang} esHref={esHref} enHref={enHref} />}
+            <LanguageSelector lang={pageLang} esHref={esHref} enHref={enHref} />
           </div>
         </div>
       </header>

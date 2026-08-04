@@ -41,7 +41,9 @@ const labels = lang === "es"
 
 <Layout seo={seo} lang={lang} context="audio-dev">
   <section class="page portfolio-hero">
-    <h1 class="page-title home-title portfolio-title">{identity.name}</h1>
+    <h1 class="page-title home-title portfolio-title">
+      <span class="name-line">iñaki</span><span class="name-line">goyeneche</span><span class="portfolio-alias">°inagoi°</span>
+    </h1>
     <div class="portfolio-identity">
       <p class="portfolio-role">{labels.role}</p>
       <ul class="context-links" aria-label={lang === "es" ? "contacto y portfolios" : "contact and portfolios"}>
@@ -57,7 +59,7 @@ const labels = lang === "es"
   <section id="projects" class="page portfolio-section">
     <div class="section-heading"><h2>{labels.projects}</h2></div>
     <div class="project-grid audio-primary-grid">
-      {audioProjects.map((project) => <SoftwareProjectCard project={project} />)}
+      {audioProjects.map((project) => <SoftwareProjectCard project={project} lang={lang} />)}
     </div>
   </section>
 
@@ -74,7 +76,7 @@ const labels = lang === "es"
   <section class="page portfolio-section">
     <div class="section-heading"><h2>{labels.other}</h2></div>
     <div class="project-grid secondary-grid other-software-grid">
-      {otherProjects.map((project) => <SoftwareProjectCard project={project} compact />)}
+      {otherProjects.map((project) => <SoftwareProjectCard project={project} lang={lang} compact />)}
     </div>
   </section>
 

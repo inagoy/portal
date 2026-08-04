@@ -1,0 +1,70 @@
+---
+import type { Lang } from "../i18n";
+import { getInlineMedia } from "../utils/media.mjs";
+
+interface Props {
+  url: string;
+  title: string;
+  lang: Lang;
+}
+
+const { url, title, lang } = Astro.props;
+const media = getInlineMedia(url);
+const playerLabel = media?.platform === "youtube"
+  ? lang === "es" ? "reproductor de youtube" : "youtube player"
+  : lang === "es" ? "reproductor de spotify" : "spotify player";
+---
+
+{media && (
+  <section class="project-media-player" aria-label={playerLabel}>
+    {media.platform === "youtube" ? (
+      <iframe
+        class="youtube-player"
+        src={media.embedUrl}
+        title={`${title} | ${playerLabel}`}
+        loading="lazy"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    ) : (
+      <iframe
+        class="spotify-player"
+        src={media.embedUrl}
+        title={`${title} | ${playerLabel}`}
+        loading="lazy"
+        width="100%"
+        height={media.height}
+        allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      ></iframe>
+    )}
+  </section>
+)}
+
+<style>
+  .project-media-player {
+    width: min(100%, 60rem);
+    margin-top: clamp(2rem, 5vw, 5rem);
+    border-top: 1px solid var(--line);
+    padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: var(--soft);
+  }
+
+  .youtube-player {
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+
+  @media (max-width: 639px) {
+    .project-media-player {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+    }
+  }
+</style>
