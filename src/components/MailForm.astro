@@ -67,12 +67,12 @@ const t = getStrings(pageLang);
         </div>
       </div>
     </div>
-    <div class="contact-submit">
-      <button class="button" type="submit">
-        {t.form.send_button}
-      </button>
-      <div id="result" class="form-result text-sm" role="status" aria-live="polite" aria-atomic="true"></div>
-    </div>
+  </div>
+  <div class="contact-submit">
+    <button class="button" type="submit">
+      {t.form.send_button}
+    </button>
+    <div id="result" class="form-result text-sm" role="status" aria-live="polite" aria-atomic="true"></div>
   </div>
 </form>
 
@@ -93,9 +93,7 @@ const t = getStrings(pageLang);
     grid-template-columns: 2rem minmax(0, 1fr);
     justify-items: center;
     gap: 0.75rem;
-    border-top: 1.5px solid var(--line);
-    background: rgb(243 239 220 / 0.75);
-    padding: 1rem;
+    padding-top: 1rem;
   }
 
   .contact-submit .button {
