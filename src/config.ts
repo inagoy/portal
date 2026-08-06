@@ -12,7 +12,7 @@ import { getStrings, normalizeLang } from './i18n';
 export const identity: Identity = {
   name: "iñaki goyeneche",
   logo: "/logo.png",
-  email: "igoyeneche.98@gmail.com",
+  email: "inagoy.audio@gmail.com",
 };
 
 export const navBarLinks: NavBarLink[] = [
@@ -63,7 +63,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     title: "mail",
-    url: "mailto:igoyeneche.98@gmail.com",
+    url: "mailto:inagoy.audio@gmail.com",
     icon: "mdi:email",
   },
 ];
