@@ -162,6 +162,16 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   subtitle: "algunos proyectos en los que trabajé",
   projects: [
     {
+      title: "si una vez ft. a.b. quintanilla | cazzu",
+      roles: ["editing", "mixingAssistant"],
+      image: "https://img.youtube.com/vi/VHtm7bxLaF0/hqdefault.jpg",
+      year: "2026",
+      url: "https://www.youtube.com/watch?v=VHtm7bxLaF0",
+      socio: "mariano bilinkis",
+      type: "single",
+      source: "kamehouse"
+    },
+    {
       title: "la vida en la tierra | la portuaria",
       roles: ["mixingAssistant"],
       image: "https://i.scdn.co/image/ab67616d00001e02032fc3e853c96fe808151080",
@@ -250,16 +260,6 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       socio: "santiago monroy y nicolás carlino",
       type: "single"
     },  */   
-    {
-      title: "los ángeles | william campbell",
-      roles: ["coProduction", "editing"],
-      artistRoles: ["interpreter", "coWriter"],
-      image: "https://img.youtube.com/vi/wFfDda5opSU/hqdefault.jpg",
-      year: "2024",
-      url: "https://www.youtube.com/watch?v=wFfDda5opSU",
-      socio: "santiago monroy y nicolás carlino",
-      type: "single"
-    },
     {
       title: "el azar | william campbell",
       roles: ["coProduction", "editing"],
