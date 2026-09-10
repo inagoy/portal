@@ -162,6 +162,24 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   subtitle: "algunos proyectos en los que trabajé",
   projects: [
     {
+      title: "solifican12 (en vivo en perú) | milo j",
+      roles: ["editing", "mixingAssistant"],
+      image: "https://img.youtube.com/vi/cDQrxeHaQgc/hqdefault.jpg",
+      year: "2026",
+      url: "https://www.youtube.com/watch?v=cDQrxeHaQgc",
+      type: "single",
+      source: "kamehouse"
+    },
+    {
+      title: "yo soy maría | cazzu",
+      roles: ["editing", "mixingAssistant"],
+      image: "https://img.youtube.com/vi/5VSUkR3Deoc/hqdefault.jpg",
+      year: "2026",
+      url: "https://www.youtube.com/watch?v=5VSUkR3Deoc",
+      type: "single",
+      source: "kamehouse"
+    },
+    {
       title: "si una vez ft. a.b. quintanilla | cazzu",
       roles: ["editing", "mixingAssistant"],
       image: "https://img.youtube.com/vi/VHtm7bxLaF0/hqdefault.jpg",
