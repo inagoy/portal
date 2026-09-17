@@ -61,6 +61,7 @@ export type Project = {
   image: string;
   year: string;
   url: string;
+  embedUrl?: string;
   socio? : string;
   type?: 'album' | 'single' | 'audiovisual';
 };

@@ -11,7 +11,7 @@ type Props = Omit<Project, "description"> & {
   compact?: boolean;
 };
 type InlineMedia = {
-  platform: "spotify" | "youtube";
+  platform: "spotify" | "youtube" | "bandcamp";
   embedUrl: string;
   frameTitle: string;
   height?: number;
@@ -23,6 +23,7 @@ const {
   image,
   year,
   url,
+  embedUrl,
   socio,
   lang,
   type,
@@ -37,10 +38,12 @@ const frameTitles =
     ? {
         spotify: "reproductor de spotify",
         youtube: "reproductor de youtube",
+        bandcamp: "reproductor de bandcamp",
       }
     : {
         spotify: "spotify player",
         youtube: "youtube player",
+        bandcamp: "bandcamp player",
       };
 
 function getInlineMedia(projectUrl: string): InlineMedia | null {
@@ -64,6 +67,15 @@ function getInlineMedia(projectUrl: string): InlineMedia | null {
           height: mediaType === "track" || mediaType === "episode" ? 152 : mediaType === "album" ? 480 : 352,
         };
       }
+    }
+
+    if (hostname === "bandcamp.com" && parsedUrl.pathname.startsWith("/EmbeddedPlayer/")) {
+      return {
+        platform: "bandcamp",
+        embedUrl: projectUrl,
+        frameTitle: frameTitles.bandcamp,
+        height: 274,
+      };
     }
 
     if (hostname === "youtube.com" || hostname === "m.youtube.com") {
@@ -96,7 +108,7 @@ function getInlineMedia(projectUrl: string): InlineMedia | null {
   return null;
 }
 
-const inlineMedia = getInlineMedia(url);
+const inlineMedia = getInlineMedia(embedUrl ?? url);
 const isYouTubeProject = inlineMedia?.platform === "youtube";
 const coverFrameClass = [
   "relative aspect-square rounded-[2px]",
@@ -566,7 +578,8 @@ const linkClass = [
 
   .player-shell {
     position: relative;
-    border-radius: 3px;
+    border-radius: 12px;
+    background: #121212;
     box-shadow: 0 12px 30px rgb(23 23 17 / 0.28);
   }
 

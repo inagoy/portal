@@ -234,7 +234,8 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       artistRoles: ["interpreter"],
       image: "https://i.scdn.co/image/ab67616d0000b27343171c055e4e037aaf8d3613",
       year: "2025",
-      url: "https://open.spotify.com/intl-es/album/3sgRznpNzqUsa0UV8vPYzc",
+      url: "https://camilaines.bandcamp.com/album/otro-idioma",
+      embedUrl: "https://bandcamp.com/EmbeddedPlayer/v=2/album=159166449/size=large/bgcol=121212/fgcol=ffffff/linkcol=ffffff/tracklist=true/artwork=small/",
       socio: "alejo ávila",
       type: "album"
     }, 

@@ -126,8 +126,12 @@ const enHref = withLangPath(url, 'en');
     z-index: 1;
   }
 
-  .site-shell > header {
+  .site-shell > header,
+  .site-shell > main {
     z-index: auto;
+  }
+
+  .site-shell > header {
     border-bottom: 2px solid var(--line);
     background: rgb(243 239 220 / 0.94);
     box-shadow: 0 2px 4px rgb(23 23 17 / 0.14), 0 12px 28px rgb(23 23 17 / 0.2);
