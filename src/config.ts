@@ -167,6 +167,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/cDQrxeHaQgc/hqdefault.jpg",
       year: "2026",
       url: "https://www.youtube.com/watch?v=cDQrxeHaQgc",
+      socio: "mariano bilinkis",
       type: "single",
       source: "kamehouse"
     },
@@ -176,6 +177,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/5VSUkR3Deoc/hqdefault.jpg",
       year: "2026",
       url: "https://www.youtube.com/watch?v=5VSUkR3Deoc",
+      socio: "mariano bilinkis",
       type: "single",
       source: "kamehouse"
     },
