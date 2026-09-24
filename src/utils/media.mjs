@@ -1,4 +1,4 @@
-/** @typedef {{ platform: "spotify" | "youtube", embedUrl: string, height?: number }} InlineMedia */
+/** @typedef {{ platform: "spotify" | "youtube" | "bandcamp", embedUrl: string, height?: number, maxWidth?: number }} InlineMedia */
 
 /** @returns {InlineMedia | null} */
 export function getInlineMedia(projectUrl) {
@@ -21,6 +21,15 @@ export function getInlineMedia(projectUrl) {
           height: mediaType === "track" || mediaType === "episode" ? 152 : mediaType === "album" ? 480 : 352,
         };
       }
+    }
+
+    if (hostname === "bandcamp.com" && parsedUrl.pathname.startsWith("/EmbeddedPlayer/")) {
+      return {
+        platform: "bandcamp",
+        embedUrl: projectUrl,
+        height: 274,
+        maxWidth: 700,
+      };
     }
 
     if (hostname === "youtube.com" || hostname === "m.youtube.com") {

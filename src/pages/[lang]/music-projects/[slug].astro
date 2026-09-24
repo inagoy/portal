@@ -25,6 +25,8 @@ const roles = project.roles.map((role) => t.labels.roles[role] ?? role).join(" Â
 const artistRoles = project.artistRoles?.map((role) => t.labels.artistRoles[role] ?? role).join(" Â· ");
 const platform = project.url.includes("spotify.com")
   ? "spotify"
+  : project.url.includes("bandcamp.com")
+    ? "bandcamp"
   : project.url.includes("youtu")
     ? "youtube"
     : lang === "es" ? "escuchar" : "listen";
@@ -67,7 +69,7 @@ const seo: SEOInfo = {
         </a>
       </div>
     </div>
-    <ProjectMediaPlayer url={project.url} title={project.title} lang={lang} />
+    <ProjectMediaPlayer url={project.embedUrl ?? project.url} title={project.title} lang={lang} />
   </article>
 </Layout>
 

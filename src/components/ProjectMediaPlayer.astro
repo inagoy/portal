@@ -10,9 +10,8 @@ interface Props {
 
 const { url, title, lang } = Astro.props;
 const media = getInlineMedia(url);
-const playerLabel = media?.platform === "youtube"
-  ? lang === "es" ? "reproductor de youtube" : "youtube player"
-  : lang === "es" ? "reproductor de spotify" : "spotify player";
+const platform = media?.platform ?? "spotify";
+const playerLabel = lang === "es" ? `reproductor de ${platform}` : `${platform} player`;
 ---
 
 {media && (
@@ -29,9 +28,10 @@ const playerLabel = media?.platform === "youtube"
       ></iframe>
     ) : (
       <iframe
-        class="spotify-player"
+        class={`${media.platform}-player`}
         src={media.embedUrl}
         title={`${title} | ${playerLabel}`}
+        style={media.maxWidth ? `max-width: ${media.maxWidth}px; margin-inline: auto;` : undefined}
         loading="lazy"
         width="100%"
         height={media.height}

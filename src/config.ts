@@ -123,6 +123,39 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   subtitle: "algunos proyectos en los que trabajé",
   projects: [
     {
+      title: "solifican12 (en vivo en perú)",
+      artist: "milo j",
+      roles: ["editing", "mixingAssistant"],
+      image: "https://img.youtube.com/vi/cDQrxeHaQgc/hqdefault.jpg",
+      year: "2026",
+      url: "https://www.youtube.com/watch?v=cDQrxeHaQgc",
+      socio: "mariano bilinkis",
+      type: "single",
+      source: "kamehouse"
+    },
+    {
+      title: "yo soy maría",
+      artist: "cazzu",
+      roles: ["editing", "mixingAssistant"],
+      image: "https://img.youtube.com/vi/5VSUkR3Deoc/hqdefault.jpg",
+      year: "2026",
+      url: "https://www.youtube.com/watch?v=5VSUkR3Deoc",
+      socio: "mariano bilinkis",
+      type: "single",
+      source: "kamehouse"
+    },
+    {
+      title: "si una vez ft. a.b. quintanilla",
+      artist: "cazzu",
+      roles: ["editing", "mixingAssistant"],
+      image: "https://img.youtube.com/vi/VHtm7bxLaF0/hqdefault.jpg",
+      year: "2026",
+      url: "https://www.youtube.com/watch?v=VHtm7bxLaF0",
+      socio: "mariano bilinkis",
+      type: "single",
+      source: "kamehouse"
+    },
+    {
       title: "la vida en la tierra",
       artist: "la portuaria",
       roles: ["mixingAssistant"],
@@ -173,7 +206,8 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       artistRoles: ["interpreter"],
       image: "https://i.scdn.co/image/ab67616d0000b27343171c055e4e037aaf8d3613",
       year: "2025",
-      url: "https://open.spotify.com/intl-es/album/3sgRznpNzqUsa0UV8vPYzc",
+      url: "https://camilaines.bandcamp.com/album/otro-idioma",
+      embedUrl: "https://bandcamp.com/EmbeddedPlayer/v=2/album=159166449/size=large/bgcol=121212/fgcol=ffffff/linkcol=ffffff/tracklist=true/artwork=small/",
       socio: "alejo ávila",
       type: "album"
     }, 
@@ -220,17 +254,6 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       socio: "santiago monroy y nicolás carlino",
       type: "single"
     },  */   
-    {
-      title: "los ángeles",
-      artist: "william campbell",
-      roles: ["coProduction", "editing"],
-      artistRoles: ["interpreter", "coWriter"],
-      image: "https://img.youtube.com/vi/wFfDda5opSU/hqdefault.jpg",
-      year: "2024",
-      url: "https://www.youtube.com/watch?v=wFfDda5opSU",
-      socio: "santiago monroy y nicolás carlino",
-      type: "single"
-    },
     {
       title: "el azar",
       artist: "william campbell",
@@ -342,7 +365,7 @@ export const audioSoftwareProjects: SoftwareProject[] = [
     role: "diseño y desarrollo",
     technologies: ["C++", "JUCE", "ARA", "Python"],
     status: "en desarrollo",
-    demo: "https://youtu.be/91WK10WI6Ug",
+    url: "https://youtu.be/91WK10WI6Ug",
   },
   {
     name: "DrumSep",
@@ -372,7 +395,7 @@ export const otherSoftwareProjects: SoftwareProject[] = [
     role: "desarrollo full-stack",
     technologies: ["frontend", "backend", "API"],
     status: "en producción",
-    demo: "https://iboux.com",
+    url: "https://iboux.com",
   },
   {
     name: "DiqueUNO",
@@ -381,7 +404,7 @@ export const otherSoftwareProjects: SoftwareProject[] = [
     role: "diseño y desarrollo",
     technologies: ["SvelteKit", "Tailwind CSS"],
     status: "en producción",
-    demo: "https://diqueuno.com",
+    url: "https://diqueuno.com",
     repository: "https://github.com/inagoy/diqueuno",
   },
   {
@@ -457,7 +480,7 @@ export function getProgrammingProjectsPageContent(
     description: project.summary,
     image: project.image,
     year: project.status,
-    url: project.demo ?? project.repository ?? '#',
+    url: project.url ?? project.repository ?? '#',
   }));
 
   return {

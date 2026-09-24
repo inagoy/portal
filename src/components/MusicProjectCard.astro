@@ -19,6 +19,7 @@ const {
   image,
   year,
   url,
+  embedUrl,
   socio,
   lang,
   type,
@@ -33,13 +34,15 @@ const frameTitles =
     ? {
         spotify: "reproductor de spotify",
         youtube: "reproductor de youtube",
+        bandcamp: "reproductor de bandcamp",
       }
     : {
         spotify: "spotify player",
         youtube: "youtube player",
+        bandcamp: "bandcamp player",
       };
 
-const inlineMedia = getInlineMedia(url);
+const inlineMedia = getInlineMedia(embedUrl ?? url);
 const isYouTubeProject = inlineMedia?.platform === "youtube";
 const coverFrameClass = [
   "relative aspect-square rounded-[2px]",
@@ -146,7 +149,7 @@ const linkClass = [
                 ></iframe>
               </div>
             ) : (
-              <div class="player-shell overflow-hidden" data-player-shell>
+              <div class="player-shell overflow-hidden" style={inlineMedia.maxWidth ? `max-width: ${inlineMedia.maxWidth}px; margin-inline: auto;` : undefined} data-player-shell>
                 <div class="player-loading" aria-hidden="true">
                   <span class="player-dots"></span>
                 </div>
