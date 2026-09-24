@@ -44,16 +44,6 @@ const seo: SEOInfo = {
   <article class="page project-detail">
     <a class="text-link back-link" href={`/${lang}/music-projects`}>← {labels.back}</a>
     <div class="detail-grid">
-      <figure class="detail-artwork">
-        <img
-          src={project.image}
-          alt={`${project.artist ? `${project.artist} — ` : ""}${project.title}`}
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-          style={`object-position: ${project.imagePosition ?? "center"}`}
-        />
-      </figure>
       <div class="detail-copy">
         {project.artist && <p class="detail-artist">{project.artist}</p>}
         <h1>{project.title}</h1>
@@ -68,8 +58,10 @@ const seo: SEOInfo = {
           {labels.listen} {platform} ↗
         </a>
       </div>
+      <div class="detail-player">
+        <ProjectMediaPlayer url={project.embedUrl ?? project.url} title={project.title} lang={lang} />
+      </div>
     </div>
-    <ProjectMediaPlayer url={project.embedUrl ?? project.url} title={project.title} lang={lang} />
   </article>
 </Layout>
 
@@ -96,31 +88,32 @@ const seo: SEOInfo = {
 
   .detail-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
-    gap: clamp(2rem, 5vw, 5rem);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2rem, 4vw, 4rem);
     margin-top: 1rem;
     border-top: 1px solid var(--line);
     padding-top: clamp(1.5rem, 3vw, 3rem);
   }
 
-  .detail-artwork {
-    aspect-ratio: 1;
-    overflow: hidden;
-    background: var(--soft);
-  }
-
-  .detail-artwork img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
   .detail-copy {
-    align-self: end;
+    align-self: start;
+  }
+
+  .detail-player {
+    align-self: center;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .detail-player :global(.project-media-player) {
+    width: 100%;
+    margin: 0;
+    border-top: 0;
+    padding-top: 0;
   }
 
   .detail-artist {
-    font-size: 0.9rem;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
     font-weight: 600;
   }
 

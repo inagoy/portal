@@ -181,9 +181,9 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       title: "fanático (en vivo)",
       artist: "lali",
       roles: ["editingAssistant", "mixingAssistant"],
-      image: "https://i.scdn.co/image/ab67616d00001e02f6ed36ac805c4d231e0537f4",
+      image: "https://img.youtube.com/vi/cFu0K7S0JLg/hqdefault.jpg",
       year: "2025",
-      url: "https://open.spotify.com/intl-es/track/7KJVQS5lPJ7WrQ2nTsIcRT?si=7b56b5d0275647a7",
+      url: "https://www.youtube.com/watch?v=cFu0K7S0JLg",
       socio: "mariano bilinkis",
       type: "single",
       source: "kamehouse"

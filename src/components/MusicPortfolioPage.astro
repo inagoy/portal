@@ -16,12 +16,12 @@ const { lang } = Astro.props;
 const home = getHomePageContent(lang);
 const allMusicProjects = getMusicProjectsPageContent(lang).projects;
 const musicProjects = [
+  "solifican12 (en vivo en perú)",
+  "yo soy maría",
   "red bull symphonic",
-  "fanático (en vivo)",
   "no ficción ft. iuio (en vivo)",
   "otro idioma",
   "amuleto",
-  "2064 + polonio",
 ].flatMap((title) => allMusicProjects.filter((project) => project.title === title));
 const audioProjects = getAudioSoftwareProjects(lang).slice(0, 2);
 const labels = lang === "es"
@@ -90,6 +90,15 @@ const labels = lang === "es"
 </Layout>
 
 <style>
+  .portfolio-title,
+  .portfolio-identity {
+    border-bottom: 0;
+  }
+
+  .section-heading {
+    border-top: 0;
+  }
+
   .music-audio-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     max-width: 58rem;

@@ -17,8 +17,9 @@ export function getInlineMedia(projectUrl) {
       if (mediaType && mediaId) {
         return {
           platform: "spotify",
+          maxWidth: 700,
           embedUrl: `https://open.spotify.com/embed/${mediaType}/${mediaId}?utm_source=generator&theme=0`,
-          height: mediaType === "track" || mediaType === "episode" ? 152 : mediaType === "album" ? 480 : 352,
+          height: mediaType === "track" || mediaType === "episode" ? 80 : mediaType === "album" ? 480 : 352,
         };
       }
     }

@@ -35,12 +35,12 @@ const projectGroups = musicProjectsPageContent.projects.reduce<ProjectGroup[]>((
 ---
 
 <Layout seo={musicProjectsPageContent.seo} lang={lang}>
-  <section class="page pt-8 sm:pt-10">
+  <section class="page archive-page pt-8 sm:pt-10">
     <div class="page-header portfolio-header">
       <h1 class="page-title">{t.headings.music_portfolio}</h1>
       <p class="muted mt-3 text-sm sm:mt-4 sm:text-base">{musicProjectsPageContent.subtitle}</p>
     </div>
-    <div class="grid grid-cols-1">
+    <div class="archive-list grid grid-cols-1">
       {
         projectGroups.map((group) => (
           group.source === "kamehouse" ? (
@@ -64,79 +64,71 @@ const projectGroups = musicProjectsPageContent.projects.reduce<ProjectGroup[]>((
 </Layout>
 
 <style>
+  .archive-page {
+    max-width: 76rem;
+  }
+
   .page-header.portfolio-header {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1.25rem;
+  }
+
+  .archive-list {
+    border-bottom: 1px solid var(--line);
   }
 
   .kamehouse-group {
     position: relative;
-    margin: 0.15rem 0 0.55rem;
-    padding-left: 2.2rem;
+    margin: 1.25rem 0 2.5rem;
+    padding-left: 2.25rem;
   }
 
-  :global(.kamehouse-list > .music-card-compact) {
-    position: relative;
-  }
-
-  :global(.kamehouse-list > .music-card-compact)::before {
+  .kamehouse-group::before {
     content: "";
     position: absolute;
-    inset-block: -1rem 0;
-    left: var(--kamehouse-line-inset);
-    width: 2px;
-    background: #f2c94c;
+    inset-block: 0;
+    left: 1.25rem;
+    width: 1px;
+    background: var(--line);
     pointer-events: none;
-    transition: opacity 120ms ease 320ms;
   }
 
   .kamehouse-label {
     position: absolute;
-    top: 0.8rem;
+    top: 0.75rem;
     left: 0;
-    color: #f2c94c;
-    font-size: 0.64rem;
-    font-weight: 560;
-    letter-spacing: 0;
+    color: var(--muted);
+    font-family: var(--meta-font);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.055em;
     line-height: 1;
-    text-transform: none;
+    text-transform: uppercase;
     transform: rotate(180deg);
     writing-mode: vertical-rl;
-    transition: opacity 120ms ease 320ms;
+    white-space: nowrap;
   }
 
   .kamehouse-list {
-    --kamehouse-line-inset: -1.1rem;
-    --music-card-player-pull: 2.2rem;
-    margin-left: auto;
-    width: min(100%, 36rem);
+    margin: 0;
+    width: 100%;
   }
 
-  :global(.kamehouse-list > details[open].music-card-compact)::before,
-  :global(.kamehouse-group:has(details[open]) .kamehouse-label) {
-    opacity: 0;
-    transition-delay: 0ms;
+  :global(.kamehouse-list > .music-card:first-child) {
+    border-top: 0;
   }
 
   @media (min-width: 640px) {
-    .page-header.portfolio-header {
-      margin-bottom: 1rem;
-    }
-
     .kamehouse-group {
-      padding-left: 2.8rem;
+      padding-left: 2.75rem;
     }
 
-    .kamehouse-list {
-      --kamehouse-line-inset: -3.4rem;
-      --music-card-player-pull: 4.8rem;
-      width: calc(100% - 2rem);
+    .kamehouse-group::before {
+      left: 1.5rem;
     }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    :global(.kamehouse-list > .music-card-compact)::before,
-    .kamehouse-label {
-      transition: none;
+    .page-header.portfolio-header {
+      margin-bottom: 2rem;
     }
   }
 </style>
