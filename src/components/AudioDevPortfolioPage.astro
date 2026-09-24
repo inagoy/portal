@@ -27,7 +27,7 @@ const labels = lang === "es"
       music: "trabajos de música seleccionados",
       other: "otro software",
       contact: "contacto",
-      info: "C++ · JUCE · ARA · DSP · Python · separación de fuentes",
+      info: "JUCE · Python",
     }
   : {
       role: "Audio Software Developer",
@@ -35,7 +35,7 @@ const labels = lang === "es"
       music: "selected music work",
       other: "other software",
       contact: "contact",
-      info: "C++ · JUCE · ARA · DSP · Python · source separation",
+      info: "JUCE · Python",
     };
 ---
 
@@ -82,7 +82,6 @@ const labels = lang === "es"
   <section id="contact" class="page portfolio-info">
     <h2>{labels.contact}</h2>
     <div class="portfolio-info-copy">
-      <p>{labels.info}</p>
       <ul class="direct-links">
         <li><a class="text-link" href={`mailto:${identity.email}`}>{identity.email} ↗</a></li>
         {linkedIn && <li><a class="text-link" href={linkedIn.url} target="_blank" rel="noopener noreferrer">linkedin ↗</a></li>}

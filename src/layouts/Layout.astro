@@ -468,7 +468,7 @@ const enHref = withLangPath(url, 'en');
   }
 
   .portfolio-title {
-    border-bottom: 1px solid var(--line);
+    border-bottom: 0;
     padding-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
   }
 
@@ -538,7 +538,7 @@ const enHref = withLangPath(url, 'en');
     justify-content: space-between;
     align-items: baseline;
     gap: 1rem;
-    border-block: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
     padding-block: 1rem;
   }
 
@@ -607,31 +607,14 @@ const enHref = withLangPath(url, 'en');
     }
 
     .context-links {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      justify-content: flex-start;
       width: 100%;
       margin-top: 0.85rem;
-      border-top: 1px solid var(--line);
-      gap: 0;
-    }
-
-    .context-links li {
-      min-width: 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .context-links li:nth-child(odd) {
-      border-right: 1px solid var(--line);
-    }
-
-    .context-links li:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-      border-right: 0;
+      gap: 0.35rem 1rem;
     }
 
     .context-links a {
-      width: 100%;
-      padding-inline: 0.15rem;
+      min-height: 2rem;
       overflow-wrap: anywhere;
     }
 
@@ -701,10 +684,6 @@ const enHref = withLangPath(url, 'en');
 
     .portfolio-title .name-line + .name-line::before {
       content: none;
-    }
-
-    .portfolio-identity {
-      border-bottom: 0;
     }
 
     .portfolio-section {
