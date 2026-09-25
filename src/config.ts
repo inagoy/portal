@@ -36,22 +36,19 @@ export function getNavBarLinks(lang?: string, context: PortfolioContext = 'music
   const normalized = normalizeLang(lang);
   const prefix = `/${normalized}`;
   const labels = normalized === 'es'
-    ? { work: 'trabajos', archive: 'archivo', projects: 'audio dev projects', music: 'música', contact: 'contacto' }
-    : { work: 'work', archive: 'archive', projects: 'audio dev projects', music: 'music', contact: 'contact' };
+    ? { work: 'trabajos', archive: 'archivo', projects: 'audio dev projects', music: 'música' }
+    : { work: 'work', archive: 'archive', projects: 'audio dev projects', music: 'music' };
 
   if (context === 'audio-dev') {
     return [
       { title: labels.projects, url: `${prefix}/audio-dev#projects` },
       { title: labels.music, url: `${prefix}/audio-dev#music` },
-      { title: 'github', url: 'https://github.com/inagoy', external: true },
-      { title: labels.contact, url: `${prefix}/audio-dev#contact` },
     ];
   }
 
   return [
     { title: labels.work, url: `${prefix}/#work` },
     { title: labels.archive, url: `${prefix}/music-projects` },
-    { title: 'instagram', url: 'https://instagram.com/inagoy', external: true },
     { title: 'audio dev ↗', url: `${prefix}/audio-dev` },
   ];
 }
