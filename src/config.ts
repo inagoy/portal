@@ -16,7 +16,7 @@ import { getStrings, normalizeLang } from './i18n';
 export const identity: Identity = {
   name: "iñaki goyeneche",
   logo: "/logo.png",
-  email: "inagoy.audio@gmail.com",
+  email: "inagoi.audio@gmail.com",
 };
 
 export const participants: Record<ParticipantId, Participant> = {
@@ -77,7 +77,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     title: "mail",
-    url: "mailto:inagoy.audio@gmail.com",
+    url: "mailto:inagoi.audio@gmail.com",
     icon: "mdi:email",
   },
 ];
