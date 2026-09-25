@@ -36,7 +36,7 @@ export const es = {
     },
   },
   music: {
-    subtitle: 'algunos proyectos en los que trabajé',
+    subtitle: 'producción · diseño sonoro · edición · mezcla · mastering',
     seo: {
       title: 'música | iñaki goyeneche',
       description: 'algunos proyectos de producción musical',

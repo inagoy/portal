@@ -3,6 +3,7 @@ import type { Lang } from "../i18n";
 import { getStrings } from "../i18n";
 import { getMusicProjectSlug } from "../config";
 import type { MusicProject } from "../types/config";
+import { getInlineMedia } from "../utils/media.mjs";
 
 interface Props {
   project: MusicProject;
@@ -15,6 +16,7 @@ const { project, lang, compact = false, priority = false } = Astro.props;
 const t = getStrings(lang);
 const roles = project.roles.map((role) => t.labels.roles[role] ?? role).join(" · ");
 const detailUrl = `/${lang}/music-projects/${getMusicProjectSlug(project)}`;
+const isYouTubeThumbnail = getInlineMedia(project.url)?.platform === "youtube";
 ---
 
 <a
@@ -22,7 +24,7 @@ const detailUrl = `/${lang}/music-projects/${getMusicProjectSlug(project)}`;
   href={detailUrl}
   aria-label={`${project.artist ? `${project.artist}, ` : ""}${project.title} — ${roles}`}
 >
-  <div class="card-image">
+  <div class:list={["card-image", { "youtube-thumbnail": isYouTubeThumbnail }]}>
     <img
       src={project.image}
       alt={`${project.artist ? `${project.artist} — ` : ""}${project.title}`}
@@ -52,6 +54,14 @@ const detailUrl = `/${lang}/music-projects/${getMusicProjectSlug(project)}`;
     aspect-ratio: 1;
     overflow: hidden;
     background: var(--soft);
+  }
+
+  .youtube-thumbnail {
+    background: var(--paper);
+  }
+
+  .youtube-thumbnail img {
+    clip-path: inset(12.5% 0);
   }
 
   img {

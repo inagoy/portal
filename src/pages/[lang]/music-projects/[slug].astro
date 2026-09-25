@@ -1,7 +1,7 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import ProjectMediaPlayer from "../../../components/ProjectMediaPlayer.astro";
-import { getMusicProjectSlug, getMusicProjectsPageContent } from "../../../config";
+import { getMusicProjectSlug, getMusicProjectsPageContent, participants } from "../../../config";
 import { getStrings, type Lang } from "../../../i18n";
 import type { MusicProject, SEOInfo } from "../../../types/config";
 
@@ -23,6 +23,8 @@ const { lang, project } = Astro.props;
 const t = getStrings(lang);
 const roles = project.roles.map((role) => t.labels.roles[role] ?? role).join(" · ");
 const artistRoles = project.artistRoles?.map((role) => t.labels.artistRoles[role] ?? role).join(" · ");
+const projectParticipants = project.collaborators?.map((id) => participants[id]) ?? [];
+const collaboratorSeparator = lang === "es" ? " y " : " & ";
 const platform = project.url.includes("spotify.com")
   ? "spotify"
   : project.url.includes("bandcamp.com")
@@ -31,8 +33,8 @@ const platform = project.url.includes("spotify.com")
     ? "youtube"
     : lang === "es" ? "escuchar" : "listen";
 const labels = lang === "es"
-  ? { back: "archivo", roles: "roles", artisticRoles: "roles artísticos", year: "año", credits: "créditos", release: "formato", listen: "escuchar en" }
-  : { back: "archive", roles: "roles", artisticRoles: "artistic roles", year: "year", credits: "credits", release: "format", listen: "listen on" };
+  ? { back: "archivo", roles: "roles", artisticRoles: "como artista", year: "año", credits: "créditos", release: "formato", listen: "escuchar en" }
+  : { back: "archive", roles: "roles", artisticRoles: "as an artist", year: "year", credits: "credits", release: "format", listen: "listen on" };
 const seo: SEOInfo = {
   title: `${project.artist ? `${project.artist} — ` : ""}${project.title} | Iñaki Goyeneche`,
   description: `${roles} · ${project.year}`,
@@ -51,7 +53,16 @@ const seo: SEOInfo = {
           <div><dt>{labels.roles}</dt><dd>{roles}</dd></div>
           {artistRoles && <div><dt>{labels.artisticRoles}</dt><dd>{artistRoles}</dd></div>}
           <div><dt>{labels.year}</dt><dd>{project.year}</dd></div>
-          {project.socio && <div><dt>{labels.credits}</dt><dd>{project.socio}</dd></div>}
+          {projectParticipants.length > 0 && (
+            <div>
+              <dt>{labels.credits}</dt>
+              <dd>
+                {projectParticipants.map((participant, index) => (
+                  <>{index > 0 && collaboratorSeparator}<a class="credit-link" href={participant.instagram} target="_blank" rel="noopener noreferrer">{participant.name}</a></>
+                ))}
+              </dd>
+            </div>
+          )}
           {project.type && <div><dt>{labels.release}</dt><dd>{t.labels.types[project.type] ?? project.type}</dd></div>}
         </dl>
         <a class="listen-link" href={project.url} target="_blank" rel="noopener noreferrer">
@@ -146,6 +157,11 @@ const seo: SEOInfo = {
 
   dd {
     margin: 0;
+  }
+
+  .credit-link {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
 
   .listen-link {

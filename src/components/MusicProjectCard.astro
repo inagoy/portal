@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import type { MusicProject, Project } from "../types/config";
-import { getMusicProjectSlug } from "../config";
+import { getMusicProjectSlug, participants } from "../config";
 import { getStrings, normalizeLang, type Lang } from "../i18n";
 import { getInlineMedia } from "../utils/media.mjs";
 
@@ -10,6 +10,7 @@ type Props = Omit<Project, "description"> & {
   description?: string;
   roles?: MusicProject["roles"];
   artistRoles?: MusicProject["artistRoles"];
+  collaborators?: MusicProject["collaborators"];
   lang?: Lang;
   compact?: boolean;
 };
@@ -21,7 +22,7 @@ const {
   year,
   url,
   embedUrl,
-  socio,
+  collaborators = [],
   lang,
   type,
   roles = [],
@@ -57,9 +58,10 @@ const coverImageClass = [
 ].join(" ");
 const roleLabels = roles.map((role) => t.labels.roles[role] ?? role);
 const artistRoleLabels = artistRoles.map((role) => t.labels.artistRoles[role] ?? role);
-const collaboratorParts = socio?.split(/(\s+(?:y|&)\s+)/i) ?? [];
+const projectParticipants = collaborators.map((id) => participants[id]);
+const collaboratorSeparator = currentLang === "es" ? "y" : "&";
 const roleListLabel = currentLang === "es" ? "roles del proyecto" : "project roles";
-const artistRoleListLabel = currentLang === "es" ? "roles artísticos" : "artist roles";
+const artistRoleListLabel = currentLang === "es" ? "como artista" : "as an artist";
 const albumClass = type === "album" ? "music-card-album" : "";
 const projectClass = type ? "music-card-project" : "";
 const cardClass = [
@@ -116,11 +118,16 @@ const linkClass = [
               ))}
             </ul>
           )}
-          {socio && (
+          {projectParticipants.length > 0 && (
             <p class="music-card-extra text-xs sm:text-sm">
               <span class="uppercase">{t.labels.with}</span>
-              {collaboratorParts.map((part, index) => (
-                <span class={index % 2 ? "uppercase" : "underline underline-offset-2 uppercase"}>{part.trim()}</span>
+              {projectParticipants.map((participant, index) => (
+                <>
+                  {index > 0 && <span class="uppercase">{collaboratorSeparator}</span>}
+                  <a class="underline underline-offset-2 uppercase" href={participant.instagram} target="_blank" rel="noopener noreferrer">
+                    {participant.name}
+                  </a>
+                </>
               ))}
             </p>
           )}
@@ -172,10 +179,8 @@ const linkClass = [
       </div>
     </details>
   ) : (
-    <a
-      href={detailUrl}
-      class={linkClass}
-    >
+    <article class={linkClass}>
+      <a class="music-card-link" href={detailUrl} aria-label={`${artist ? `${artist} — ` : ""}${title}`}></a>
       <div class={`music-card-cover ${coverFrameClass}`}>
         <div class="h-full w-full overflow-hidden">
           <Image
@@ -222,17 +227,22 @@ const linkClass = [
               </ul>
             )}
           </div>
-          {socio && (
+          {projectParticipants.length > 0 && (
             <p class="music-card-extra text-xs sm:text-sm">
               <span class="uppercase">{t.labels.with}</span>
-              {collaboratorParts.map((part, index) => (
-                <span class={index % 2 ? "uppercase" : "underline underline-offset-2 uppercase"}>{part.trim()}</span>
+              {projectParticipants.map((participant, index) => (
+                <>
+                  {index > 0 && <span class="uppercase">{collaboratorSeparator}</span>}
+                  <a class="underline underline-offset-2 uppercase" href={participant.instagram} target="_blank" rel="noopener noreferrer">
+                    {participant.name}
+                  </a>
+                </>
               ))}
             </p>
           )}
         </div>
       </div>
-    </a>
+    </article>
   )
 }
 
@@ -345,6 +355,8 @@ const linkClass = [
   }
 
   .music-card-extra {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
@@ -374,6 +386,12 @@ const linkClass = [
 
   .music-card {
     position: relative;
+  }
+
+  .music-card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
   }
 
   details.music-card-project {

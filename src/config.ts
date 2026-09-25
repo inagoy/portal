@@ -8,6 +8,8 @@ import type {
   HomePageContent,
   PortfolioContext,
   SoftwareProject,
+  Participant,
+  ParticipantId,
 } from "./types/config";
 import { getStrings, normalizeLang } from './i18n';
 
@@ -15,6 +17,19 @@ export const identity: Identity = {
   name: "iñaki goyeneche",
   logo: "/logo.png",
   email: "inagoy.audio@gmail.com",
+};
+
+export const participants: Record<ParticipantId, Participant> = {
+  canaSanMartin: { name: '"Cana" San Martín', instagram: "https://www.instagram.com/cana_san_martin/" },
+  matiasJury: { name: "Matías Jury", instagram: "https://www.instagram.com/mati.jury/" },
+  marianoBilinkis: { name: "Mariano Bilinkis", instagram: "https://www.instagram.com/biliboi.ptx/" },
+  julianMahon: { name: "Julian Mahon", instagram: "https://www.instagram.com/julianmahon/" },
+  alejoAvila: { name: "Alejo Ávila", instagram: "https://www.instagram.com/alejo.m.av/" },
+  mauroCigliuti: { name: "Mauro Cigliuti", instagram: "https://www.instagram.com/maurocig/" },
+  santiagoMonroy: { name: "Santiago Monroy", instagram: "https://www.instagram.com/santiagogosantiag/" },
+  nicolasCarlino: { name: "Nicolás Carlino", instagram: "https://www.instagram.com/ovejj/" },
+  sebastianMedina: { name: "Sebastián Medina", instagram: "https://www.instagram.com/estudiocrazydiamond/" },
+  renzoLeveroni: { name: "Renzo Leveroni", instagram: "https://www.instagram.com/renzolev/" },
 };
 
 export function getNavBarLinks(lang?: string, context: PortfolioContext = 'music'): NavBarLink[] {
@@ -129,7 +144,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/cDQrxeHaQgc/hqdefault.jpg",
       year: "2026",
       url: "https://www.youtube.com/watch?v=cDQrxeHaQgc",
-      socio: "mariano bilinkis",
+      collaborators: ["marianoBilinkis"],
       type: "single",
       source: "kamehouse"
     },
@@ -140,7 +155,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/5VSUkR3Deoc/hqdefault.jpg",
       year: "2026",
       url: "https://www.youtube.com/watch?v=5VSUkR3Deoc",
-      socio: "mariano bilinkis",
+      collaborators: ["marianoBilinkis"],
       type: "single",
       source: "kamehouse"
     },
@@ -151,7 +166,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/VHtm7bxLaF0/hqdefault.jpg",
       year: "2026",
       url: "https://www.youtube.com/watch?v=VHtm7bxLaF0",
-      socio: "mariano bilinkis",
+      collaborators: ["marianoBilinkis"],
       type: "single",
       source: "kamehouse"
     },
@@ -162,7 +177,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://i.scdn.co/image/ab67616d00001e02032fc3e853c96fe808151080",
       year: "2026",
       url: "https://open.spotify.com/intl-es/album/7wCXVXgszjczlChCc69v0V",
-      socio: "mariano bilinkis y julian mahon",
+      collaborators: ["marianoBilinkis", "julianMahon"],
       type: "album",
       source: "kamehouse"
     },
@@ -173,7 +188,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://i.scdn.co/image/ab67616d00001e02692872973b6ed31153f0d2eb",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/0Krxs5046iOHKuOXSzEQxL?si=Azcx7PFjRR-nbaumiCM8BA",
-      socio: "mariano bilinkis y julian mahon",
+      collaborators: ["marianoBilinkis", "julianMahon"],
       type: "album",
       source: "kamehouse"
     },
@@ -184,7 +199,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/cFu0K7S0JLg/hqdefault.jpg",
       year: "2025",
       url: "https://www.youtube.com/watch?v=cFu0K7S0JLg",
-      socio: "mariano bilinkis",
+      collaborators: ["marianoBilinkis"],
       type: "single",
       source: "kamehouse"
     },
@@ -208,7 +223,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       year: "2025",
       url: "https://camilaines.bandcamp.com/album/otro-idioma",
       embedUrl: "https://bandcamp.com/EmbeddedPlayer/v=2/album=159166449/size=large/bgcol=121212/fgcol=ffffff/linkcol=ffffff/tracklist=true/artwork=small/",
-      socio: "alejo ávila",
+      collaborators: ["alejoAvila", "matiasJury"],
       type: "album"
     }, 
     {
@@ -219,7 +234,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/jntOZoAx9fk/hqdefault.jpg",
       year: "2025",
       url: "https://www.youtube.com/watch?v=jntOZoAx9fk",
-      socio: "mauro cigliuti y alejo ávila",
+      collaborators: ["mauroCigliuti", "alejoAvila"],
       type: "audiovisual"
     }, 
     {
@@ -230,7 +245,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://i.scdn.co/image/ab67616d00001e02262bef791f1b56d5f3c139ef",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/0hhdU6F6EzirZ1vRdvziLl?si=lJrv_fQcSyqEiOKI-bzktA",
-      socio: "santiago monroy y nicolás carlino",
+      collaborators: ["santiagoMonroy", "nicolasCarlino"],
       type: "album"
     }, 
     {
@@ -241,7 +256,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://i.scdn.co/image/ab67616d00001e02034120fafbe9a4c46495e48d",
       year: "2025",
       url: "https://open.spotify.com/intl-es/album/07cDDnNsCAZZSNCi1F241l",
-      socio: "santiago monroy y nicolás carlino",
+      collaborators: ["santiagoMonroy", "nicolasCarlino"],
       type: "single"
     },   
 /*     {
@@ -251,7 +266,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/aqbNW4f89EQ/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=aqbNW4f89EQ",
-      socio: "santiago monroy y nicolás carlino",
+      collaborators: ["santiagoMonroy", "nicolasCarlino"],
       type: "single"
     },  */   
     {
@@ -262,7 +277,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/FZ8_0mR61XQ/hqdefault.jpg",
       year: "2024",
       url: "https://www.youtube.com/watch?v=FZ8_0mR61XQ",
-      socio: "santiago monroy y nicolás carlino",
+      collaborators: ["santiagoMonroy", "nicolasCarlino"],
       type: "single"
     },
     {
@@ -280,7 +295,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/Sdn0tO06pts/hqdefault.jpg",
       year: "2023",
       url: "https://youtu.be/Sdn0tO06pts",
-      socio: "renzo leveroni y alejo avila",
+      collaborators: ["renzoLeveroni", "alejoAvila"],
       type: "audiovisual"
     },
     {
@@ -290,7 +305,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://img.youtube.com/vi/otk4bo-59fg/hqdefault.jpg",
       year: "2022",
       url: "https://youtu.be/otk4bo-59fg",
-      socio: "alejo ávila y mauro cigliuti",
+      collaborators: ["alejoAvila", "mauroCigliuti"],
       type: "audiovisual"
     },
     {
@@ -311,7 +326,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       image: "https://i.scdn.co/image/ab67616d00001e02c3ff32a171372ec984542598",
       year: "2019",
       url: "https://open.spotify.com/intl-es/album/3QNumfCFJRBvHEuKA3A4HU?si=dQu_QvnkQGmH02g0s_vX8g",
-      socio:"sebastián medina",
+      collaborators: ["sebastianMedina", "canaSanMartin"],
       type: "album"
     },
   ],
@@ -321,18 +336,6 @@ export function getMusicProjectsPageContent(lang?: string): MusicProjectPageCont
   const normalized = normalizeLang(lang);
   const t = getStrings(normalized);
 
-  const translateSocio = (socio?: string) =>
-    socio ? socio.replace(/\by\b/g, '&') : socio;
-
-  const projects = musicProjectsPageContent.projects.map((p) =>
-    normalized === 'en'
-      ? {
-          ...p,
-          socio: translateSocio(p.socio),
-        }
-      : p
-  );
-
   return {
     seo: {
       title: t.music.seo.title,
@@ -340,7 +343,7 @@ export function getMusicProjectsPageContent(lang?: string): MusicProjectPageCont
       image: musicProjectsPageContent.projects[0].image,
     },
     subtitle: t.music.subtitle,
-    projects,
+    projects: musicProjectsPageContent.projects,
   };
 }
 

@@ -57,6 +57,23 @@ export type ProjectRole =
 
 export type ProjectArtistRole = 'interpreter' | 'coWriter';
 
+export type ParticipantId =
+  | 'canaSanMartin'
+  | 'matiasJury'
+  | 'marianoBilinkis'
+  | 'julianMahon'
+  | 'alejoAvila'
+  | 'mauroCigliuti'
+  | 'santiagoMonroy'
+  | 'nicolasCarlino'
+  | 'sebastianMedina'
+  | 'renzoLeveroni';
+
+export type Participant = {
+  name: string;
+  instagram: string;
+};
+
 export type Project = {
   title: string;
   description: string;
@@ -64,7 +81,6 @@ export type Project = {
   year: string;
   url: string;
   embedUrl?: string;
-  socio? : string;
   type?: 'album' | 'single' | 'audiovisual';
 };
 
@@ -72,6 +88,7 @@ export type MusicProject = Omit<Project, 'description'> & {
   artist?: string;
   roles: ProjectRole[];
   artistRoles?: ProjectArtistRole[];
+  collaborators?: ParticipantId[];
   description?: string;
   imagePosition?: string;
   source?: 'kamehouse';

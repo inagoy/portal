@@ -1,0 +1,99 @@
+---
+import type { Lang } from "../i18n";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  email: string;
+  lang: Lang;
+  arrow?: boolean;
+}
+
+const { email, lang, arrow = true } = Astro.props;
+const labels = lang === "es"
+  ? { copy: "copiar", copied: "copiado", error: "error" }
+  : { copy: "copy", copied: "copied", error: "error" };
+---
+
+<span class="email-contact">
+  <a class="text-link email-link" href={`mailto:${email}`}>{email}{arrow && " ↗"}</a>
+  <button
+    type="button"
+    class="copy-email"
+    data-copy-email={email}
+    data-copy-label={labels.copy}
+    data-copied-label={labels.copied}
+    data-error-label={labels.error}
+    aria-label={`${labels.copy} ${email}`}
+    title={labels.copy}
+  >
+    <span class="copy-icon"><Icon name="mdi:content-copy" width={15} height={15} /></span>
+    <span class="copied-icon"><Icon name="mdi:check" width={17} height={17} /></span>
+  </button>
+</span>
+
+<script>
+  document.addEventListener("click", async (event) => {
+    const button = event.target instanceof Element
+      ? event.target.closest<HTMLButtonElement>("[data-copy-email]")
+      : null;
+
+    if (!button) return;
+
+    try {
+      await navigator.clipboard.writeText(button.dataset.copyEmail ?? "");
+      button.dataset.state = "copied";
+      button.title = button.dataset.copiedLabel ?? "";
+      button.setAttribute("aria-label", button.dataset.copiedLabel ?? "");
+    } catch {
+      button.title = button.dataset.errorLabel ?? "";
+      button.setAttribute("aria-label", button.dataset.errorLabel ?? "");
+    }
+
+    setTimeout(() => {
+      delete button.dataset.state;
+      button.title = button.dataset.copyLabel ?? "";
+      button.setAttribute("aria-label", `${button.dataset.copyLabel ?? ""} ${button.dataset.copyEmail ?? ""}`);
+    }, 1600);
+  });
+</script>
+
+<style>
+  .email-contact {
+    display: inline-flex;
+    max-width: 100%;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .email-link {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .copy-email {
+    display: inline-grid;
+    flex: none;
+    width: 1.9rem;
+    height: 1.9rem;
+    place-items: center;
+    border: 0;
+    border-radius: 2px;
+    background: transparent;
+    padding: 0;
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  .copy-email:hover {
+    opacity: 0.75;
+  }
+
+  .copied-icon,
+  .copy-email[data-state="copied"] .copy-icon {
+    display: none;
+  }
+
+  .copy-email[data-state="copied"] .copied-icon {
+    display: inline-flex;
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import EmailLink from "./EmailLink.astro";
 import MusicGridCard from "./MusicGridCard.astro";
 import SoftwareProjectCard from "./SoftwareProjectCard.astro";
 import {
@@ -83,7 +84,7 @@ const labels = lang === "es"
     <h2>{labels.contact}</h2>
     <div class="portfolio-info-copy">
       <ul class="direct-links">
-        <li><a class="text-link" href={`mailto:${identity.email}`}>{identity.email} ↗</a></li>
+        <li><EmailLink email={identity.email} lang={lang} /></li>
         {linkedIn && <li><a class="text-link" href={linkedIn.url} target="_blank" rel="noopener noreferrer">linkedin ↗</a></li>}
         <li><a class="text-link" href="https://github.com/inagoy" target="_blank" rel="noopener noreferrer">github ↗</a></li>
       </ul>
