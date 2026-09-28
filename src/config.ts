@@ -245,7 +245,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       collaborators: ["santiagoMonroy", "nicolasCarlino"],
       type: "album"
     }, 
-    {
+/*     {
       title: "película de acción",
       artist: "william campbell",
       roles: ["coProduction", "editing"],
@@ -255,7 +255,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       url: "https://open.spotify.com/intl-es/album/07cDDnNsCAZZSNCi1F241l",
       collaborators: ["santiagoMonroy", "nicolasCarlino"],
       type: "single"
-    },   
+    },   */ 
 /*     {
       title: "rolling | william campbell",
       roles: ["coProduction", "editing"],
