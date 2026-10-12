@@ -135,6 +135,28 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   subtitle: "algunos proyectos en los que trabajé",
   projects: [
     {
+      title: "cuando el agua hirviendo (en vivo)",
+      artist: "milo j, silvana estrada",
+      roles: ["editing", "mixingAssistant"],
+      image: "https://img.youtube.com/vi/ZxdLVdS-yr4/hqdefault.jpg",
+      year: "2026",
+      url: "https://www.youtube.com/watch?v=ZxdLVdS-yr4",
+      collaborators: ["marianoBilinkis"],
+      type: "single",
+      source: "kamehouse"
+    },
+    {
+      title: "like a virgin (en vivo)",
+      artist: "lali, tini, marilina bertoldi",
+      roles: ["editing"],
+      image: "https://img.youtube.com/vi/uyY8fa6Khe0/hqdefault.jpg",
+      year: "2026",
+      url: "https://www.youtube.com/watch?v=uyY8fa6Khe0",
+      collaborators: ["marianoBilinkis"],
+      type: "single",
+      source: "kamehouse"
+    },
+    {
       title: "solifican12 (en vivo en perú)",
       artist: "milo j",
       roles: ["editing", "mixingAssistant"],
