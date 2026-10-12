@@ -135,7 +135,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
   subtitle: "algunos proyectos en los que trabajé",
   projects: [
     {
-      title: "cuando el agua hirviendo (en vivo)",
+      title: "cuando el agua hirviendo ( en vivo desde colombia)",
       artist: "milo j, silvana estrada",
       roles: ["editing", "mixingAssistant"],
       image: "https://img.youtube.com/vi/ZxdLVdS-yr4/hqdefault.jpg",
@@ -157,7 +157,7 @@ export const musicProjectsPageContent: MusicProjectPageContent = {
       source: "kamehouse"
     },
     {
-      title: "solifican12 (en vivo en perú)",
+      title: "solifican12 (en vivo desde perú)",
       artist: "milo j",
       roles: ["editing", "mixingAssistant"],
       image: "https://img.youtube.com/vi/cDQrxeHaQgc/hqdefault.jpg",
